@@ -12,6 +12,6 @@ namespace Models_For_EF_Core.Models
     public class Device_functions
     {
         public int id { get; set; }
-        public string function { get; set; }
+        public string function { get; set; } = "";
     }
 }

@@ -10,7 +10,7 @@ namespace Models_For_EF_Core.Models
     /// Под максимальным месячным объемом печати понимается рекомендованное количество отпечатков, которое вы сможете выполнить с помощью принтера в течение месяца. 
     /// (Превышение объема приведет к сокращению срока службы устройства.)
     /// </summary>
-    internal class Max_monthly_print_volumes
+    public class Max_monthly_print_volumes
     {
         public int id { get; set; }
         public string volume { get; set; }

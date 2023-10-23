@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 namespace Models_For_EF_Core.Models
 {
     /// <summary>
-    /// Класс описывает форматы бумаги A4, A3 и т.д.
+    /// Класс описывает цвета кратриджей
     /// </summary>
-    public class Paper_sizes
+    public class Print_colors
     {
-       
-        public int id {  get; set; }
-        public string paper_size { get; set; }
+        public int Id { get; set; }
+        public string color { get; set; }
     }
 }
