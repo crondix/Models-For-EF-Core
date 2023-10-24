@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,14 +12,16 @@ namespace Models_For_EF_Core.Models
     /// <summary>
     /// Класс описывает свойства модели картриджа
     /// </summary>
+    [Index(nameof(Model), IsUnique = true)]
     public class Cartridge_models
     {
         public int Id { get; set; }
         [Required]
-        public string Model { get; set; } = ""; 
-        public int? PrintResource {  get; set; }
+        public string Model { get; set; } 
+        public ushort? PrintResource {  get; set; }
         public bool Refueling {  get; set; }
         [Required]
-        public List<Print_colors> Print_colors { get; set; }= new List<Print_colors>();
+        public Print_colors PrintColors { get; set; }
+        public List <Printer> Printers { get; set; }
     }
 }

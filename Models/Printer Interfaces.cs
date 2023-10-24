@@ -8,15 +8,13 @@ using System.Threading.Tasks;
 
 namespace Models_For_EF_Core.Models
 {
-    /// <summary>
-    /// Класс описывает цвета кратриджей
-    /// </summary>
-    [Index(nameof(color), IsUnique = true)]
-    public class Print_colors
+    [Index(nameof(InterfaceName), IsUnique = true)]
+    public class Printer_Interfaces
     {
-        
-        public ushort Id { get; set; }
+        public int id { get; set; }
         [Required]
-        public string color { get; set; } 
+        public string InterfaceName { get; set; }
+        [Required]
+       public List<Printer> Printers { get; set;}
     }
 }

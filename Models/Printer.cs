@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,17 +20,49 @@ namespace Models_For_EF_Core.Models
         /// <summary>
         /// Имеет ли принтер: Автоматическую двухстороннюю печать 
         /// </summary>
-        public bool automatic_double_sided_printing { get; set; }
+        public bool AutomaticDoubleSidedPrinting { get; set; }
         /// <summary>
         /// Название модели принтера
         /// </summary>
-        public string model_name { get; set; } = "";
+        [Required]
+        public string ModelName { get; set; } 
         /// <summary>
         /// Возможность цветной печати
         /// </summary>
-        public bool сolor_printing { get; set; }
-        public Printer_types types { get; set; }
-        public Printing_technologies technologis { get; set; }
+        public bool СolorPrinting { get; set; }
+        /// <summary>
+        /// Имеется ли автоподатчик бумаги у сканера 
+        /// </summary>
+        public bool AutomaticFeedDeviceForScan { get; set; }
+
+        /// <summary>
+        /// Скорость черно-белой печати  
+        /// </summary>
+        public Printing_Speed? BWPrintingSpeed {  get; set; }
+        /// <summary>
+        /// Скорость цветной печати  
+        /// </summary>
+        public Printing_Speed? ColorPrintingSpeed { get; set; }
+        /// <summary>
+        /// Максимальный формат сканирования   
+        /// </summary>
+        public Paper_sizes? MaxScanFormat { get; set; }
+        /// <summary>
+        /// Максимальный формат печати  
+        /// </summary>
+        public Paper_sizes? MaxPrintFormat { get; set; }
+
+        [Required]
+        public Printer_types Types { get; set; }
+        [Required]
+        public Printing_technologies Technologis { get; set; }
+        [Required]
+        public Max_monthly_print_volumes MaxMonthlyPrintVolumes { get; set; }
+        [Required]
+        public List<Device_functions> DeviceFunctions { get; set; }
+        public List<Cartridge_models> CartridgeModels { get; set; }
+        public List<Printer_Interfaces> PrinterInterfaces { get; set; } 
+   
         
     }
 }
