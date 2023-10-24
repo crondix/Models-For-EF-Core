@@ -17,6 +17,10 @@ namespace Models_For_EF_Core.Models
        
         public ushort id {  get; set; }
         [Required]
+        [MaxLength(40)]
         public string paper_size { get; set; } 
+        public ushort width { get; set; } 
+        public ushort height { get; set; } 
+
     }
 }
