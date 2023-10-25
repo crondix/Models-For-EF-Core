@@ -16,6 +16,7 @@ namespace Models_For_EF_Core.Models
     {
         public int id { get; set; }
         [Required]
+        [MaxLength(40)]
         public string function { get; set; } 
     }
 }

@@ -27,6 +27,11 @@ namespace Models_For_EF_Core.Models
         [Required]
         public string ModelName { get; set; } 
         /// <summary>
+        /// Название модели принтера
+        /// </summary>
+        [Required]
+        public Companies Company_name { get; set; } 
+        /// <summary>
         /// Возможность цветной печати
         /// </summary>
         public bool СolorPrinting { get; set; }

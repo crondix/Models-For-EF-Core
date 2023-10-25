@@ -21,6 +21,8 @@ namespace Models_For_EF_Core.Models
         public string paper_size { get; set; } 
         public ushort width { get; set; } 
         public ushort height { get; set; } 
-
+        public int unitsid { get; set; }
+        public Measurement_units? units { get; set; }
+        
     }
 }

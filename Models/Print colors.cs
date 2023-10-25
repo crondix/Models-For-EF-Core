@@ -17,6 +17,7 @@ namespace Models_For_EF_Core.Models
         
         public ushort Id { get; set; }
         [Required]
+        [MaxLength(20)]
         public string color { get; set; } 
     }
 }

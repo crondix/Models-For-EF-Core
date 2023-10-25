@@ -13,6 +13,7 @@ namespace Models_For_EF_Core.Models
     {
         public int id { get; set; }
         [Required]
+        [MaxLength(40)]
         public string InterfaceName { get; set; }
         [Required]
        public List<Printer> Printers { get; set;}

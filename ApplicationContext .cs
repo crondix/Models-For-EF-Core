@@ -20,9 +20,9 @@ namespace Models_For_EF_Core
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterDB;",
-                new MySqlServerVersion(new Version(8, 0, 25)));
-            //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
+            //optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterDB;",
+            //    new MySqlServerVersion(new Version(8, 0, 25)));
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
         }
       
         // Используем рефлексию для автоматического добавления DbSet для всех моделей

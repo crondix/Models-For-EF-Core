@@ -1,214 +1,333 @@
 {
-  "paperSizes": [
+  "Paper_sizes": [
     {
-      "id": 1,
       "paper_size": "A0",
       "width": 841,
-      "height": 1189
+      "height": 1189,
+      "unitsid": 5
     },
     {
-      "id": 2,
       "paper_size": "A1",
       "width": 594,
-      "height": 841
+      "height": 841,
+      "unitsid": 5
     },
     {
-      "id": 3,
       "paper_size": "A2",
       "width": 420,
-      "height": 594
+      "height": 594,
+      "unitsid": 5
     },
     {
-      "id": 4,
       "paper_size": "A3",
       "width": 297,
-      "height": 420
+      "height": 420,
+      "unitsid": 5
     },
     {
-      "id": 5,
       "paper_size": "A4",
       "width": 210,
-      "height": 297
+      "height": 297,
+      "unitsid": 5
     },
     {
-      "id": 6,
       "paper_size": "A5",
       "width": 148,
-      "height": 210
+      "height": 210,
+      "unitsid": 5
     },
     {
-      "id": 7,
       "paper_size": "A6",
       "width": 105,
-      "height": 148
+      "height": 148,
+      "unitsid": 5
     },
     {
-      "id": 8,
       "paper_size": "A7",
       "width": 74,
-      "height": 105
+      "height": 105,
+      "unitsid": 5
     },
     {
-      "id": 9,
       "paper_size": "A8",
       "width": 52,
-      "height": 74
+      "height": 74,
+      "unitsid": 5
     },
     {
-      "id": 10,
       "paper_size": "A9",
       "width": 37,
-      "height": 52
+      "height": 52,
+      "unitsid": 5
     },
     {
-      "id": 11,
       "paper_size": "A10",
       "width": 26,
-      "height": 37
+      "height": 37,
+      "unitsid": 5
     },
     {
-      "id": 12,
       "paper_size": "B0",
       "width": 1414,
-      "height": 1000
+      "height": 1000,
+      "unitsid": 5
     },
     {
-      "id": 13,
       "paper_size": "B1",
       "width": 1000,
-      "height": 707
+      "height": 707,
+      "unitsid": 5
     },
     {
-      "id": 14,
       "paper_size": "B2",
       "width": 707,
-      "height": 500
+      "height": 500,
+      "unitsid": 5
     },
     {
-      "id": 15,
       "paper_size": "B3",
       "width": 500,
-      "height": 353
+      "height": 353,
+      "unitsid": 5
     },
     {
-      "id": 16,
       "paper_size": "B4",
       "width": 353,
-      "height": 250
+      "height": 250,
+      "unitsid": 5
     },
     {
-      "id": 17,
       "paper_size": "B5",
       "width": 250,
-      "height": 176
+      "height": 176,
+      "unitsid": 5
     },
     {
-      "id": 18,
       "paper_size": "B6",
       "width": 176,
-      "height": 125
+      "height": 125,
+      "unitsid": 5
     },
     {
-      "id": 19,
       "paper_size": "B7",
       "width": 125,
-      "height": 88
+      "height": 88,
+      "unitsid": 5
     },
     {
-      "id": 20,
       "paper_size": "B8",
       "width": 88,
-      "height": 62
+      "height": 62,
+      "unitsid": 5
     },
     {
-      "id": 21,
       "paper_size": "B9",
       "width": 62,
-      "height": 44
+      "height": 44,
+      "unitsid": 5
     },
     {
-      "id": 22,
       "paper_size": "B10",
       "width": 44,
-      "height": 31
+      "height": 31,
+      "unitsid": 5
     },
     {
-      "id": 23,
       "paper_size": "C0",
       "width": 1297,
-      "height": 917
+      "height": 917,
+      "unitsid": 5
     },
     {
-      "id": 24,
       "paper_size": "C1",
       "width": 917,
-      "height": 648
+      "height": 648,
+      "unitsid": 5
     },
     {
-      "id": 25,
       "paper_size": "C2",
       "width": 648,
-      "height": 458
+      "height": 458,
+      "unitsid": 5
     },
     {
-      "id": 26,
       "paper_size": "C3",
       "width": 458,
-      "height": 324
+      "height": 324,
+      "unitsid": 5
     },
     {
-      "id": 27,
       "paper_size": "C4",
       "width": 324,
-      "height": 229
+      "height": 229,
+      "unitsid": 5
     },
     {
-      "id": 28,
       "paper_size": "C5",
       "width": 229,
-      "height": 162
+      "height": 162,
+      "unitsid": 5
     },
     {
-      "id": 29,
       "paper_size": "C6",
       "width": 162,
-      "height": 114
+      "height": 114,
+      "unitsid": 5
     },
     {
-      "id": 30,
       "paper_size": "C7",
       "width": 114,
-      "height": 81
+      "height": 81,
+      "unitsid": 5
     },
     {
-      "id": 31,
       "paper_size": "C8",
       "width": 81,
-      "height": 57
+      "height": 57,
+      "unitsid": 5
     },
     {
-      "id": 32,
       "paper_size": "C9",
       "width": 57,
-      "height": 40
+      "height": 40,
+      "unitsid": 5
     },
     {
-      "id": 33,
       "paper_size": "C10",
       "width": 40,
-      "height": 28
+      "height": 28,
+      "unitsid": 5
     }
   ],
-  "printColors": [
+  "Print_colors": [
     {
-      "Id": 1,
+      "color": "Black"
+    },
+    {
+      "color": "Cyan"
+    },
+    {
+      "color": "Magenta"
+    },
+    {
+      "color": "Yellow"
+    },
+    {
+      "color": "Magenta Light"
+    },
+    {
+      "color": "Cyan Light"
+    },
+    {
+      "color": "Blue"
+    },
+    {
       "color": "Red"
     },
     {
-      "Id": 2,
-      "color": "Blue"
+      "color": "Green"
     }
-    // Добавьте другие цвета для печати по мере необходимости
+  ],
+  "Printer_types": [
+    {
+      "type": "МФУ лазерное"
+    },
+    {
+      "type": "МФУ струйное"
+    },
+    {
+      "type": "Принтер струйный"
+    },
+    {
+      "type": "Принтер лазерный"
+    },
+    {
+      "type": "Термопринтер"
+    },
+    {
+      "type": "Плоттер/Широкоформатный принтер"
+    },
+    {
+      "type": "Матричный принтер"
+    }
+  ],
+  "Measurement_units": [
+    {
+      "units": "стр/мин"
+    },
+    {
+      "units": "стр"
+    },
+    {
+      "units": "изобр./мин"
+    },
+    {
+      "units": "сек"
+    },
+    {
+      "units": "мм"
+    },
+    {
+      "units": "inch"
+    }
+  ],
+  "Printing_technologies": [
+    {
+      "technology": "лазерная"
+    },
+    {
+      "technology": "струйная"
+    },
+    {
+      "technology": "термоструйная"
+    },
+    {
+      "technology": "пузырьково-струйная"
+    }
+
+
+  ],
+  "Device_functions": [
+    {
+      "function": "копир"
+    },
+    {
+      "function": "облако"
+    },
+    {
+      "function": "принтер"
+    },
+    {
+      "function": "сканер"
+    },
+    {
+      "function": "факс"
+    }
+
+
+  ],
+
+  "Companies": [
+    {
+      "name": "Canon"
+    },
+    {
+      "name": "Kyocera"
+    },
+    {
+      "name": "HP"
+    },
+    {
+      "name": "Epson"
+    },
+    {
+      "name": "Brother"
+    },
+    {
+      "name": "Xiaomi"
+    }
+
+
   ]
 }
   

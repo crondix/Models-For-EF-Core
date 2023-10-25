@@ -3,18 +3,36 @@
 using Microsoft.EntityFrameworkCore;
 using Models_For_EF_Core;
 using Models_For_EF_Core.Models;
-using Newtonsoft.Json;
+using System.Collections;
+using System.Reflection;
+//using Newtonsoft.Json;
+using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 ApplicationContext db = new ApplicationContext();
 
 // Чтение JSON файла
-var json = File.ReadAllText($"../../../start_data.json");
-Start_data models = JsonConvert.DeserializeObject<Start_data>(json);
-// Десериализация JSON в объекты
-//var paperSizes = JsonConvert.DeserializeObject<List<Paper_sizes>>(json); // Замените на вашу модель
+ string json = File.ReadAllText($"../../../start_data.json");
 
-    // Добавление данных в базу данных
-    db.AddRange(models.Print_colors); // Замените на ваш DbSet
-    db.SaveChanges();
+Start_data models = JsonSerializer.Deserialize<Start_data>(json);
+Type startDataType = typeof(Start_data);
+PropertyInfo[] properties = startDataType.GetProperties();
+
+
+// Переберите свойства и добавьте их в db.AddRange
+foreach (PropertyInfo property in properties)
+{
+    if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
+    {
+        // Если свойство является списком, добавьте его содержимое в db.AddRange
+        var propertyValue = (IEnumerable)property.GetValue(models);
+        if (propertyValue != null)
+        {
+          foreach (var item in propertyValue)
+            db.AddRange(item);// в этой строке просто в дбшку добавляется, синтакси EF Core
+        }
+    }
+}
+db.SaveChanges();
 
 Console.WriteLine("Start DB");

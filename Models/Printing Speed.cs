@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 
 namespace Models_For_EF_Core.Models
 {
+    //Почему отдельная таблица? Существуют модели принтеров одной линейки отличающиеся именованием, и некоторыми функиями, но имеющие одинаковую скорость печати  
     [Index(nameof(speed), IsUnique = true)]
     public class Printing_Speed
     {
         
         public int id { get; set; }
         public ushort speed { get; set; }
+        public Measurement_units units { get; set; }
     }
 }
