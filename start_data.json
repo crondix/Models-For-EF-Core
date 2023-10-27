@@ -326,6 +326,29 @@
     {
       "name": "Xiaomi"
     }
+  ],
+  "Printer_Interfaces": [
+    {
+      "InterfaceName": "Bluetooth"
+    },
+    {
+      "InterfaceName": "Ethernet(RJ-45)"
+    },
+    {
+      "InterfaceName": "NFC"
+    },
+    {
+      "InterfaceName": "RJ-11"
+    },
+    {
+      "InterfaceName": "USB"
+    },
+    {
+      "InterfaceName": "WI-Fi"
+    },
+    {
+      "InterfaceName": "слот для карт Compact Flash"
+    }
 
 
   ]

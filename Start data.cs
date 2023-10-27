@@ -16,6 +16,7 @@ namespace Models_For_EF_Core
         public List<Printing_technologies> Printing_technologies { get; set; } = new List<Printing_technologies>();
         public List<Device_functions> Device_functions { get; set; } = new List<Device_functions>();
         public List<Companies> Companies { get; set; } = new List<Companies>();
+        public List<Printer_Interfaces> Printer_Interfaces { get; set; } = new List<Printer_Interfaces>();
        
     }
 }

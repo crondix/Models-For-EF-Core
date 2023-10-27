@@ -25,6 +25,7 @@ namespace Models_For_EF_Core.Models
         /// Название модели принтера
         /// </summary>
         [Required]
+        [MaxLength(40)]
         public string ModelName { get; set; } 
         /// <summary>
         /// Название модели принтера
