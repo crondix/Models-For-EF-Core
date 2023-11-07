@@ -16,12 +16,12 @@ namespace Models_For_EF_Core.Models
     public class Cartridge_models
     {
         public int Id { get; set; }
-        [Required]
+        [MaxLength(100)]
         public string Model { get; set; } 
         public ushort? PrintResource {  get; set; }
-        public bool Refueling {  get; set; }
-        [Required]
-        public Print_colors PrintColors { get; set; }
-        public List <Printer> Printers { get; set; }
+        public bool? Refueling {  get; set; }
+        public int Print_colorsId { get; set; }
+        public Print_colors? Print_colors { get; set; }
+        public ICollection<Printer> Printers { get; set; }
     }
 }

@@ -8,6 +8,8 @@ using System.Reflection;
 //using Newtonsoft.Json;
 using System.Text.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.Extensions.Logging;
+using System.Runtime.Intrinsics.X86;
 
 ApplicationContext db = new ApplicationContext();
 
@@ -18,7 +20,12 @@ Start_data models = JsonSerializer.Deserialize<Start_data>(json);
 Type startDataType = typeof(Start_data);
 PropertyInfo[] properties = startDataType.GetProperties();
 
+var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder.AddConsole(); // Логгирование в консоль
+});
 
+var logger = loggerFactory.CreateLogger<Program>();
 // Переберите свойства и добавьте их в db.AddRange
 foreach (PropertyInfo property in properties)
 {
@@ -32,7 +39,8 @@ foreach (PropertyInfo property in properties)
             db.AddRange(item);// в этой строке просто в дбшку добавляется, синтакси EF Core
         }
     }
+    db.SaveChanges();
 }
-db.SaveChanges();
 
+logger.LogInformation("Application started.");
 Console.WriteLine("Start DB");

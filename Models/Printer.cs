@@ -65,9 +65,9 @@ namespace Models_For_EF_Core.Models
         [Required]
         public Max_monthly_print_volumes MaxMonthlyPrintVolumes { get; set; }
         [Required]
-        public List<Device_functions> DeviceFunctions { get; set; }
-        public List<Cartridge_models> CartridgeModels { get; set; }
-        public List<Printer_Interfaces> PrinterInterfaces { get; set; } 
+        public ICollection<Device_functions> DeviceFunctions { get; set; }
+        public ICollection<Cartridge_models> CartridgeModels { get; set; }
+        public ICollection<Printer_Interfaces> PrinterInterfaces { get; set; } 
    
         
     }

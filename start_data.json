@@ -351,6 +351,28 @@
     }
 
 
+  ],
+  "Printing_Speed": [
+    {
+      "speed": 27,
+      "unitsid": 1
+    }
+  ],
+  "Max_monthly_print_volumes": [
+    {
+      "volume": 55000,
+      "unitsid": 2
+    }
+  ],
+  "Cartridge_models": [
+    {
+      "Model": "HP LaserJet 415A",
+      "PrintResource": 2400,
+      "Refueling": true,
+      "Print_colorsId": 1
+
+
+    }
   ]
 }
   

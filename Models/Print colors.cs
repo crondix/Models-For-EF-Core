@@ -15,9 +15,11 @@ namespace Models_For_EF_Core.Models
     public class Print_colors
     {
         
-        public ushort Id { get; set; }
+        public int Print_colorsId { get; set; }
         [Required]
         [MaxLength(20)]
-        public string color { get; set; } 
+        public string color { get; set; }
+        public ICollection<Cartridge_models> Cartridge_models { get; set; }
+
     }
 }

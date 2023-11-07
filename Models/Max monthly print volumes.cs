@@ -15,8 +15,9 @@ namespace Models_For_EF_Core.Models
     [Index(nameof(volume), IsUnique = true)]
     public class Max_monthly_print_volumes
     {
-        public int id { get; set; }
-        [Required]
+        public int id { get; set; }       
         public ushort volume { get; set; }
+        public int unitsid { get; set; }
+        public Measurement_units? units { get; set; }
     }
 }

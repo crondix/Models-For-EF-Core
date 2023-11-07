@@ -16,6 +16,6 @@ namespace Models_For_EF_Core.Models
         [MaxLength(40)]
         public string InterfaceName { get; set; }
         [Required]
-       public List<Printer> Printers { get; set;}
+       public ICollection<Printer> Printers { get; set;}
     }
 }

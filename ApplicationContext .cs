@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Models_For_EF_Core.Models;
 using Newtonsoft.Json;
 using System;
@@ -22,6 +23,8 @@ namespace Models_For_EF_Core
         {
             optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterDB;",
                 new MySqlServerVersion(new Version(8, 0, 25)));
+            //  логгирование SQL-запросов
+            optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
             //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
         }
       
@@ -36,6 +39,7 @@ namespace Models_For_EF_Core
             {
                 modelBuilder.Entity(entityType);
             }
+       
         }
     }
 }
