@@ -14,7 +14,19 @@ namespace Models_For_EF_Core.Models
     [Index(nameof(type), IsUnique = true)]
     public class Printer_types
     {
-        public int Id { get; set; }
+        public Printer_types()
+        {
+
+        }
+        public Printer_types(int value)
+        {
+            this.id = value;
+        }
+        public static implicit operator Printer_types(int value)
+        {
+            return new Printer_types(value);
+        }
+        public int id { get; set; }
         [MaxLength(40)]
         public string type { get; set; }
      

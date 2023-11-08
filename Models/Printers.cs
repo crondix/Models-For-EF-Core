@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Models_For_EF_Core.Models
     /// <summary>
     /// Класс описывает свойства модели принтер
     /// </summary>
-    public class Printer
+    public class Printers
     {
         public int Id { get; set; }
         /// <summary>
@@ -31,7 +32,8 @@ namespace Models_For_EF_Core.Models
         /// Название модели принтера
         /// </summary>
         [Required]
-        public Companies Company_name { get; set; } 
+        public int Company_nameid { get; set; }
+        public Companies? Company_name { get; set; } 
         /// <summary>
         /// Возможность цветной печати
         /// </summary>
@@ -44,29 +46,39 @@ namespace Models_For_EF_Core.Models
         /// <summary>
         /// Скорость черно-белой печати  
         /// </summary>
-        public Printing_Speed? BWPrintingSpeed {  get; set; }
+        [JsonConverter(typeof(NavigationPropertyConverter<Printing_Speed>))]
+        public Printing_Speed BWPrintingSpeed {  get; set; }
         /// <summary>
         /// Скорость цветной печати  
         /// </summary>
-        public Printing_Speed? ColorPrintingSpeed { get; set; }
+        [JsonConverter(typeof(NavigationPropertyConverter<Printing_Speed>))]
+        public Printing_Speed ColorPrintingSpeed { get; set; }
         /// <summary>
         /// Максимальный формат сканирования   
         /// </summary>
-        public Paper_sizes? MaxScanFormat { get; set; }
+        [JsonConverter(typeof(NavigationPropertyConverter<Paper_sizes>))]
+        public Paper_sizes MaxScanFormat { get; set; }
         /// <summary>
         /// Максимальный формат печати  
         /// </summary>
-        public Paper_sizes? MaxPrintFormat { get; set; }
+        [JsonConverter(typeof(NavigationPropertyConverter<Paper_sizes>))]
+        public Paper_sizes MaxPrintFormat { get; set; }
 
         [Required]
+        [JsonConverter(typeof(NavigationPropertyConverter<Printer_types>))]
         public Printer_types Types { get; set; }
         [Required]
+        [JsonConverter(typeof(NavigationPropertyConverter<Printing_technologies>))]
         public Printing_technologies Technologis { get; set; }
         [Required]
+        [JsonConverter(typeof(NavigationPropertyConverter<Max_monthly_print_volumes>))]
         public Max_monthly_print_volumes MaxMonthlyPrintVolumes { get; set; }
         [Required]
+        [JsonConverter(typeof(NavigationPropertyConverter<Device_functions>))]
         public ICollection<Device_functions> DeviceFunctions { get; set; }
+        [JsonConverter(typeof(NavigationPropertyConverter<Cartridge_models>))]
         public ICollection<Cartridge_models> CartridgeModels { get; set; }
+        [JsonConverter(typeof(NavigationPropertyConverter<Printer_Interfaces>))]
         public ICollection<Printer_Interfaces> PrinterInterfaces { get; set; } 
    
         

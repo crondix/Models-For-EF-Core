@@ -7,6 +7,7 @@ using System.Collections;
 using System.Reflection;
 //using Newtonsoft.Json;
 using System.Text.Json;
+using Newtonsoft.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.Extensions.Logging;
 using System.Runtime.Intrinsics.X86;
@@ -15,10 +16,13 @@ ApplicationContext db = new ApplicationContext();
 
 // Чтение JSON файла
  string json = File.ReadAllText($"../../../start_data.json");
+Start_data models = JsonConvert.DeserializeObject<Start_data>(json);
 
-Start_data models = JsonSerializer.Deserialize<Start_data>(json);
 Type startDataType = typeof(Start_data);
 PropertyInfo[] properties = startDataType.GetProperties();
+//Start_data models = JsonSerializer.Deserialize<Start_data>(json);
+//Type startDataType = typeof(Start_data);
+//PropertyInfo[] properties = startDataType.GetProperties();
 
 var loggerFactory = LoggerFactory.Create(builder =>
 {
@@ -35,8 +39,8 @@ foreach (PropertyInfo property in properties)
         var propertyValue = (IEnumerable)property.GetValue(models);
         if (propertyValue != null)
         {
-          foreach (var item in propertyValue)
-            db.AddRange(item);// в этой строке просто в дбшку добавляется, синтакси EF Core
+            foreach (var item in propertyValue)
+                db.AddRange(item);// в этой строке просто в дбшку добавляется, (синтакси EF Core)
         }
     }
     db.SaveChanges();

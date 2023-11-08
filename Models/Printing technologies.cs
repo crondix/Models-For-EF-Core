@@ -14,6 +14,18 @@ namespace Models_For_EF_Core.Models
     [Index(nameof(technology), IsUnique = true)]
     public class Printing_technologies
     {
+        public Printing_technologies()
+        {
+
+        }
+        public Printing_technologies(int value)
+        {
+            this.id = value;
+        }
+        public static implicit operator Printing_technologies(int value)
+        {
+            return new Printing_technologies(value);
+        }
         public int id {  get; set; }
         [Required]
         [MaxLength(40)]

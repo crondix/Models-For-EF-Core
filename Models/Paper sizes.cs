@@ -12,10 +12,21 @@ namespace Models_For_EF_Core.Models
     /// Класс описывает форматы бумаги A4, A3 и т.д.
     /// </summary>
     [Index(nameof(paper_size), IsUnique = true)]
-    public class Paper_sizes
+    public class Paper_sizes 
     {
-       
-        public ushort id {  get; set; }
+        public Paper_sizes()
+        {
+
+        }
+        public Paper_sizes(int value)
+        {
+            this.id = value;
+        }
+        public static implicit operator Paper_sizes(int value)
+        {
+            return new Paper_sizes(value);
+        }
+        public int id {  get; set; }
         [Required]
         [MaxLength(40)]
         public string paper_size { get; set; } 

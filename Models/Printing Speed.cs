@@ -13,7 +13,17 @@ namespace Models_For_EF_Core.Models
     [Index(nameof(speed), IsUnique = true)]
     public class Printing_Speed
     {
+        public Printing_Speed() {
         
+        }
+        public Printing_Speed(int value)
+        {
+            this.id = value;
+        }
+        public static implicit operator Printing_Speed(int value)
+        {
+            return new Printing_Speed(value);
+        }
         public int id { get; set; }
         public ushort speed { get; set; }
         public int unitsid { get; set; }
