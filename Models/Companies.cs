@@ -14,6 +14,7 @@ namespace Models_For_EF_Core.Models
 
         public int Id { get; set; }
         public string name { get; set; }
-        public ICollection<Printers>? Printers { get; set; }
+        public ICollection<Printers>? Printer { get; set; }
+      
     }
 }

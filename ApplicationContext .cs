@@ -18,6 +18,17 @@ namespace Models_For_EF_Core
             Database.EnsureDeleted();   // удаляем бд со старой схемой
             Database.EnsureCreated();   // создаем бд с новой схемой
         }
+        public DbSet<Printing_Speed> Printing_Speed { get; set; }
+        public DbSet<Measurement_units> Measurement_units { get; set; } 
+        public DbSet<Paper_sizes> Paper_sizes { get; set; } 
+        public DbSet<Print_colors> Print_colors { get; set; } 
+        public DbSet<Printer_types> Printer_types { get; set; } 
+        public DbSet<Printing_technologies> Printing_technologies { get; set; } 
+        public DbSet<Device_functions> Device_functions { get; set; } 
+        public DbSet<Companies> Companies { get; set; } 
+        public DbSet<Printer_Interfaces> Printer_Interfaces { get; set; } 
+        public DbSet<Max_monthly_print_volumes> Max_monthly_print_volumes { get; set; } 
+        public DbSet<Cartridge_models> Cartridge_models { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,14 +43,15 @@ namespace Models_For_EF_Core
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
           
-            var entityTypes = Assembly.GetExecutingAssembly().GetTypes()
-                .Where(t => t.Namespace == "Models_For_EF_Core.Models" && t.IsClass);
+            //var entityTypes = Assembly.GetExecutingAssembly().GetTypes()
+            //    .Where(t => t.Namespace == "Models_For_EF_Core.Models" && t.IsClass);
 
-            foreach (var entityType in entityTypes)
-            {
-                modelBuilder.Entity(entityType);
-            }
+            //foreach (var entityType in entityTypes)
+            //{
+            //    modelBuilder.Entity(entityType);
+            //}
        
         }
+       
     }
 }

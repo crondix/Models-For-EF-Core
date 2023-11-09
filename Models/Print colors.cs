@@ -15,7 +15,7 @@ namespace Models_For_EF_Core.Models
     public class Print_colors
     {
         
-        public int Print_colorsId { get; set; }
+        public int Print_colorsid { get; set; }
         [Required]
         [MaxLength(20)]
         public string color { get; set; }

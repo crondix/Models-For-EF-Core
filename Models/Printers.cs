@@ -33,10 +33,10 @@ namespace Models_For_EF_Core.Models
         /// </summary>
         [Required]
         public int Company_nameid { get; set; }
-        public Companies? Company_name { get; set; } 
+        public Companies? Company_name { get; set; }
         /// <summary>
         /// Возможность цветной печати
-        /// </summary>
+        /// </summary>       
         public bool СolorPrinting { get; set; }
         /// <summary>
         /// Имеется ли автоподатчик бумаги у сканера 
@@ -46,39 +46,39 @@ namespace Models_For_EF_Core.Models
         /// <summary>
         /// Скорость черно-белой печати  
         /// </summary>
-        [JsonConverter(typeof(NavigationPropertyConverter<Printing_Speed>))]
+        public int BWPrintingSpeedid { get; set; }
         public Printing_Speed BWPrintingSpeed {  get; set; }
         /// <summary>
         /// Скорость цветной печати  
         /// </summary>
-        [JsonConverter(typeof(NavigationPropertyConverter<Printing_Speed>))]
+        public int ColorPrintingSpeedid { get; set; }
         public Printing_Speed ColorPrintingSpeed { get; set; }
         /// <summary>
         /// Максимальный формат сканирования   
         /// </summary>
-        [JsonConverter(typeof(NavigationPropertyConverter<Paper_sizes>))]
+        public int MaxScanFormatid { get; set; }
         public Paper_sizes MaxScanFormat { get; set; }
         /// <summary>
         /// Максимальный формат печати  
         /// </summary>
-        [JsonConverter(typeof(NavigationPropertyConverter<Paper_sizes>))]
+        public int MaxPrintFormatid { get; set; }
         public Paper_sizes MaxPrintFormat { get; set; }
 
         [Required]
-        [JsonConverter(typeof(NavigationPropertyConverter<Printer_types>))]
+        public int Typesid { get; set; }
         public Printer_types Types { get; set; }
         [Required]
-        [JsonConverter(typeof(NavigationPropertyConverter<Printing_technologies>))]
+        public int Technologisid { get; set; }
         public Printing_technologies Technologis { get; set; }
         [Required]
-        [JsonConverter(typeof(NavigationPropertyConverter<Max_monthly_print_volumes>))]
+        public int MaxMonthlyPrintVolumesid { get; set; }
         public Max_monthly_print_volumes MaxMonthlyPrintVolumes { get; set; }
         [Required]
-        [JsonConverter(typeof(NavigationPropertyConverter<Device_functions>))]
+        public List<int> DeviceFunctionsid { get; set; }
         public ICollection<Device_functions> DeviceFunctions { get; set; }
-        [JsonConverter(typeof(NavigationPropertyConverter<Cartridge_models>))]
+        public List<int> CartridgeModelsid { get; set; }
         public ICollection<Cartridge_models> CartridgeModels { get; set; }
-        [JsonConverter(typeof(NavigationPropertyConverter<Printer_Interfaces>))]
+        public List<int> PrinterInterfacesid { get; set; }
         public ICollection<Printer_Interfaces> PrinterInterfaces { get; set; } 
    
         

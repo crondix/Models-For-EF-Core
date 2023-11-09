@@ -373,41 +373,9 @@
 
 
     }
-  ],
-
-  "Printers": [
-    {
-      "ModelName": "HP Color LaserJet Enterprise MFP M480f",
-      "CISS": false,
-      "AutomaticDoubleSidedPrinting": true,
-      "Company_nameid": 3,
-      "СolorPrinting": true,
-      "AutomaticFeedDeviceForScan": true,
-      "BWPrintingSpeed": 1,
-      "ColorPrintingSpeed": 1,
-      "MaxScanFormat": 4,
-      "MaxPrintFormat": 4,
-      "Types": 1,
-      "Technologis": 1,
-      "MaxMonthlyPrintVolumes": 1,
-      "DeviceFunctions": [
-        {
-          "id": 1
-        },
-        {
-          "id": 3
-        },
-        {
-          "id": 4
-        },
-        {
-          "id": 5
-        }
-      ],
-      "CartridgeModels": 1,
-      "PrinterInterfaces": [ 2, 5 ]
-    }
   ]
+
+ 
 }
   
 

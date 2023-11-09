@@ -23,7 +23,7 @@ namespace Models_For_EF_Core
         public List<Printing_Speed> Printing_Speed { get; set; } = new List<Printing_Speed>();
         public List<Max_monthly_print_volumes> Max_monthly_print_volumes { get; set; } = new List<Max_monthly_print_volumes>();
         public List<Cartridge_models> Cartridge_models { get; set; } = new List<Cartridge_models>();
-        public List<Printers> Printers { get; set; } = new List<Printers>();
+        //public List<Printers> Printers { get; set; } = new List<Printers>();
        
     }
 }
