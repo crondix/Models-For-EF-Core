@@ -74,11 +74,11 @@ namespace Models_For_EF_Core.Models
         public int MaxMonthlyPrintVolumesid { get; set; }
         public Max_monthly_print_volumes MaxMonthlyPrintVolumes { get; set; }
         [Required]
-        public List<int> DeviceFunctionsid { get; set; }
+   
         public ICollection<Device_functions> DeviceFunctions { get; set; }
-        public List<int> CartridgeModelsid { get; set; }
+     
         public ICollection<Cartridge_models> CartridgeModels { get; set; }
-        public List<int> PrinterInterfacesid { get; set; }
+   
         public ICollection<Printer_Interfaces> PrinterInterfaces { get; set; } 
    
         

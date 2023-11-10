@@ -14,21 +14,11 @@ namespace Models_For_EF_Core.Models
     [Index(nameof(function), IsUnique = true)]
     public class Device_functions
     {
-        public Device_functions()
-        {
-
-        }
-        public Device_functions(int value)
-        {
-            this.id = value;
-        }
-        public static implicit operator Device_functions(int value)
-        {
-            return new Device_functions(value);
-        }
+       
         public int id { get; set; }
         [Required]
         [MaxLength(40)]
-        public string function { get; set; } 
+        public string function { get; set; }
+        public ICollection<Printers> Printers { get; set; }
     }
 }
