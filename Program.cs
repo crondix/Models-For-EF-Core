@@ -50,7 +50,7 @@ using (var db = new ApplicationContext())
     logger.LogInformation("Application started.");
     Console.WriteLine("Start DB");
  
-    
+    //123
     //var converter = new FromBDtoJSON(db);
     //converter.ExportDataToJson("C:\\Users\\Dudarev.Aleksey\\Documents\\json\\output.json");
  
