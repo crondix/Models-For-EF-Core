@@ -19,6 +19,6 @@ namespace Models_For_EF_Core.Models
         [Required]
         [MaxLength(40)]
         public string function { get; set; }
-        public ICollection<Printers> Printers { get; set; }
+        public virtual ICollection<Device_functionsPrinters> Printers { get; set; }
     }
 }

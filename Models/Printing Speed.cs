@@ -27,6 +27,6 @@ namespace Models_For_EF_Core.Models
         public int id { get; set; }
         public ushort speed { get; set; }
         public int unitsid { get; set; }
-        public Measurement_units? units { get; set; }
+        public virtual Measurement_units? units { get; set; }
     }
 }

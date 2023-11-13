@@ -33,7 +33,7 @@ namespace Models_For_EF_Core.Models
         /// </summary>
         [Required]
         public int Company_nameid { get; set; }
-        public Companies? Company_name { get; set; }
+        public virtual Companies? Company_name { get; set; }
         /// <summary>
         /// Возможность цветной печати
         /// </summary>       
@@ -47,39 +47,39 @@ namespace Models_For_EF_Core.Models
         /// Скорость черно-белой печати  
         /// </summary>
         public int BWPrintingSpeedid { get; set; }
-        public Printing_Speed BWPrintingSpeed {  get; set; }
+        public virtual Printing_Speed BWPrintingSpeed {  get; set; }
         /// <summary>
         /// Скорость цветной печати  
         /// </summary>
         public int ColorPrintingSpeedid { get; set; }
-        public Printing_Speed ColorPrintingSpeed { get; set; }
+        public virtual Printing_Speed ColorPrintingSpeed { get; set; }
         /// <summary>
         /// Максимальный формат сканирования   
         /// </summary>
         public int MaxScanFormatid { get; set; }
-        public Paper_sizes MaxScanFormat { get; set; }
+        public virtual Paper_sizes MaxScanFormat { get; set; }
         /// <summary>
         /// Максимальный формат печати  
         /// </summary>
         public int MaxPrintFormatid { get; set; }
-        public Paper_sizes MaxPrintFormat { get; set; }
+        public virtual Paper_sizes MaxPrintFormat { get; set; }
 
         [Required]
         public int Typesid { get; set; }
-        public Printer_types Types { get; set; }
+        public virtual Printer_types Types { get; set; }
         [Required]
         public int Technologisid { get; set; }
-        public Printing_technologies Technologis { get; set; }
+        public virtual Printing_technologies Technologis { get; set; }
         [Required]
         public int MaxMonthlyPrintVolumesid { get; set; }
-        public Max_monthly_print_volumes MaxMonthlyPrintVolumes { get; set; }
+        public virtual Max_monthly_print_volumes MaxMonthlyPrintVolumes { get; set; }
         [Required]
    
-        public ICollection<Device_functions> DeviceFunctions { get; set; }
+        public virtual ICollection<Device_functionsPrinters> DeviceFunctions { get; set; }
      
-        public ICollection<Cartridge_models> CartridgeModels { get; set; }
+        public virtual ICollection<Cartridge_modelsPrinters> CartridgeModels { get; set; }
    
-        public ICollection<Printer_Interfaces> PrinterInterfaces { get; set; } 
+        public virtual ICollection<Printer_InterfacesPrinters> PrinterInterfaces { get; set; } 
    
         
     }

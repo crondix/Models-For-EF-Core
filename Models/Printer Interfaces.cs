@@ -28,6 +28,6 @@ namespace Models_For_EF_Core.Models
         [MaxLength(40)]
         public string InterfaceName { get; set; }
         [Required]
-       public ICollection<Printers> Printers { get; set;}
+       public virtual ICollection<Printer_InterfacesPrinters> Printers { get; set;}
     }
 }

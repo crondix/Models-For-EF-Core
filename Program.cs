@@ -49,11 +49,9 @@ using (var db = new ApplicationContext())
 
     logger.LogInformation("Application started.");
     Console.WriteLine("Start DB");
-    var model = db.Printing_Speed.ToList(); 
-    
-    File.WriteAllText("C:\\Users\\Dudarev.Aleksey\\Documents\\json\\output.json", JsonConvert.SerializeObject(model));
+ 
     
     //var converter = new FromBDtoJSON(db);
     //converter.ExportDataToJson("C:\\Users\\Dudarev.Aleksey\\Documents\\json\\output.json");
-    Console.WriteLine("Должен был создаться JSON");
+ 
 }

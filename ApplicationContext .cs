@@ -29,6 +29,7 @@ namespace Models_For_EF_Core
         public DbSet<Printer_Interfaces> Printer_Interfaces { get; set; } 
         public DbSet<Max_monthly_print_volumes> Max_monthly_print_volumes { get; set; } 
         public DbSet<Cartridge_models> Cartridge_models { get; set; } 
+        public DbSet<Printers> Printers { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -37,12 +38,15 @@ namespace Models_For_EF_Core
             //  логгирование SQL-запросов
             optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
             //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
+            optionsBuilder.UseLazyLoadingProxies();
         }
       
         // Используем рефлексию для автоматического добавления DbSet для всех моделей
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+            modelBuilder.Entity<Printer_InterfacesPrinters>().HasKey(u => new { u.Printersid, u.Printer_Interfacesid });
+            modelBuilder.Entity<Device_functionsPrinters>().HasKey(u => new { u.Printersid, u.Device_functionsid });
+            modelBuilder.Entity<Cartridge_modelsPrinters>().HasKey(u => new { u.Printersid, u.Cartridge_modelsid });
             //var entityTypes = Assembly.GetExecutingAssembly().GetTypes()
             //    .Where(t => t.Namespace == "Models_For_EF_Core.Models" && t.IsClass);
 
@@ -50,7 +54,7 @@ namespace Models_For_EF_Core
             //{
             //    modelBuilder.Entity(entityType);
             //}
-       
+
         }
        
     }

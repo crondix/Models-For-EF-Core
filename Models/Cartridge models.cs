@@ -33,7 +33,7 @@ namespace Models_For_EF_Core.Models
         public ushort? PrintResource {  get; set; }
         public bool? Refueling {  get; set; }
         public int Print_colorsid { get; set; }
-        public Print_colors? Print_colors { get; set; }
-        public ICollection<Printers> Printers { get; set; }
+        public virtual Print_colors? Print_colors { get; set; }
+        public virtual ICollection<Cartridge_modelsPrinters> Printers { get; set; }
     }
 }

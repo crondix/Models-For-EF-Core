@@ -19,7 +19,7 @@ namespace Models_For_EF_Core.Models
         [Required]
         [MaxLength(20)]
         public string color { get; set; }
-        public ICollection<Cartridge_models> Cartridge_models { get; set; }
+        public virtual ICollection<Cartridge_models> Cartridge_models { get; set; }
 
     }
 }
