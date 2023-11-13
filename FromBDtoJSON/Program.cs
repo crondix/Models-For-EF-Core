@@ -63,7 +63,7 @@ using (var db = new ApplicationContext())
     //    .FirstOrDefault(p => p.Id == 1);     
 
    
-    //123435
+  
     var printer = db.Printers.FirstOrDefault(p => p.Id == 1);
     if (printer != null)
     {
