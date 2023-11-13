@@ -67,9 +67,9 @@ using (var db = new ApplicationContext())
     var printer = db.Printers.FirstOrDefault(p => p.Id == 1);
     if (printer != null)
     {
-        Console.WriteLine("Technologis:" + printer.Printer_InterfacesPrinters.Count);
+        Console.WriteLine("Technologis:" + printer);
     }
-    //File.WriteAllText("C:\\Users\\Dudarev.Aleksey\\Documents\\json\\output.json", JsonConvert.SerializeObject(printer));
+    File.WriteAllText("C:\\Users\\Dudarev.Aleksey\\Documents\\json\\output.json", JsonConvert.SerializeObject(printer));
 
     ////var converter = new FromBDtoJSON(db);
     ////converter.ExportDataToJson("C:\\Users\\Dudarev.Aleksey\\Documents\\json\\output.json");
