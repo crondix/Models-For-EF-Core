@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Models_For_EF_Core.Models;
+using MyModels.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

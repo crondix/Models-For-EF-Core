@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FromBDtoJSON", "..\FromBDto
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Printer BD EF core", "Printer BD EF core", "{3A3BB890-6091-494B-956C-FE6A6FDE51A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyModels", "..\MyModels\MyModels.csproj", "{E097BC76-320D-4C74-8403-1E7F4C1FB139}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{252B48E6-78F0-4538-B1D2-EA5DEDF596A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{252B48E6-78F0-4538-B1D2-EA5DEDF596A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{252B48E6-78F0-4538-B1D2-EA5DEDF596A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E097BC76-320D-4C74-8403-1E7F4C1FB139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E097BC76-320D-4C74-8403-1E7F4C1FB139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E097BC76-320D-4C74-8403-1E7F4C1FB139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E097BC76-320D-4C74-8403-1E7F4C1FB139}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -33,6 +39,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3C9F6123-4E61-4209-87A5-4F64D75F11CC} = {3A3BB890-6091-494B-956C-FE6A6FDE51A3}
 		{252B48E6-78F0-4538-B1D2-EA5DEDF596A8} = {3A3BB890-6091-494B-956C-FE6A6FDE51A3}
+		{E097BC76-320D-4C74-8403-1E7F4C1FB139} = {3A3BB890-6091-494B-956C-FE6A6FDE51A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F88051FC-A741-49F5-AC59-5FED47595309}

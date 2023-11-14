@@ -385,10 +385,9 @@
       "AutomaticDoubleSidedPrinting": true,
       "Company_nameid": 3,
       "СolorPrinting": true,
-      "AutomaticFeedDeviceForScan": true,
       "BWPrintingSpeedid": 1,
       "ColorPrintingSpeedid": 1,
-      "MaxScanFormatid": 4,
+      
 
       "MaxPrintFormatid": 4,
 

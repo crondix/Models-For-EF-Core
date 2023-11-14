@@ -1,4 +1,5 @@
-﻿using Models_For_EF_Core.Models;
+﻿
+using MyModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

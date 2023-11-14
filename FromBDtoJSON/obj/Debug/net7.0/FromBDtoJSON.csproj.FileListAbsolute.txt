@@ -160,3 +160,5 @@ C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\net7.0\FromBDtoJSON.pdb
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\net7.0\FromBDtoJSON.genruntimeconfig.cache
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\net7.0\ref\FromBDtoJSON.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\MyModels.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\MyModels.pdb

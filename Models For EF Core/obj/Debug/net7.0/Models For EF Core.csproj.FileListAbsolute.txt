@@ -160,3 +160,5 @@ C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\Models For EF Core\obj\
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\Models For EF Core\obj\Debug\net7.0\Models For EF Core.pdb
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\Models For EF Core\obj\Debug\net7.0\Models For EF Core.genruntimeconfig.cache
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\Models For EF Core\obj\Debug\net7.0\ref\Models For EF Core.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\Models For EF Core\bin\Debug\net7.0\MyModels.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\Models For EF Core\bin\Debug\net7.0\MyModels.pdb

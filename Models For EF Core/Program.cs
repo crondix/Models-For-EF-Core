@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Models_For_EF_Core;
-using Models_For_EF_Core.Models;
+
 using System.Collections;
 using System.Reflection;
 //using Newtonsoft.Json;

@@ -1,6 +1,7 @@
-﻿using FromBDtoJSON.Models;
+﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MyModels.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
