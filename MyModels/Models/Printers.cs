@@ -15,6 +15,7 @@ namespace MyModels.Models
     public class Printers
     {
         public int Id { get; set; }
+        public string? image { get; set; }
         /// <summary>
         /// Имеет ли принтер: систему непрерывной подачи чернил 
         /// </summary>
