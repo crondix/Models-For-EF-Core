@@ -24,13 +24,13 @@ namespace MyModels.Models
         {
             return new Printer_Interfaces(value);
         }
-        [JsonIgnore]
+         
         public int id { get; set; }
         [Required]
         [MaxLength(40)]
         public string InterfaceName { get; set; }
         [Required]
-        [JsonIgnore]
+         
         public virtual ICollection<Printer_InterfacesPrinters> Printers { get; set; }
     }
 }

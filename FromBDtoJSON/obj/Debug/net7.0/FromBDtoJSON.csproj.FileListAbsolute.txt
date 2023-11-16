@@ -87,12 +87,10 @@ C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Castle.Core.dll
-C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Humanizer.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Proxies.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
@@ -103,7 +101,6 @@ C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Extensions.Logging.Configuration.dll
@@ -121,11 +118,9 @@ C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\MySqlConnector.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\System.Diagnostics.EventLog.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\System.Drawing.Common.dll
@@ -162,3 +157,4 @@ C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\net7.0\ref\FromBDtoJSON.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\MyModels.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\MyModels.pdb
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\net7.0\FromBDtoJSON.sourcelink.json

@@ -19,7 +19,7 @@ namespace FromBDtoJSON
           
             Database.EnsureCreated();   // создаем бд с новой схемой
         }
-        public DbSet<Printing_Speed> Printing_Speed { get; set; }
+        public DbSet<Speeds> Printing_Speed { get; set; }
         public DbSet<Measurement_units> Measurement_units { get; set; }
         public DbSet<Paper_sizes> Paper_sizes { get; set; }
         public DbSet<Print_colors> Print_colors { get; set; }
@@ -31,15 +31,18 @@ namespace FromBDtoJSON
         public DbSet<Max_monthly_print_volumes> Max_monthly_print_volumes { get; set; }
         public DbSet<Cartridge_models> Cartridge_models { get; set; }
         public DbSet<Printers> Printers { get; set; }
-      
+        public DbSet<Scanner_type> Scanner_type { get; set; }
+        public DbSet<Scanner_resolution> Scanner_resolution { get; set; }
+        public DbSet<Scanner> Scanner { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterDB;",
-                new MySqlServerVersion(new Version(8, 0, 25)));
+            //optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterDB;",
+            //    new MySqlServerVersion(new Version(8, 0, 25)));
             //  логгирование SQL-запросов
             optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
-            //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
             optionsBuilder.UseLazyLoadingProxies();
         }
 

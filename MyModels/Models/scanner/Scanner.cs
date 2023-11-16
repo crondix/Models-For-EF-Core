@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +13,22 @@ namespace MyModels.Models
     /// </summary>
     public class Scanner
     {
+        public int id { get; set; }
+         
         public int Scanner_resolutionid { get; set; }
-        public Scanner_resolution? Scanner_resolution { get; set; }
+        public virtual Scanner_resolution? Scanner_resolution { get; set; }
+         
         public int Scaner_Typeid { get; set; }
-        public Scanner_type? Scaner_Type { get; set; }
+        public virtual Scanner_type? Scaner_Type { get; set; }
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>
+         
         public int Scan_Speedid { get; set; }
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>
-        public virtual Printing_Speed? Scan_Speed { get; set; }
+        public virtual Speeds? Scan_Speed { get; set; }
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>

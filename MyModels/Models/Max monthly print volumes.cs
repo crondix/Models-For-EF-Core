@@ -28,10 +28,10 @@ namespace MyModels.Models
         {
             return new Max_monthly_print_volumes(value);
         }
-        [JsonIgnore]
+         
         public int id { get; set; }
         public ushort volume { get; set; }
-        [JsonIgnore]
+         
         public int unitsid { get; set; }
         public virtual Measurement_units? units { get; set; }
     }

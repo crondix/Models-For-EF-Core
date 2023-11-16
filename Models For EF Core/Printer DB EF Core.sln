@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FromBDtoJSON", "..\FromBDto
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Printer BD EF core", "Printer BD EF core", "{3A3BB890-6091-494B-956C-FE6A6FDE51A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyModels", "..\MyModels\MyModels.csproj", "{E097BC76-320D-4C74-8403-1E7F4C1FB139}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyModels", "..\MyModels\MyModels.csproj", "{E097BC76-320D-4C74-8403-1E7F4C1FB139}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

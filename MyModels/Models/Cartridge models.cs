@@ -28,7 +28,7 @@ namespace MyModels.Models
         {
             return new Cartridge_models(value);
         }
-        [JsonIgnore]
+         
         public int id { get; set; }
         [MaxLength(100)]
         public string Model { get; set; }
@@ -36,7 +36,7 @@ namespace MyModels.Models
         public bool? Refueling { get; set; }
         public int Print_colorsid { get; set; }
         public virtual Print_colors? Print_colors { get; set; }
-        [JsonIgnore]
+         
         public virtual ICollection<Cartridge_modelsPrinters> Printers { get; set; }
     }
 }

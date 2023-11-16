@@ -12,7 +12,7 @@ namespace MyModels.Models
     [Index(nameof(name), IsUnique = true)]
     public class Companies
     {
-        [JsonIgnore]
+         
         public int Id { get; set; }
         public string name { get; set; }
 

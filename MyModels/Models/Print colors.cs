@@ -15,13 +15,13 @@ namespace MyModels.Models
     [Index(nameof(color), IsUnique = true)]
     public class Print_colors
     {
-        [JsonIgnore]
+         
         public int Print_colorsid { get; set; }
         [Required]
         [MaxLength(20)]
         public string color { get; set; }
-        [JsonIgnore]
-        public virtual ICollection<Cartridge_models> Cartridge_models { get; set; }
+         
+        //public virtual ICollection<Cartridge_models> Cartridge_models { get; set; }
 
     }
 }

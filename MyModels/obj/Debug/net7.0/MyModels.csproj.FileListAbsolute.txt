@@ -10,3 +10,6 @@ C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\MyModels\obj\Debug\net7
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\MyModels\obj\Debug\net7.0\refint\MyModels.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\MyModels\obj\Debug\net7.0\MyModels.pdb
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\MyModels\obj\Debug\net7.0\ref\MyModels.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\MyModels\obj\Debug\net7.0\MyModels.sourcelink.json
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\MyModels\bin\Debug\net7.0\MyModels.runtimeconfig.json
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\MyModels\obj\Debug\net7.0\MyModels.genruntimeconfig.cache

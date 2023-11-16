@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace MyModels.Models
   /// </summary>
     public class Scanner_type
     {
+         
         public int id { get; set; }
         [MaxLength(40)]
         public string type { get; set; }

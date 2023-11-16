@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.Extensions.Logging;
 using System.Runtime.Intrinsics.X86;
+using MyModels.Models;
 
 //ApplicationContext db = new ApplicationContext();
 using (var db = new ApplicationContext())
@@ -29,8 +30,10 @@ using (var db = new ApplicationContext())
     {
         builder.AddConsole(); // Логгирование в консоль
     });
-
+   
     var logger = loggerFactory.CreateLogger<Program>();
+
+
     // Переберите свойства и добавьте их в db.AddRange
     foreach (PropertyInfo property in properties)
     {
@@ -41,11 +44,19 @@ using (var db = new ApplicationContext())
             if (propertyValue != null)
             {
                 foreach (var item in propertyValue)
-                    db.AddRange(item);// в этой строке просто в дбшку добавляется, (синтакси EF Core)
+                {
+                    if (propertyValue != typeof(Measurement_units))
+                    {
+                        db.AddRange(item);// в этой строке просто в дбшку добавляется, (синтакси EF Core)
+                    }
+                }
+                db.SaveChanges();
             }
+
         }
-        db.SaveChanges();
+
     }
+  
 
     logger.LogInformation("Application started.");
     Console.WriteLine("Start DB");

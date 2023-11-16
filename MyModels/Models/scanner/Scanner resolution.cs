@@ -1,5 +1,5 @@
 ﻿using MyModels.Models;
-
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,7 @@ namespace MyModels.Models
     /// </summary>
     public class Scanner_resolution
     {
+         
         public int id { get; set; }
         public ushort width { get; set; }
         public ushort height { get; set; }

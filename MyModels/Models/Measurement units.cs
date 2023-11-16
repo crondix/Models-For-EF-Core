@@ -12,7 +12,7 @@ namespace MyModels.Models
     [Index(nameof(units), IsUnique = true)]
     public class Measurement_units
     {
-        [JsonIgnore]
+         
         public int id { get; set; }
         [MaxLength(20)]
         public string units { get; set; }

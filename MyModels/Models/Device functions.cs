@@ -15,12 +15,12 @@ namespace MyModels.Models
     [Index(nameof(function), IsUnique = true)]
     public class Device_functions
     {
-        [JsonIgnore]
+         
         public int id { get; set; }
         [Required]
         [MaxLength(40)]
         public string function { get; set; }
-        [JsonIgnore]
+         
         public virtual ICollection<Device_functionsPrinters> Printers { get; set; }
     }
 }

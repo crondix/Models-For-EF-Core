@@ -27,7 +27,7 @@ namespace MyModels.Models
         {
             return new Printing_technologies(value);
         }
-        [JsonIgnore]
+         
         public int id { get; set; }
         [Required]
         [MaxLength(40)]

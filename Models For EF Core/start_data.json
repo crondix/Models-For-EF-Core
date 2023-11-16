@@ -1,4 +1,27 @@
 {
+  "Measurement_units": [
+    {
+      "units": "стр/мин"
+    },
+    {
+      "units": "стр"
+    },
+    {
+      "units": "изобр./мин"
+    },
+    {
+      "units": "сек"
+    },
+    {
+      "units": "мм"
+    },
+    {
+      "units": "inch"
+    },
+    {
+      "units": "dpi"
+    }
+  ],
   "Paper_sizes": [
     {
       "paper_size": "A0",
@@ -251,26 +274,7 @@
       "type": "Матричный принтер"
     }
   ],
-  "Measurement_units": [
-    {
-      "units": "стр/мин"
-    },
-    {
-      "units": "стр"
-    },
-    {
-      "units": "изобр./мин"
-    },
-    {
-      "units": "сек"
-    },
-    {
-      "units": "мм"
-    },
-    {
-      "units": "inch"
-    }
-  ],
+
   "Printing_technologies": [
     {
       "technology": "лазерная"
@@ -352,11 +356,16 @@
 
 
   ],
-  "Printing_Speed": [
+  "Speeds": [
     {
       "speed": 27,
       "unitsid": 1
+    },
+    {
+      "speed": 29,
+      "unitsid": 1
     }
+
   ],
   "Max_monthly_print_volumes": [
     {
@@ -387,9 +396,9 @@
       "СolorPrinting": true,
       "BWPrintingSpeedid": 1,
       "ColorPrintingSpeedid": 1,
-      
 
-      "MaxPrintFormatid": 4,
+
+      "MaxPrintFormatid": 5,
 
       "Typesid": 1,
 
@@ -419,6 +428,45 @@
       "Printersid": 1
 
     }
+  ],
+  "Scanner_resolution": [
+    {
+
+      "width": 1200,
+
+      "height": 1200,
+
+      "unitsid": 6
+
+    },
+    {
+
+      "width": 600,
+
+      "height": 600,
+
+      "unitsid": 6
+
+    }
+  ],
+  "Scanner_type": [
+    {
+      "type": "планшетный"
+    },
+    {
+      "type": "планшетный/протяжный"
+    }
+  ],
+  "Scanner": [
+    {
+      "Scanner_resolutionid": 1,
+      "Scaner_Typeid": 1,
+      "Scan_Speedid": 2,
+      "MaxScanFormatid": 5,
+      "AutomaticFeedDeviceForScan": true,
+      "DADF": true
+    }
+
   ]
 
 

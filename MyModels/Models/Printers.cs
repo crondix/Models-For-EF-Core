@@ -33,7 +33,7 @@ namespace MyModels.Models
         /// Название модели принтера
         /// </summary>
         [Required]
-        [JsonIgnore]
+   
         public int Company_nameid { get; set; }
         public virtual Companies? Company_name { get; set; }
         /// <summary>
@@ -45,41 +45,41 @@ namespace MyModels.Models
         /// <summary>
         /// Скорость черно-белой печати  
         /// </summary>
-        [JsonIgnore]
+ 
         public int BWPrintingSpeedid { get; set; }
-        public virtual Printing_Speed BWPrintingSpeed { get; set; }
+        public virtual Speeds? BWPrintingSpeed { get; set; }
         /// <summary>
         /// Скорость цветной печати  
         /// </summary>
-        [JsonIgnore]
+
         public int ColorPrintingSpeedid { get; set; }
-        public virtual Printing_Speed ColorPrintingSpeed { get; set; }
+        public virtual Speeds? ColorPrintingSpeed { get; set; }
 
 
         /// <summary>
         /// Максимальный формат печати  
         /// </summary>
-        [JsonIgnore]
+  
         public int MaxPrintFormatid { get; set; }
-        public virtual Paper_sizes MaxPrintFormat { get; set; }
+        public virtual Paper_sizes? MaxPrintFormat { get; set; }
 
         [Required]
-        [JsonIgnore]
+   
         public int Typesid { get; set; }
-        public virtual Printer_types Types { get; set; }
+        public virtual Printer_types? Types { get; set; }
         [Required]
-        [JsonIgnore]
+ 
         public int Technologisid { get; set; }
-        public virtual Printing_technologies Technologis { get; set; }
+        public virtual Printing_technologies? Technologis { get; set; }
         [Required]
-        [JsonIgnore]
+  
         public int MaxMonthlyPrintVolumesid { get; set; }
-        public virtual Max_monthly_print_volumes MaxMonthlyPrintVolumes { get; set; }
+        public virtual Max_monthly_print_volumes? MaxMonthlyPrintVolumes { get; set; }
         //[Required]
-        //[JsonIgnore]
+        // 
         //public int Scanerid { get; set; }
         //public virtual Scanner? Scanner { get; set; }
-        [Required]
+      
 
         public virtual ICollection<Device_functionsPrinters> DeviceFunctions { get; set; }
 

@@ -27,7 +27,7 @@ namespace MyModels.Models
         {
             return new Printer_types(value);
         }
-        [JsonIgnore]
+         
         public int id { get; set; }
         [MaxLength(40)]
         public string type { get; set; }
