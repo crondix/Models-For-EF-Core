@@ -158,3 +158,8 @@ C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\MyModels.dll
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\MyModels.pdb
 C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\obj\Debug\net7.0\FromBDtoJSON.sourcelink.json
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Humanizer.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\Dudarev.Aleksey\source\repos\Printer DB EF Core\FromBDtoJSON\bin\Debug\net7.0\System.CodeDom.dll
