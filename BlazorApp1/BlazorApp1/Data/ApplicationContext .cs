@@ -33,7 +33,7 @@ namespace BlazorApp1.Data
             //    new MySqlServerVersion(new Version(8, 0, 25)));
             //  логгирование SQL-запросов
             optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
             optionsBuilder.UseLazyLoadingProxies();
         }
       
