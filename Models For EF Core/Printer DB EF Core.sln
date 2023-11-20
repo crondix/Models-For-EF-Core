@@ -15,14 +15,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyModels", "..\MyModels\MyModels.csproj", "{E097BC76-320D-4C74-8403-1E7F4C1FB139}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrinterBuy", "..\PrinterBuy\PrinterBuy\PrinterBuy.csproj", "{722104BC-A922-4D69-9796-2BD3F7252D8D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E097BC76-320D-4C74-8403-1E7F4C1FB139} = {E097BC76-320D-4C74-8403-1E7F4C1FB139}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrinterBuy.Client", "..\PrinterBuy\PrinterBuy.Client\PrinterBuy.Client.csproj", "{2B498511-D4CC-479E-B7D1-3D7E71554857}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E097BC76-320D-4C74-8403-1E7F4C1FB139} = {E097BC76-320D-4C74-8403-1E7F4C1FB139}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
