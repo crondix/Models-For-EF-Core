@@ -1,0 +1,42 @@
+﻿@page "/"
+@using BlazorApp1.Data
+@inject ApplicationContext DbContextPrinters
+@* @inject IDbContextFactory<ApplicationContext> DbFactory *@
+<PageTitle>Index</PageTitle>
+@if (loading)
+{
+    <button type="button" class="btn btn-danger" @onclick="@OnInitializedAsync">Загрузить данные</button>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ModelName</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var printer in printers)
+            {
+                <tr>
+                    <th scope="row">@printer.Id</th>
+                    <td>@printer.ModelName</td>
+                    <td>@printer.Types.type</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    bool loading = true;
+    List<Printers> printers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        loading = true;
+        printers = await DbContextPrinters.Printers.ToListAsync();
+        loading = false;
+    }
+}

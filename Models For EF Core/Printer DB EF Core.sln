@@ -15,14 +15,17 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyModels", "..\MyModels\MyModels.csproj", "{E097BC76-320D-4C74-8403-1E7F4C1FB139}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrinterBuy", "..\PrinterBuy\PrinterBuy\PrinterBuy.csproj", "{722104BC-A922-4D69-9796-2BD3F7252D8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrinterBuy.Client", "..\PrinterBuy\PrinterBuy.Client\PrinterBuy.Client.csproj", "{2B498511-D4CC-479E-B7D1-3D7E71554857}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Новая папка1", "Новая папка1", "{5F31A079-E04D-4419-BB73-A2F26F46D138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1", "..\BlazorApp1\BlazorApp1\BlazorApp1.csproj", "{A6066E1E-A3A4-4F6D-B5CE-BF1D7C498771}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E097BC76-320D-4C74-8403-1E7F4C1FB139} = {E097BC76-320D-4C74-8403-1E7F4C1FB139}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrinterBuy.Client", "..\PrinterBuy\PrinterBuy.Client\PrinterBuy.Client.csproj", "{2B498511-D4CC-479E-B7D1-3D7E71554857}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E097BC76-320D-4C74-8403-1E7F4C1FB139} = {E097BC76-320D-4C74-8403-1E7F4C1FB139}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1.Client", "..\BlazorApp1\BlazorApp1.Client\BlazorApp1.Client.csproj", "{22449A1D-78ED-4046-8F6B-C487EA17655E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +53,14 @@ Global
 		{2B498511-D4CC-479E-B7D1-3D7E71554857}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B498511-D4CC-479E-B7D1-3D7E71554857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B498511-D4CC-479E-B7D1-3D7E71554857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6066E1E-A3A4-4F6D-B5CE-BF1D7C498771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6066E1E-A3A4-4F6D-B5CE-BF1D7C498771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6066E1E-A3A4-4F6D-B5CE-BF1D7C498771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6066E1E-A3A4-4F6D-B5CE-BF1D7C498771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22449A1D-78ED-4046-8F6B-C487EA17655E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22449A1D-78ED-4046-8F6B-C487EA17655E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22449A1D-78ED-4046-8F6B-C487EA17655E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22449A1D-78ED-4046-8F6B-C487EA17655E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +71,8 @@ Global
 		{E097BC76-320D-4C74-8403-1E7F4C1FB139} = {3A3BB890-6091-494B-956C-FE6A6FDE51A3}
 		{722104BC-A922-4D69-9796-2BD3F7252D8D} = {3A3BB890-6091-494B-956C-FE6A6FDE51A3}
 		{2B498511-D4CC-479E-B7D1-3D7E71554857} = {3A3BB890-6091-494B-956C-FE6A6FDE51A3}
+		{A6066E1E-A3A4-4F6D-B5CE-BF1D7C498771} = {5F31A079-E04D-4419-BB73-A2F26F46D138}
+		{22449A1D-78ED-4046-8F6B-C487EA17655E} = {5F31A079-E04D-4419-BB73-A2F26F46D138}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F88051FC-A741-49F5-AC59-5FED47595309}

@@ -2,7 +2,7 @@
 using MyModels.Models;
 
 
-namespace Models_For_EF_Core
+namespace PrinterBuy.Data
 {
     public class ApplicationContext : DbContext
     {

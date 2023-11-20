@@ -1,12 +1,44 @@
 ﻿@page "/"
-@inject IDbContextFactory<ApplicationDbContext> DbFactory
+@using PrinterBuy.Data
+@inject IDbContextFactory<ApplicationContext> DbFactory
 
-<PageTitle>Home</PageTitle>
-
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-@code{
-
+<PageTitle>Index</PageTitle>
+@if (loading)
+{
+    <button type="button" class="btn btn-danger" @onclick="@LoadData">Загрузить данные</button>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ModelName</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var printer in printers)
+            {
+                <tr>
+                    <th scope="row">@printer.Id</th>
+                    <td>@printer.ModelName</td>
+                    <td>@printer.Types.type</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    bool loading = true;
+    List<Printers> printers;
+    private void LoadData()
+    {
+        using (var db = DbFactory.CreateDbContext())
+        {
+            loading = true;
+            printers = db.Printers.ToList();
+        }
+        loading = false;
+    }
 }

@@ -1,0 +1,54 @@
+﻿@page "/"
+
+@inject IDbContextFactory<ApplicationContext> DbFactory
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+@if (loading)
+{
+    <button type="button" class="btn btn-danger" @onclick="@LoadData">Загрузить данные</button>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Printers printer in printers)
+            {
+                <tr>
+                    <th scope="row">@printer.Id</th>
+                    <td>CISS:@printer.CISS</td>
+                    <td>Types:@printer.Types</td>
+                    <td>BWPrintingSpeed:@printer.BWPrintingSpeed.speed</td>
+                    <td>ColorPrinting:@printer.СolorPrinting</td>
+                    <td>ColorPrintingSpeed:@printer.ColorPrintingSpeed.speed</td>
+                    <td>Company_name:@printer.Company_name.name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    bool loading = true;
+    List<Printers> printers;
+    private void LoadData()
+    {
+        using (var db = DbFactory.CreateDbContext())
+        {
+            loading = true;
+            printers = db.Printers.ToList();
+        }
+        loading = false;
+    }
+
+}
