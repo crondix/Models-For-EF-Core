@@ -28,8 +28,8 @@ builder.Services.AddAuthentication(options =>
 var connectionStringUsers = builder.Configuration.GetConnectionString("ConnectionForPrinterBuyUsers") ?? throw new InvalidOperationException("Connection string 'ConnectionForPrinterBuyUsers' not found.");
 var connectionStringPrinters = builder.Configuration.GetConnectionString("ConnectionForPrinterBuyPrinters") ?? throw new InvalidOperationException("Connection string 'ConnectionForPrinterBuyPrinters' not found.");
 
-builder.Services.AddDbContext<ApplicationContext>(options =>options.UseSqlServer(connectionStringUsers));
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionStringPrinters));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(connectionStringUsers));
+builder.Services.AddDbContext< ApplicationContext > (options => options.UseSqlServer(connectionStringPrinters));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)

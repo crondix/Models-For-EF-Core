@@ -10,6 +10,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace MyModels.Models
 {
     [Index(nameof(name), IsUnique = true)]
+    /// <summary>
+    /// Название компании производителя
+    /// </summary>
     public class Companies
     {
          

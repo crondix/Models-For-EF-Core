@@ -36,11 +36,11 @@ namespace Models_For_EF_Core
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterDB;",
-                new MySqlServerVersion(new Version(8, 0, 25)));
+            //optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterDB;",
+            //    new MySqlServerVersion(new Version(8, 0, 25)));
             //  логгирование SQL-запросов
             optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
-            //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrintersDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PrinterBuyPrinters;Trusted_Connection=True;");
             optionsBuilder.UseLazyLoadingProxies();
         }
       
@@ -50,6 +50,7 @@ namespace Models_For_EF_Core
             modelBuilder.Entity<Printer_InterfacesPrinters>().HasKey(u => new { u.Printersid, u.Printer_Interfacesid });
             modelBuilder.Entity<Device_functionsPrinters>().HasKey(u => new { u.Printersid, u.Device_functionsid });
             modelBuilder.Entity<Cartridge_modelsPrinters>().HasKey(u => new { u.Printersid, u.Cartridge_modelsid });
+         
             //var entityTypes = Assembly.GetExecutingAssembly().GetTypes()
             //    .Where(t => t.Namespace == "Models_For_EF_Core.Models" && t.IsClass);
 

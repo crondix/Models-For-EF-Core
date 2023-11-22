@@ -13,18 +13,18 @@ namespace MyModels.Models
     /// </summary>
     public class Scanner
     {
-        public int id { get; set; }
+        public int? id { get; set; }
          
         public int Scanner_resolutionid { get; set; }
         public virtual Scanner_resolution? Scanner_resolution { get; set; }
          
-        public int Scaner_Typeid { get; set; }
+        public int? Scaner_Typeid { get; set; }
         public virtual Scanner_type? Scaner_Type { get; set; }
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>
          
-        public int Scan_Speedid { get; set; }
+        public int? Scan_Speedid { get; set; }
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>
@@ -32,7 +32,7 @@ namespace MyModels.Models
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>
-        public int MaxScanFormatid { get; set; }
+        public int? MaxScanFormatid { get; set; }
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>
@@ -47,5 +47,7 @@ namespace MyModels.Models
 
         public bool DADF { get; set; }
 
+        public int? Printersid { get; set; }
+        public virtual Printers? Printers { get; set; }
     }
 }

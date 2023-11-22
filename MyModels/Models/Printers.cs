@@ -31,29 +31,26 @@ namespace MyModels.Models
         [MaxLength(40)]
         public string ModelName { get; set; }
         /// <summary>
-        /// Название модели принтера
-        /// </summary>
-        [Required]
-   
-        public int Company_nameid { get; set; }
-        public virtual Companies? Company_name { get; set; }
-        /// <summary>
         /// Возможность цветной печати
         /// </summary>       
         public bool СolorPrinting { get; set; }
+        [Required]
+        public int Company_nameid { get; set; }
+        public virtual Companies? Company_name { get; set; }
+     
 
 
         /// <summary>
         /// Скорость черно-белой печати  
         /// </summary>
  
-        public int BWPrintingSpeedid { get; set; }
+        public int? BWPrintingSpeedid { get; set; }
         public virtual Speeds? BWPrintingSpeed { get; set; }
         /// <summary>
         /// Скорость цветной печати  
         /// </summary>
 
-        public int ColorPrintingSpeedid { get; set; }
+        public int? ColorPrintingSpeedid { get; set; }
         public virtual Speeds? ColorPrintingSpeed { get; set; }
 
 
@@ -61,26 +58,26 @@ namespace MyModels.Models
         /// Максимальный формат печати  
         /// </summary>
   
-        public int MaxPrintFormatid { get; set; }
+        public int? MaxPrintFormatid { get; set; }
         public virtual Paper_sizes? MaxPrintFormat { get; set; }
 
-        [Required]
+    
    
-        public int Typesid { get; set; }
+        public int? Typesid { get; set; }
         public virtual Printer_types? Types { get; set; }
-        [Required]
- 
-        public int Technologisid { get; set; }
-        public virtual Printing_technologies? Technologis { get; set; }
-        [Required]
-  
-        public int MaxMonthlyPrintVolumesid { get; set; }
-        public virtual Max_monthly_print_volumes? MaxMonthlyPrintVolumes { get; set; }
-        //[Required]
-        // 
-        //public int Scanerid { get; set; }
-        //public virtual Scanner? Scanner { get; set; }
       
+ 
+        public int? Technologisid { get; set; }
+        public virtual Printing_technologies? Technologis { get; set; }
+    
+  
+        public int? MaxMonthlyPrintVolumesid { get; set; }
+        public virtual Max_monthly_print_volumes? MaxMonthlyPrintVolumes { get; set; }
+        [Required]
+
+        public int Scanerid { get; set; }
+        public virtual Scanner? Scanner { get; set; }
+
 
         public virtual ICollection<Device_functionsPrinters> DeviceFunctions { get; set; }
 

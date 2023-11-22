@@ -1,0 +1,12 @@
+﻿@using MyModels.Models
+<div class="printerCard">
+    <div class="card_image"><img src="@Printer.image"/></div>
+    <div class="card_info">Printer</div>
+    <div class="card_price"></div>
+</div>
+
+@code {
+    [Parameter]
+    public Printers Printer { get; set; }
+    Printer 
+}
