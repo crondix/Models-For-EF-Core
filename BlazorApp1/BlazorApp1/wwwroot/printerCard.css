@@ -1,7 +1,0 @@
-﻿.printerCard{
-    grid-gap: 12px 0;
-    display: grid;
-    grid-template-columns: auto minmax(0,1fr) 170px;
-    grid-template-rows: 1fr 32px 20px;
-    padding: 24px 16px;
-}

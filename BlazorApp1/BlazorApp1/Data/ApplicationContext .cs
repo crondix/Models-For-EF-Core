@@ -24,7 +24,7 @@ namespace BlazorApp1.Data
         public DbSet<Cartridge_models> Cartridge_models { get; set; } 
         public DbSet<Printers> Printers { get; set; }
         public DbSet<Scanner_type> Scanner_type { get; set; }
-        public DbSet<Scanner_resolution> Scanner_resolution { get; set; }
+        public DbSet<Resolution> Resolution { get; set; }
         public DbSet<Scanner> Scanner { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

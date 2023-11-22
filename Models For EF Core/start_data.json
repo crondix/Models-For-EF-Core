@@ -397,6 +397,7 @@
       "BWPrintingSpeedid": 1,
       "ColorPrintingSpeedid": 1,
 
+      "MaxPrintResolutionid": 2,
 
       "MaxPrintFormatid": 5,
 
@@ -419,24 +420,32 @@
     {
       "Device_functionsid": 1,
       "Printersid": 1
-
     }
+
   ],
   "Printer_InterfacesPrinters": [
     {
       "Printer_Interfacesid": 1,
       "Printersid": 1
 
+    },{
+      "Printer_Interfacesid": 2,
+      "Printersid": 1
+
+    },{
+      "Printer_Interfacesid": 5,
+      "Printersid": 1
+
     }
   ],
-  "Scanner_resolution": [
+  "Resolution": [
     {
 
       "width": 1200,
 
       "height": 1200,
 
-      "unitsid": 6
+      "unitsid": 7
 
     },
     {
@@ -445,7 +454,7 @@
 
       "height": 600,
 
-      "unitsid": 6
+      "unitsid": 7
 
     }
   ],

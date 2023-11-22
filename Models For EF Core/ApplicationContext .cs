@@ -31,12 +31,12 @@ namespace Models_For_EF_Core
         public DbSet<Cartridge_models> Cartridge_models { get; set; } 
         public DbSet<Printers> Printers { get; set; }
         public DbSet<Scanner_type> Scanner_type { get; set; }
-        public DbSet<Scanner_resolution> Scanner_resolution { get; set; }
+        public DbSet<Resolution> Resolution { get; set; }
         public DbSet<Scanner> Scanner { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterDB;",
+            //optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=PrinterBuyPrinters;",
             //    new MySqlServerVersion(new Version(8, 0, 25)));
             //  логгирование SQL-запросов
             optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));

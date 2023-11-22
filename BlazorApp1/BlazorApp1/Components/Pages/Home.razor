@@ -6,24 +6,7 @@
 <PageTitle>Index</PageTitle>
 
     
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">ModelName</th>
-                <th scope="col">Type</th>
-            </tr>
-        </thead>
-        <tbody>
-          
-                <tr>
-                    <th scope="row">@printer.Id</th>
-                    <td>@printer.ModelName</td>
-                    <td>@printer.Types.type</td>
-                </tr>
-            
-        </tbody>
-    </table>
+<BlazorApp1.Components.Layout.Printer_Card Printer="@printer"></BlazorApp1.Components.Layout.Printer_Card>
 
 @code{
     Printers printer;

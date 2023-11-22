@@ -12,7 +12,7 @@ namespace MyModels.Models
     /// <summary>
     /// Оптическое разрешение сканера
     /// </summary>
-    public class Scanner_resolution
+    public class Resolution
     {
          
         public int id { get; set; }

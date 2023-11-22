@@ -1,12 +1,45 @@
 ﻿@using MyModels.Models
+
 <div class="printerCard">
-    <div class="card_image"><img src="@Printer.image"/></div>
-    <div class="card_info">Printer</div>
-    <div class="card_price"></div>
+    @if (Printer != null)
+    {
+        <div class="card_image"><img src="@(Printer.image is null? "/image/not image.jpg" : Printer.image)" /></div>
+        <div class="card_info">
+            @Printer.Types.type
+            @Printer.Technologis.technology
+            @Printer.ModelName
+            [@(Printer.СolorPrinting is true ? "цветная печать" : "чернобелая печать"),
+            @Printer.MaxPrintFormat.paper_size,
+            @(Printer.MaxPrintResolution.width)x@(Printer.MaxPrintResolution.height)@(Printer.MaxPrintResolution.units.units),
+            ч/б - @(Printer.BWPrintingSpeed.speed) @(Printer.BWPrintingSpeed.units.units) (@Printer.MaxPrintFormat.paper_size),
+            @for (short i = 0; i < Printer.PrinterInterfaces.Count; i++)
+            {
+
+                @(Printer.PrinterInterfaces.ElementAt(i).Printer_Interfaces)
+                if (i < Printer.PrinterInterfaces.Count - 1)
+                {
+                    <span>, </span>
+                }
+            }
+
+            ]
+        </div>
+        <div class="product-buy product-buy_one-line catalog-product__buy">
+            <div class="product-buy__price-wrap product-buy__price-wrap_interactive">
+                <div class="product-buy__price">93 299&nbsp;₽</div>
+                <div class="product-buy__hint"></div>
+                <div class="product-buy__sub"></div>
+            </div>
+            <button class="button-ui buy-btn button-ui_brand button-ui_passive">Купить</button>
+        </div>
+    }
 </div>
 
 @code {
     [Parameter]
     public Printers Printer { get; set; }
-    Printer 
+    public string color;
+
+
+
 }

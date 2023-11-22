@@ -37,13 +37,19 @@ namespace MyModels.Models
         [Required]
         public int Company_nameid { get; set; }
         public virtual Companies? Company_name { get; set; }
-     
 
 
         /// <summary>
+        /// Максимальное разрешение черно-белой печати 
+        /// </summary>
+        public int  MaxPrintResolutionid { get; set; } 
+        /// <summary>
+        /// Максимальное разрешение черно-белой печати 
+        /// </summary>
+        public virtual Resolution? MaxPrintResolution { get; set; }
+        /// <summary>
         /// Скорость черно-белой печати  
         /// </summary>
- 
         public int? BWPrintingSpeedid { get; set; }
         public virtual Speeds? BWPrintingSpeed { get; set; }
         /// <summary>
@@ -75,7 +81,7 @@ namespace MyModels.Models
         public virtual Max_monthly_print_volumes? MaxMonthlyPrintVolumes { get; set; }
         [Required]
 
-        public int Scanerid { get; set; }
+        public int? Scanerid { get; set; }
         public virtual Scanner? Scanner { get; set; }
 
 

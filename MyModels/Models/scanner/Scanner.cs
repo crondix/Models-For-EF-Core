@@ -16,7 +16,7 @@ namespace MyModels.Models
         public int? id { get; set; }
          
         public int Scanner_resolutionid { get; set; }
-        public virtual Scanner_resolution? Scanner_resolution { get; set; }
+        public virtual Resolution? Scanner_resolution { get; set; }
          
         public int? Scaner_Typeid { get; set; }
         public virtual Scanner_type? Scaner_Type { get; set; }

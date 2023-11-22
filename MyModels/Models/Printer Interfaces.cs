@@ -24,7 +24,7 @@ namespace MyModels.Models
         {
             return new Printer_Interfaces(value);
         }
-         
+        public override string ToString() => InterfaceName;
         public int id { get; set; }
         [Required]
         [MaxLength(40)]
