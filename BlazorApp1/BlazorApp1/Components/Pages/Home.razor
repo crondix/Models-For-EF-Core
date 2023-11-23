@@ -5,15 +5,18 @@
 
 <PageTitle>Index</PageTitle>
 
-    
-<BlazorApp1.Components.Layout.Printer_Card Printer="@printer"></BlazorApp1.Components.Layout.Printer_Card>
+@foreach(var printer in printers)
+{
+    <BlazorApp1.Components.Layout.Printer_Card Printer="@printer"></BlazorApp1.Components.Layout.Printer_Card>
+}
+
 
 @code{
-    Printers printer;
-
+   
+    public virtual ICollection<Printers> printers { get; set; }
     protected override void OnInitialized()
     {
-         printer = DbContextPrinters.Printers.FirstOrDefault(p => p.Id == 1);
+         printers = DbContextPrinters.Printers.ToList();
         // printers = DbContextPrinters.Printers.ToList();
     }
 }

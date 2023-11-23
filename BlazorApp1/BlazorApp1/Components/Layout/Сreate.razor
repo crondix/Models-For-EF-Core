@@ -1,0 +1,35 @@
+﻿
+
+<form class="create-container" name="test" >
+          <label for="modelName">Model Name:</label>
+<input type="text" id="modelName" name="modelName" required maxlength="40">
+<br>
+
+<label for="ciss">CISS:</label>
+<input type="checkbox" id="ciss" name="ciss">
+<br>
+
+<label for="autoDoubleSided">Automatic Double-Sided Printing:</label>
+<input type="checkbox" id="autoDoubleSided" name="autoDoubleSided">
+<br>
+
+<label for="colorPrinting">Color Printing:</label>
+<input type="checkbox" id="colorPrinting" name="colorPrinting">
+<br>
+
+<label for="companyName">Company Name:</label>
+<select id="companyName" name="companyName" required>
+    <option value="1">Company 1</option>
+    <option value="2">Company 2</option>
+    <!-- Add more options as needed -->
+</select>
+<br>
+
+      <input type="submit" value="Отправить">
+   <input type="reset" value="Очистить"></p>
+ </form>
+
+@code {
+      [Parameter]
+    public Printers Printer { get; set; }
+}
