@@ -24,5 +24,6 @@ namespace MyModels.Models
         /// </summary>
         [MaxLength(20)]
         public string units { get; set; }
+        public override string ToString() => units;
     }
 }

@@ -5,7 +5,12 @@
 @inject ApplicationContext DbContextPrinters
 
 <h3>Management</h3>
-<Сreate> </Сreate>
+<Сreate Printer="@printer"> </Сreate>
 @code {
-
+     Printers printer;
+    protected override void OnInitialized()
+    {
+        printer = DbContextPrinters.Printers.FirstOrDefault(p => p.Id == 1);
+       
+    }
 }

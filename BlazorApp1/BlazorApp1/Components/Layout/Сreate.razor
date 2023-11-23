@@ -1,35 +1,104 @@
-﻿
+﻿@using BlazorApp1.Data
+@using MyModels.Models
+@inject ApplicationContext DbContextPrinters
+<form class="create-container" name="test">
+    <label for="modelName">Model Name:</label>
+    <input type="text" id="modelName" name="modelName" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" value="@(Printer is not null  ? Printer.ModelName :"")">
+    <br>
 
-<form class="create-container" name="test" >
-          <label for="modelName">Model Name:</label>
-<input type="text" id="modelName" name="modelName" required maxlength="40">
-<br>
+    <label for="ciss">CISS:</label>
+    <input type="checkbox" id="ciss" name="ciss" value="@(Printer is not null  ? Printer.CISS:"")" checked="@(Printer is not null ? Printer.CISS ? "checked":"" :"")">
+    <br>
 
-<label for="ciss">CISS:</label>
-<input type="checkbox" id="ciss" name="ciss">
-<br>
+    <label for="autoDoubleSided" value="@(Printer is not null  ? Printer.AutomaticDoubleSidedPrinting:"")" checked="@(Printer is not null ? Printer.AutomaticDoubleSidedPrinting ? "checked":"" :"")">Automatic Double-Sided Printing:</label>
+    <input type="checkbox" id="autoDoubleSided" name="autoDoubleSided">
+    <br>
 
-<label for="autoDoubleSided">Automatic Double-Sided Printing:</label>
-<input type="checkbox" id="autoDoubleSided" name="autoDoubleSided">
-<br>
+    <label for="colorPrinting">Color Printing:</label>
+    <input type="checkbox" id="colorPrinting" name="colorPrinting" value="@(Printer is not null  ? Printer.СolorPrinting:"")" checked="@(Printer is not null ? Printer.СolorPrinting ? "checked":"" :"")">
+    <br>
 
-<label for="colorPrinting">Color Printing:</label>
-<input type="checkbox" id="colorPrinting" name="colorPrinting">
-<br>
+    <label for="companyName">Company Name:</label>
+    <select id="companyName" name="companyName" value="@(Printer is not null  ? Printer.Company_name:"")" required>
+        @for (short i = 0; i < companies.Count;i++ )
+        {
+            @if (Printer is not null)
+            {
+                if (Printer.Company_nameid == @companies.ElementAt(i).Id)
+                {
+                    <option selected value="@companies.ElementAt(i).Id">@companies.ElementAt(i)</option>
+                }
+                else
+                {
+                    <option  value="@companies.ElementAt(i).Id">@companies.ElementAt(i)</option>
+                }
+            }
+            else if (Printer is  null)
+            {
+                <option  value="@companies.ElementAt(i).Id">@companies.ElementAt(i)</option>
+            }
+        }
+    </select>
+    <br>
 
-<label for="companyName">Company Name:</label>
-<select id="companyName" name="companyName" required>
-    <option value="1">Company 1</option>
-    <option value="2">Company 2</option>
-    <!-- Add more options as needed -->
-</select>
-<br>
+    <label for="Resolution">Resolution:</label>
+    <select id="Resolution" name="Resolution"  required>
+        @for (short i = 0; i < Resolutions.Count; i++)
+        {
+            @if (Printer is not null)
+            {
+                if (Printer.Company_nameid == @Resolutions.ElementAt(i).id)
+                {
+                    <option selected value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
+                }
+                else
+                {
+                    <option value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
+                }
+            }
+            else if (Printer is null)
+            {
+                <option value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
+            }
+        }
+    </select>
+    <br>
+    <label for="Resolution">BWPrintingSpeed:</label>
+    <input type="text" id="BWPrintingSpeed" name="BWPrintingSpeed" size="6" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" value="@(Printer is not null  ? Printer.BWPrintingSpeed.speed :"")">
+    @Printer.BWPrintingSpeed.units
+    <br> 
+    @if (Printer is not null)
+    {
+        @if (Printer.СolorPrinting)
+        {
+            <label for="Resolution">ColorPrintingSpeed:</label>
+            <input type="text" id="ColorPrintingSpeed" name="ColorPrintingSpeed" size="6" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" value="@(Printer is not null  ? Printer.ColorPrintingSpeed.speed :"")">
+             @Printer.BWPrintingSpeed.units
+            <br>
+        }
 
-      <input type="submit" value="Отправить">
-   <input type="reset" value="Очистить"></p>
- </form>
+    }
+    else
+    {
+        <label for="Resolution">ColorPrintingSpeed:</label>
+        <input type="text" id="ColorPrintingSpeed" name="ColorPrintingSpeed" size="6" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" >
+        <span> стр/мин</span>
+        <br>
+    }
+
+    <input type="submit" value="Отправить">
+    <input type="reset" value="Очистить">
+</form>
 
 @code {
-      [Parameter]
+    [Parameter]
     public Printers Printer { get; set; }
+    public virtual ICollection<Companies> companies { get; set; }
+    public virtual ICollection<Resolution> Resolutions { get; set; }
+    protected override void OnInitialized()
+    {
+        companies = DbContextPrinters.Companies.ToArray();
+        Resolutions = DbContextPrinters.Resolution.ToArray();
+
+    }
 }
