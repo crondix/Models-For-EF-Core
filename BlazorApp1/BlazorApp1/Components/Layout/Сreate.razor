@@ -1,6 +1,7 @@
 ﻿@using BlazorApp1.Data
 @using MyModels.Models
 @inject ApplicationContext DbContextPrinters
+
 <form class="create-container" name="test">
     <label for="modelName">Model Name:</label>
     <input type="text" id="modelName" name="modelName" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" value="@(Printer is not null  ? Printer.ModelName :"")">
@@ -19,26 +20,27 @@
     <br>
 
     <label for="companyName">Company Name:</label>
-    <select id="companyName" name="companyName" value="@(Printer is not null  ? Printer.Company_name:"")" required>
+    <input id="companyName" name="companyName"  required list="companyNameList">
+    <datalist id="companyNameList">
         @for (short i = 0; i < companies.Count;i++ )
         {
             @if (Printer is not null)
             {
                 if (Printer.Company_nameid == @companies.ElementAt(i).Id)
                 {
-                    <option selected value="@companies.ElementAt(i).Id">@companies.ElementAt(i)</option>
+                    <option selected count="@companies.ElementAt(i).Id" value="@companies.ElementAt(i)">@companies.ElementAt(i)</option>
                 }
                 else
                 {
-                    <option  value="@companies.ElementAt(i).Id">@companies.ElementAt(i)</option>
+                    <option count="@companies.ElementAt(i).Id" value="@companies.ElementAt(i)">@companies.ElementAt(i)</option>
                 }
             }
             else if (Printer is  null)
             {
-                <option  value="@companies.ElementAt(i).Id">@companies.ElementAt(i)</option>
+                <option count="@companies.ElementAt(i).Id" value="@companies.ElementAt(i)">@companies.ElementAt(i)</option>
             }
         }
-    </select>
+    </datalist>
     <br>
 
     <label for="Resolution">Resolution:</label>
@@ -85,20 +87,56 @@
         <span> стр/мин</span>
         <br>
     }
-
-    <input type="submit" value="Отправить">
+    <RadzenDropDown @ref=@radzenDropDown @bind-SearchText=SearchText FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
+                    Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=SearchText Style="width: 100%; max-width: 400px;" />
+    <div class="rz-p-sm-3 rz-text-align-left">
+        <RadzenLabel Text="@searchTextStatus" />
+    </div>
+   @*  <RadzenDropDownDataGrid FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
+                            Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=value /> *@
+   
     <input type="reset" value="Очистить">
 </form>
+
 
 @code {
     [Parameter]
     public Printers Printer { get; set; }
+    string value { get; set; }
+
+
+    RadzenDropDown<string> radzenDropDown;
+    string searchTextStatus;
+    string searchText="";
+
     public virtual ICollection<Companies> companies { get; set; }
     public virtual ICollection<Resolution> Resolutions { get; set; }
     protected override void OnInitialized()
     {
         companies = DbContextPrinters.Companies.ToArray();
         Resolutions = DbContextPrinters.Resolution.ToArray();
+        SearchText = Printer.Company_name.name;
+        searchTextStatus = $"Search text: {SearchText}";
+    } 
 
+
+
+  
+
+    public string SearchText
+    {
+        get
+        {
+            return searchText;
+        }
+        set
+        {
+            // if (searchText != value)
+            // {
+                searchText = value;
+                searchTextStatus = $"Search text: {searchText}";
+              
+            // }
+        }
     }
 }

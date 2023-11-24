@@ -1,7 +1,14 @@
-﻿.create-container {
+﻿
+.create-container {
     color: #fff;
     background-color: #2f2f32;
     border-radius: 8px;
     box-shadow: 0 1px 2px 0 rgba(255,255,255,.16);
     padding: 24px 16px;
+}
+input{
+    color:#000 !important;
+}
+.rz-listbox-list  {
+    color: #000 !important;
 }
