@@ -12,3 +12,28 @@ input{
 .rz-listbox-list  {
     color: #000 !important;
 }
+
+
+.product-characteristics__group:not(:first-child) {
+    margin-top: 8px;
+}
+.product-characteristics__group-title {
+    font-weight: 700;
+    padding: 16px 0 8px;
+}
+.product-characteristics-spec {
+    grid-gap: 16px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+    .product-characteristics-spec + .product-characteristics-spec {
+        margin-top: 8px;
+    }
+.product-characteristics__spec-title {
+    border-bottom: 1px dotted #ddd;
+}
+.product-characteristics__spec-value{
+
+
+}

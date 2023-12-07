@@ -35,4 +35,10 @@
     <PackageReference Include="Radzen.Blazor" Version="4.21.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Layout\HorizontalNavMenu.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>

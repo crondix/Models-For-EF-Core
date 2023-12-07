@@ -3,79 +3,134 @@
 @inject ApplicationContext DbContextPrinters
 
 <form class="create-container" name="test">
-    <label for="modelName">Model Name:</label>
-    <input type="text" id="modelName" name="modelName" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" value="@(Printer is not null  ? Printer.ModelName :"")">
-    <br>
+   
+    <RadzenStack AlignItems="AlignItems.Center" Class="rz-mx-auto rz-my-12">
 
-    <label for="ciss">CISS:</label>
-    <input type="checkbox" id="ciss" name="ciss" value="@(Printer is not null  ? Printer.CISS:"")" checked="@(Printer is not null ? Printer.CISS ? "checked":"" :"")">
-    <br>
+        <RadzenImage Path="@(Printer.image is null? "/image/not image.jpg" : Printer.image)" Style="width: 15rem;" AlternateText="community" />
 
-    <label for="autoDoubleSided" value="@(Printer is not null  ? Printer.AutomaticDoubleSidedPrinting:"")" checked="@(Printer is not null ? Printer.AutomaticDoubleSidedPrinting ? "checked":"" :"")">Automatic Double-Sided Printing:</label>
-    <input type="checkbox" id="autoDoubleSided" name="autoDoubleSided">
-    <br>
+    </RadzenStack>
+    <div class="product-characteristics__group"></div>
+    <div class="product-characteristics__group-title">Общие характеристики</div>
 
-    <label for="colorPrinting">Color Printing:</label>
-    <input type="checkbox" id="colorPrinting" name="colorPrinting" value="@(Printer is not null  ? Printer.СolorPrinting:"")" checked="@(Printer is not null ? Printer.СolorPrinting ? "checked":"" :"")">
-    <br>
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="modelName">Model Name:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <input type="text" id="modelName" name="modelName" required style="width:100%"  value="@(Printer is not null  ? Printer.ModelName :"")">
+        </div>
+    </div> 
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="ciss">CISS:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <input type="checkbox" id="ciss" name="ciss" value="@(Printer is not null  ? Printer.CISS:"")" checked="@(Printer is not null ? Printer.CISS ? "checked":"" :"")">
+        </div>
+    </div>
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="autoDoubleSided" value="@(Printer is not null  ? Printer.AutomaticDoubleSidedPrinting:"")" checked="@(Printer is not null ? Printer.AutomaticDoubleSidedPrinting ? "checked":"" :"")">Automatic Double-Sided Printing:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <input type="checkbox" id="autoDoubleSided" name="autoDoubleSided">
+        </div>
+    </div>
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="colorPrinting">Color Printing:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <input type="checkbox" id="colorPrinting" name="colorPrinting" value="@(Printer is not null  ? Printer.СolorPrinting:"")" checked="@(Printer is not null ? Printer.СolorPrinting ? "checked":"" :"")">
+        </div>
+    </div>
 
-    <label for="companyName">Company Name:</label>
-    <input id="companyName" name="companyName"  required list="companyNameList">
-    <datalist id="companyNameList">
-        @for (short i = 0; i < companies.Count;i++ )
-        {
-            @if (Printer is not null)
-            {
-                if (Printer.Company_nameid == @companies.ElementAt(i).Id)
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="companyName">Company Name:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <RadzenDropDown @ref=@radzenDropDown @bind-SearchText=SearchText FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
+                            Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=SearchText Style="width: 100%; max-width: 400px;" />  <RadzenLabel Text="@searchTextStatus" />
+           
+        </div>
+    </div> 
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="Resolution">Resolution:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <select id="Resolution" name="Resolution" required>
+                @for (short i = 0; i < Resolutions.Count; i++)
                 {
-                    <option selected count="@companies.ElementAt(i).Id" value="@companies.ElementAt(i)">@companies.ElementAt(i)</option>
+                    @if (Printer is not null)
+                    {
+                        if (Printer.Company_nameid == @Resolutions.ElementAt(i).id)
+                        {
+                            <option selected value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
+                        }
+                        else
+                        {
+                            <option value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
+                        }
+                    }
+                    else if (Printer is null)
+                    {
+                        <option value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
+                    }
                 }
-                else
-                {
-                    <option count="@companies.ElementAt(i).Id" value="@companies.ElementAt(i)">@companies.ElementAt(i)</option>
-                }
-            }
-            else if (Printer is  null)
-            {
-                <option count="@companies.ElementAt(i).Id" value="@companies.ElementAt(i)">@companies.ElementAt(i)</option>
-            }
-        }
-    </datalist>
-    <br>
-
-    <label for="Resolution">Resolution:</label>
-    <select id="Resolution" name="Resolution"  required>
-        @for (short i = 0; i < Resolutions.Count; i++)
-        {
-            @if (Printer is not null)
-            {
-                if (Printer.Company_nameid == @Resolutions.ElementAt(i).id)
-                {
-                    <option selected value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
-                }
-                else
-                {
-                    <option value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
-                }
-            }
-            else if (Printer is null)
-            {
-                <option value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
-            }
-        }
-    </select>
-    <br>
-    <label for="Resolution">BWPrintingSpeed:</label>
-    <input type="text" id="BWPrintingSpeed" name="BWPrintingSpeed" size="6" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" value="@(Printer is not null  ? Printer.BWPrintingSpeed.speed :"")">
-    @Printer.BWPrintingSpeed.units
-    <br> 
+            </select>
+        </div>
+    </div> 
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label>BWPrintingSpeed:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <input type="text" id="BWPrintingSpeed" name="BWPrintingSpeed" size="6" required  value="@(Printer is not null  ? Printer.BWPrintingSpeed.speed :"")">
+            @Printer.BWPrintingSpeed.units
+        </div>
+    </div>
     @if (Printer is not null)
     {
         @if (Printer.СolorPrinting)
         {
+            <div class="product-characteristics-spec">
+                <div class="product-characteristics__spec-title">
+                    <label for="Resolution">ColorPrintingSpeed:</label>
+                </div>
+                <div class="product-characteristics__spec-value">
+                    <input type="text" id="ColorPrintingSpeed" name="ColorPrintingSpeed" size="6" required value="@(Printer is not null  ? Printer.ColorPrintingSpeed.speed :"")">
+                    @Printer.BWPrintingSpeed.units
+                </div>
+            </div>
+        }
+    }
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
             <label for="Resolution">ColorPrintingSpeed:</label>
-            <input type="text" id="ColorPrintingSpeed" name="ColorPrintingSpeed" size="6" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" value="@(Printer is not null  ? Printer.ColorPrintingSpeed.speed :"")">
-             @Printer.BWPrintingSpeed.units
+        </div>
+        <div class="product-characteristics__spec-value">
+       
+        </div>
+    </div>
+   
+
+   
+  
+
+   
+    
+
+
+ 
+@*     <br> 
+    @if (Printer is not null)
+    {
+        @if (Printer.СolorPrinting)
+        {
+           
+           
             <br>
         }
 
@@ -86,14 +141,9 @@
         <input type="text" id="ColorPrintingSpeed" name="ColorPrintingSpeed" size="6" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" >
         <span> стр/мин</span>
         <br>
-    }
-    <RadzenDropDown @ref=@radzenDropDown @bind-SearchText=SearchText FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
-                    Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=SearchText Style="width: 100%; max-width: 400px;" />
-    <div class="rz-p-sm-3 rz-text-align-left">
-        <RadzenLabel Text="@searchTextStatus" />
-    </div>
-   @*  <RadzenDropDownDataGrid FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
-                            Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=value /> *@
+    } *@
+   
+   
    
     <input type="reset" value="Очистить">
 </form>
