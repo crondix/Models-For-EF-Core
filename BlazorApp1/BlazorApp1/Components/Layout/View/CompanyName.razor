@@ -1,0 +1,65 @@
+﻿@using MyModels.Models
+
+@if (status == "update" || status == "set")
+{
+    <RadzenDropDown @ref=@radzenDropDown @bind-SearchText=SearchText FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
+                    Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=SearchText Style="width: 100%; max-width: 400px;" />
+    @* <RadzenLabel Text="@searchTextStatus" /> *@
+}
+else if (status == "get" & name is not null)
+{
+    <span>@name</span>
+}
+else
+{
+    <span>name not found</span>
+}
+
+@code {
+    [Parameter]
+    public virtual ICollection<Companies> companies { get; set; }
+    [Parameter]
+    public string? name { get; set; }
+
+    string status="";
+
+    [Parameter]
+    public string Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if(value=="get" || value=="set" || value=="update"){ 
+                status = value;
+            }
+            else
+            {
+                status = "get";
+            }
+        }
+    }
+    RadzenDropDown<string> radzenDropDown;
+    string searchTextStatus;
+    string searchText = "";
+    public string SearchText
+    {
+        get
+        {
+            return searchText;
+        }
+        set
+        {
+            searchText = value;
+            searchTextStatus = $"Search text: {searchText}";
+        }
+    }
+    protected override void OnInitialized()
+    {
+        if (name is not null)
+        { SearchText = name; }
+
+    }
+}

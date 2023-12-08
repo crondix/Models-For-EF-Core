@@ -8,12 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Components\Layout\Сreate.razor.css" />
-    <None Remove="Components\Pages\Сreate.razor.css" />
+    <None Remove="Components\Layout\PrinterDetails.razor.css" />
+   
+    
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Components\Layout\Сreate.razor.css" />
+    <Content Include="Components\Layout\PrinterDetails.razor.css" />
   </ItemGroup>
 
   <ItemGroup>

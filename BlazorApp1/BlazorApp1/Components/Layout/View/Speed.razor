@@ -1,0 +1,51 @@
+﻿@using MyModels.Models
+
+@if (status == "update" || status == "set")
+{
+    <input type="text" id="name" name="name" size="6" required value="@speed">
+    @units
+}
+
+else if (status == "get" & speed is not null)
+{
+    <span>@speed @units</span>
+
+   
+}
+else
+{
+    <span>speed not found</span>
+}
+
+@code {
+   
+    [Parameter]
+    public int? speed { get; set; }
+    [Parameter]
+    public string units { get; set; }
+    [Parameter]
+    public string name { get; set; }
+
+    string status = "";
+
+    [Parameter]
+    public string Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if (value == "get" || value == "set" || value == "update")
+            {
+                status = value;
+            }
+            else
+            {
+                status = "get";
+            }
+        }
+    }
+    
+}

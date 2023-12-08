@@ -1,0 +1,53 @@
+﻿@using MyModels.Models
+
+@if (status == "update" || status == "set")
+{
+    <input type="checkbox" id="name" name="name" value="@Have" checked="@(Have ? "checked":"" )">
+}
+else if (status == "get"  )
+{
+    if (Have==true)
+    {
+        <span>есть</span>
+    }
+    else
+    {
+        <span>нет</span>
+    }
+
+}
+else
+{
+    <span>name not found</span>
+}
+
+@code {
+    
+    [Parameter]
+    public bool Have { get; set; } 
+    [Parameter]
+    public string name { get; set; }
+    
+    string status = "";
+
+    [Parameter]
+    public string Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if (value == "get" || value == "set" || value == "update")
+            {
+                status = value;
+            }
+            else
+            {
+                status = "get";
+            }
+        }
+    }
+
+}

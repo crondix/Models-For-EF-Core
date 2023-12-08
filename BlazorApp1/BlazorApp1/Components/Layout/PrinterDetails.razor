@@ -1,4 +1,5 @@
 ﻿@using BlazorApp1.Data
+@using BlazorApp1.Components.Layout.View
 @using MyModels.Models
 @inject ApplicationContext DbContextPrinters
 
@@ -17,6 +18,7 @@
             <label for="modelName">Model Name:</label>
         </div>
         <div class="product-characteristics__spec-value">
+
             <input type="text" id="modelName" name="modelName" required style="width:100%"  value="@(Printer is not null  ? Printer.ModelName :"")">
         </div>
     </div> 
@@ -25,15 +27,16 @@
             <label for="ciss">CISS:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <input type="checkbox" id="ciss" name="ciss" value="@(Printer is not null  ? Printer.CISS:"")" checked="@(Printer is not null ? Printer.CISS ? "checked":"" :"")">
+            <BooleanType Status="get" name="CISS" Have="@Printer.CISS"></BooleanType>
         </div>
     </div>
     <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
+         
             <label for="autoDoubleSided" value="@(Printer is not null  ? Printer.AutomaticDoubleSidedPrinting:"")" checked="@(Printer is not null ? Printer.AutomaticDoubleSidedPrinting ? "checked":"" :"")">Automatic Double-Sided Printing:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <input type="checkbox" id="autoDoubleSided" name="autoDoubleSided">
+            <BooleanType Status="get" name="autoDoubleSided" Have="@Printer.AutomaticDoubleSidedPrinting"></BooleanType>
         </div>
     </div>
     <div class="product-characteristics-spec">
@@ -41,7 +44,8 @@
             <label for="colorPrinting">Color Printing:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <input type="checkbox" id="colorPrinting" name="colorPrinting" value="@(Printer is not null  ? Printer.СolorPrinting:"")" checked="@(Printer is not null ? Printer.СolorPrinting ? "checked":"" :"")">
+            <BooleanType Status="get" name="ColorPrinting" Have="@Printer.СolorPrinting"></BooleanType>
+           
         </div>
     </div>
 
@@ -50,9 +54,7 @@
             <label for="companyName">Company Name:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <RadzenDropDown @ref=@radzenDropDown @bind-SearchText=SearchText FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
-                            Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=SearchText Style="width: 100%; max-width: 400px;" />  <RadzenLabel Text="@searchTextStatus" />
-           
+            <CompanyName name="@Printer.Company_name.name" companies="@DbContextPrinters.Companies.ToArray()" Status="get"></CompanyName>
         </div>
     </div> 
     <div class="product-characteristics-spec">
@@ -87,8 +89,8 @@
             <label>BWPrintingSpeed:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <input type="text" id="BWPrintingSpeed" name="BWPrintingSpeed" size="6" required  value="@(Printer is not null  ? Printer.BWPrintingSpeed.speed :"")">
-            @Printer.BWPrintingSpeed.units
+            <Speed name="BWPrintingSpeed" speed="@Printer.BWPrintingSpeed.speed" Status="get" units="@Printer.BWPrintingSpeed.units.ToString()"></Speed>
+            
         </div>
     </div>
     @if (Printer is not null)
@@ -100,8 +102,8 @@
                     <label for="Resolution">ColorPrintingSpeed:</label>
                 </div>
                 <div class="product-characteristics__spec-value">
-                    <input type="text" id="ColorPrintingSpeed" name="ColorPrintingSpeed" size="6" required value="@(Printer is not null  ? Printer.ColorPrintingSpeed.speed :"")">
-                    @Printer.BWPrintingSpeed.units
+                    <Speed name="ColorPrintingSpeed" speed="@Printer.ColorPrintingSpeed.speed" Status="get" units="@Printer.ColorPrintingSpeed.units.ToString()"></Speed>
+                    
                 </div>
             </div>
         }
@@ -111,7 +113,7 @@
             <label for="Resolution">ColorPrintingSpeed:</label>
         </div>
         <div class="product-characteristics__spec-value">
-       
+            
         </div>
     </div>
    
@@ -158,7 +160,18 @@
     RadzenDropDown<string> radzenDropDown;
     string searchTextStatus;
     string searchText="";
-
+    public string SearchText
+    {
+        get
+        {
+            return searchText;
+        }
+        set
+        {
+            searchText = value;
+            searchTextStatus = $"Search text: {searchText}";
+        }
+    }
     public virtual ICollection<Companies> companies { get; set; }
     public virtual ICollection<Resolution> Resolutions { get; set; }
     protected override void OnInitialized()
@@ -173,20 +186,5 @@
 
   
 
-    public string SearchText
-    {
-        get
-        {
-            return searchText;
-        }
-        set
-        {
-            // if (searchText != value)
-            // {
-                searchText = value;
-                searchTextStatus = $"Search text: {searchText}";
-              
-            // }
-        }
-    }
+ 
 }
