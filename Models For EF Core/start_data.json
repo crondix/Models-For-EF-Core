@@ -405,8 +405,8 @@
 
       "Technologisid": 1,
 
-      "MaxMonthlyPrintVolumesid": 1
-
+      "MaxMonthlyPrintVolumesid": 1,
+      "Scanerid":  1
     }
   ],
   "Cartridge_modelsPrinters": [
