@@ -2,10 +2,13 @@
 
 @if (status == "update" || status == "set")
 {
+    <div class="@(name)_Container">
     <input type="number" id="@(name)_ResolutionWidth" name="@(name)_ResolutionWidth" size="6" required value="@Resol.width">
     <span>x</span>
     <input type="number" id="@(name)_ResolutionHeight" name="@(name)_ResolutionHeight" size="6" required value="@Resol.height">
     <span>dpi</span>
+    </div>
+
 }
 
 else if (status == "get" & Resol is not null)

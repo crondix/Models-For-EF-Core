@@ -2,11 +2,13 @@
 
 @if (status == "update" || status == "set")
 {
-    <input type="text" id="@name" name="@name"  required value="@speed">
+     <div class="@(name)_Container">
+    <input type="number" id="@name" name="@name"  required value="@speed">
     @units
+    </div>
 }
 
-else if (status == "get" & speed is not null)
+else if (status == "get" && speed is not null)
 {
     <span>@speed @units</span>
 
@@ -16,6 +18,7 @@ else
 {
     <span>speed not found</span>
 }
+<EditButton OnButtonClick="HandleButtonClick"></EditButton>
 
 @code {
    
@@ -40,12 +43,20 @@ else
             if (value == "get" || value == "set" || value == "update")
             {
                 status = value;
+             
             }
             else
             {
                 status = "get";
+             
             }
         }
+
     }
-    
+    private void HandleButtonClick(string buttonType)
+    {
+        Status = buttonType;
+        StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+    }
+
 }

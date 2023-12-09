@@ -1,0 +1,13 @@
+﻿.selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+}
+.state-button {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background: #eb9235;
+    width: fit-content;
+    border-radius:5px;
+}

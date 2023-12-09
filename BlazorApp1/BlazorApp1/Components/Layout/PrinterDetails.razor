@@ -62,30 +62,7 @@
             <label for="Resolution">Resolution:</label>
         </div>
         <div class="product-characteristics__spec-value">
-
-
             <ResolutionView Resol="@Printer.MaxPrintResolution" name="MaxPrintResolution" Status="update"></ResolutionView>
-@* 
-            <select id="Resolution" name="Resolution" required>
-                @for (short i = 0; i < Resolutions.Count; i++)
-                {
-                    @if (Printer is not null)
-                    {
-                        if (Printer.Company_nameid == @Resolutions.ElementAt(i).id)
-                        {
-                            <option selected value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
-                        }
-                        else
-                        {
-                            <option value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
-                        }
-                    }
-                    else if (Printer is null)
-                    {
-                        <option value="@Resolutions.ElementAt(i).id">@(Resolutions.ElementAt(i).width) X @(Resolutions.ElementAt(i).height) @(Resolutions.ElementAt(i).units)</option>
-                    }
-                }
-            </select> *@
         </div>
     </div> 
     <div class="product-characteristics-spec">
@@ -106,8 +83,9 @@
                     <label for="Resolution">ColorPrintingSpeed:</label>
                 </div>
                 <div class="product-characteristics__spec-value">
-                    <Speed name="ColorPrintingSpeed" speed="@Printer.ColorPrintingSpeed.speed" Status="get" units="@Printer.ColorPrintingSpeed.units.ToString()"></Speed>
                     
+                    <Speed name="ColorPrintingSpeed" speed="@Printer.ColorPrintingSpeed.speed" Status="get" units="@Printer.ColorPrintingSpeed.units.ToString()"></Speed>
+                   
                 </div>
             </div>
         }

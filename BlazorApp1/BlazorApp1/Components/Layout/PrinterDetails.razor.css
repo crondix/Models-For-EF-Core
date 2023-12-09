@@ -24,16 +24,18 @@ input{
 .product-characteristics-spec {
     grid-gap: 16px;
     align-items: center;
+    justify-content:flex-end;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
     .product-characteristics-spec + .product-characteristics-spec {
-        margin-top: 8px;
+        margin-top: 10px;
     }
 .product-characteristics__spec-title {
     border-bottom: 1px dotted #ddd;
 }
 .product-characteristics__spec-value{
-
+    display:grid;
+    grid-template-columns:1fr auto;
 
 }
