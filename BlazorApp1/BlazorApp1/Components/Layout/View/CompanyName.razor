@@ -3,23 +3,26 @@
 @if (status == "update" || status == "set")
 {
     <RadzenDropDown @ref=@radzenDropDown @bind-SearchText=SearchText FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
-                    Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=SearchText Style="width: 100%; max-width: 400px;" />
+                    Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=Printer.Company_name.name Style="width: 100%; max-width: 400px;" />
     @* <RadzenLabel Text="@searchTextStatus" /> *@
 }
-else if (status == "get" & name is not null)
+else if (status == "get" )
 {
-    <span>@name</span>
+    <span>@Printer.Company_name.name</span>
 }
 else
 {
     <span>name not found</span>
 }
-
+<EditButton OnButtonClick="HandleButtonClick"></EditButton>
 @code {
     [Parameter]
-    public virtual ICollection<Companies> companies { get; set; }
+    public Printers Printer { get; set; }
+
+
     [Parameter]
-    public string? name { get; set; }
+    public virtual ICollection<Companies> companies { get; set; }
+   
 
     string status="";
 
@@ -58,8 +61,13 @@ else
     }
     protected override void OnInitialized()
     {
-        if (name is not null)
-        { SearchText = name; }
+        
+         SearchText = Printer.Company_name.name; 
 
+    }
+    private void HandleButtonClick(string buttonType)
+    {
+        Status = buttonType;
+        StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
     }
 }

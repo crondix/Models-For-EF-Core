@@ -356,17 +356,7 @@
 
 
   ],
-  "Speeds": [
-    {
-      "speed": 27,
-      "unitsid": 1
-    },
-    {
-      "speed": 29,
-      "unitsid": 1
-    }
 
-  ],
   "Max_monthly_print_volumes": [
     {
       "volume": 55000,
@@ -394,8 +384,9 @@
       "AutomaticDoubleSidedPrinting": true,
       "Company_nameid": 3,
       "СolorPrinting": true,
-      "BWPrintingSpeedid": 1,
-      "ColorPrintingSpeedid": 1,
+      "BWPrintingSpeed": 27,
+      "ColorPrintingSpeed": 27,
+      "SpeedUnitsid": 1,
       "image": "/image/Color LaserJet Enterprise MFP M480f.jpg",
       "MaxPrintResolutionid": 2,
 
@@ -406,7 +397,7 @@
       "Technologisid": 1,
 
       "MaxMonthlyPrintVolumesid": 1,
-      "Scanerid":  1
+      "Scanerid": 1
     }
   ],
   "Cartridge_modelsPrinters": [
@@ -470,7 +461,7 @@
     {
       "Scanner_resolutionid": 1,
       "Scaner_Typeid": 1,
-      "Scan_Speedid": 2,
+      "Scan_Speed": 29,
       "MaxScanFormatid": 5,
       "AutomaticFeedDeviceForScan": true,
       "DADF": true

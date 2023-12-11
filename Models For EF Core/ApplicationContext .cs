@@ -19,7 +19,7 @@ namespace Models_For_EF_Core
             Database.EnsureCreated();   // создаем бд с новой схемой
         }
         public DbSet<Measurement_units> Measurement_units { get; set; }
-        public DbSet<Speeds> Speeds { get; set; }  
+      
         public DbSet<Paper_sizes> Paper_sizes { get; set; } 
         public DbSet<Print_colors> Print_colors { get; set; } 
         public DbSet<Printer_types> Printer_types { get; set; } 

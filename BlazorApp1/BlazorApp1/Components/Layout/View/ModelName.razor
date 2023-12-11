@@ -2,19 +2,11 @@
 
 @if (status == "update" || status == "set")
 {
-    <input type="checkbox" id="@PropertyName" name="@PropertyName" @bind="@PropertyValue" >
+    <input type="text" id="modelName" name="modelName" required style="width:100%" @bind="@Printer.ModelName">
 }
-else if (status == "get"  )
+else if (status == "get")
 {
-    if (PropertyValue == true)
-    {
-        <span>есть</span>
-    }
-    else
-    {
-        <span>нет</span>
-    }
-
+    <span>@Printer.ModelName</span>
 }
 else
 {
@@ -22,21 +14,12 @@ else
 }
 <EditButton OnButtonClick="HandleButtonClick"></EditButton>
 @code {
-    
     [Parameter]
     public Printers Printer { get; set; }
 
 
-    [Parameter]
-    public string PropertyName { get; set; }
 
-    private bool PropertyValue
-    {
 
-        get => Convert.ToBoolean(Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
-        set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ToBoolean(value));
-    }
-    
     string status = "";
 
     [Parameter]
@@ -57,6 +40,13 @@ else
                 status = "get";
             }
         }
+    }
+
+    protected override void OnInitialized()
+    {
+
+
+
     }
     private void HandleButtonClick(string buttonType)
     {

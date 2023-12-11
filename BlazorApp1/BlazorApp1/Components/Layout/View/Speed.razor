@@ -2,15 +2,15 @@
 
 @if (status == "update" || status == "set")
 {
-     <div class="@(name)_Container">
-    <input type="number" id="@name" name="@name"  required value="@speed">
-    @units
+    <div class="@(PropertyName)_Container">
+        <input type="number" id="@PropertyName" name="@PropertyName" required @bind="@PropertyValue">
+        @Printer.SpeedUnits
     </div>
 }
 
-else if (status == "get" && speed is not null)
+else if (status == "get" )
 {
-    <span>@speed @units</span>
+    <span>@PropertyValue @Printer.SpeedUnits</span>
 
    
 }
@@ -21,13 +21,21 @@ else
 <EditButton OnButtonClick="HandleButtonClick"></EditButton>
 
 @code {
-   
+
+
     [Parameter]
-    public int? speed { get; set; }
+    public Printers Printer { get; set; }
+  
+
     [Parameter]
-    public string units { get; set; }
-    [Parameter]
-    public string name { get; set; }
+    public string PropertyName { get; set; }
+
+    private int PropertyValue
+    {
+
+        get =>Convert.ToInt32( Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
+        set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ToInt32(value));
+    }
 
     string status = "";
 

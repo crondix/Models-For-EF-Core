@@ -19,7 +19,7 @@ namespace FromBDtoJSON
           
             Database.EnsureCreated();   // создаем бд с новой схемой
         }
-        public DbSet<Speeds> Printing_Speed { get; set; }
+   
         public DbSet<Measurement_units> Measurement_units { get; set; }
         public DbSet<Paper_sizes> Paper_sizes { get; set; }
         public DbSet<Print_colors> Print_colors { get; set; }

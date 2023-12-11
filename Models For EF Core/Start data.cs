@@ -22,7 +22,7 @@ namespace Models_For_EF_Core
         public List<Device_functions> Device_functions { get; set; } = new List<Device_functions>();
         public List<Companies> Companies { get; set; } = new List<Companies>();
         public List<Printer_Interfaces> Printer_Interfaces { get; set; } = new List<Printer_Interfaces>();
-        public List<Speeds> Speeds { get; set; } = new List<Speeds>();
+  
         public List<Max_monthly_print_volumes> Max_monthly_print_volumes { get; set; } = new List<Max_monthly_print_volumes>();
         public List<Cartridge_models> Cartridge_models { get; set; } = new List<Cartridge_models>();
         public List<Printers> Printers { get; set; } = new List<Printers>();

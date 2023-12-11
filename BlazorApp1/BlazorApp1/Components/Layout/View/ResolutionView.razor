@@ -2,18 +2,18 @@
 
 @if (status == "update" || status == "set")
 {
-    <div class="@(name)_Container">
-    <input type="number" id="@(name)_ResolutionWidth" name="@(name)_ResolutionWidth" size="6" required value="@Resol.width">
+    <div class="@(PropertyName)_Container">
+        <input type="number" id="@(PropertyName)_ResolutionWidth" name="@(PropertyName)_ResolutionWidth" size="6" required @bind="@PropertyValue.width">
     <span>x</span>
-    <input type="number" id="@(name)_ResolutionHeight" name="@(name)_ResolutionHeight" size="6" required value="@Resol.height">
-    <span>dpi</span>
+        <input type="number" id="@(PropertyName)_ResolutionHeight" name="@(PropertyName)_ResolutionHeight" size="6" required @bind="@PropertyValue.height">
+        <span>@PropertyValue.units</span>
     </div>
 
 }
 
-else if (status == "get" & Resol is not null)
+else if (status == "get")
 {
-    <span>@(Resol.width)x@(@Resol.height) @Resol.units</span>
+    <span>@(@PropertyValue.width)x@(@PropertyValue.height) @PropertyValue.units</span>
 
 
 }
@@ -21,14 +21,21 @@ else
 {
     <span>resolution not found</span>
 }
-
+<EditButton OnButtonClick="HandleButtonClick"></EditButton>
 @code {
-
     [Parameter]
-    public MyModels.Models.Resolution Resol { get; set; }
+    public Printers Printer { get; set; }
+
     
     [Parameter]
-    public string? name { get; set; }
+    public string PropertyName { get; set; }
+
+    private Resolution PropertyValue
+    {
+
+        get => ((Resolution)Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
+        set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, value);
+    }
 
     string status = "";
 
@@ -51,5 +58,9 @@ else
             }
         }
     }
-
+    private void HandleButtonClick(string buttonType)
+    {
+        Status = buttonType;
+        StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+    }
 }

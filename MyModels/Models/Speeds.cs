@@ -14,18 +14,7 @@ namespace MyModels.Models
     [Index(nameof(speed), IsUnique = true)]
     public class Speeds
     {
-        public Speeds()
-        {
-
-        }
-        public Speeds(int value)
-        {
-            id = value;
-        }
-        public static implicit operator Speeds(int value)
-        {
-            return new Speeds(value);
-        }
+     
          
         public int id { get; set; }
         public ushort speed { get; set; }

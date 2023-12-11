@@ -23,12 +23,8 @@ namespace MyModels.Models
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>
-         
-        public int? Scan_Speedid { get; set; }
-        /// <summary>
-        /// Максимальный формат сканирования 
-        /// </summary>
-        public virtual Speeds? Scan_Speed { get; set; }
+        public int Scan_Speed { get; set; }
+       
         /// <summary>
         /// Максимальный формат сканирования 
         /// </summary>

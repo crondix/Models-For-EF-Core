@@ -37,8 +37,6 @@ namespace MyModels.Models
         [Required]
         public int Company_nameid { get; set; }
         public virtual Companies? Company_name { get; set; }
-
-
         /// <summary>
         /// Максимальное разрешение черно-белой печати 
         /// </summary>
@@ -50,25 +48,24 @@ namespace MyModels.Models
         /// <summary>
         /// Скорость черно-белой печати  
         /// </summary>
-        public int? BWPrintingSpeedid { get; set; }
-        public virtual Speeds? BWPrintingSpeed { get; set; }
+        public int BWPrintingSpeed { get; set; }
         /// <summary>
         /// Скорость цветной печати  
         /// </summary>
+        public int ColorPrintingSpeed { get; set; }
 
-        public int? ColorPrintingSpeedid { get; set; }
-        public virtual Speeds? ColorPrintingSpeed { get; set; }
+        public int? SpeedUnitsid { get; set; }
+        public virtual Measurement_units? SpeedUnits { get; set; }
 
 
         /// <summary>
         /// Максимальный формат печати  
         /// </summary>
-  
         public int? MaxPrintFormatid { get; set; }
         public virtual Paper_sizes? MaxPrintFormat { get; set; }
 
-    
-   
+
+
         public int? Typesid { get; set; }
         public virtual Printer_types? Types { get; set; }
       

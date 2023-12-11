@@ -10,6 +10,7 @@
         <RadzenImage Path="@(Printer.image is null? "/image/not image.jpg" : Printer.image)" Style="width: 15rem;" AlternateText="community" />
 
     </RadzenStack>
+    <div class="product-characteristics-container">
     <div class="product-characteristics__group"></div>
     <div class="product-characteristics__group-title">Общие характеристики</div>
 
@@ -18,8 +19,8 @@
             <label for="modelName">Model Name:</label>
         </div>
         <div class="product-characteristics__spec-value">
-
-            <input type="text" id="modelName" name="modelName" required style="width:100%"  value="@(Printer is not null  ? Printer.ModelName :"")">
+            <ModelName  Status="get" Printer="@Printer"></ModelName>
+            @* <input type="text" id="modelName" name="modelName" required style="width:100%"  value="@(Printer is not null  ? Printer.ModelName :"")"> *@
         </div>
     </div> 
     <div class="product-characteristics-spec">
@@ -27,7 +28,7 @@
             <label for="ciss">CISS:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <BooleanType Status="get" name="CISS" Have="@Printer.CISS"></BooleanType>
+            <BooleanType Status="get" PropertyName="CISS" Printer="@Printer"></BooleanType>
         </div>
     </div>
     <div class="product-characteristics-spec">
@@ -36,7 +37,7 @@
             <label for="autoDoubleSided" value="@(Printer is not null  ? Printer.AutomaticDoubleSidedPrinting:"")" checked="@(Printer is not null ? Printer.AutomaticDoubleSidedPrinting ? "checked":"" :"")">Automatic Double-Sided Printing:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <BooleanType Status="get" name="autoDoubleSided" Have="@Printer.AutomaticDoubleSidedPrinting"></BooleanType>
+            <BooleanType Status="get" PropertyName="AutomaticDoubleSidedPrinting" Printer="@Printer"></BooleanType>
         </div>
     </div>
     <div class="product-characteristics-spec">
@@ -44,7 +45,7 @@
             <label for="colorPrinting">Color Printing:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <BooleanType Status="get" name="ColorPrinting" Have="@Printer.СolorPrinting"></BooleanType>
+            <BooleanType Status="get" PropertyName="СolorPrinting" Printer="@Printer"></BooleanType>
            
         </div>
     </div>
@@ -54,7 +55,7 @@
             <label for="companyName">Company Name:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <CompanyName name="@Printer.Company_name.name" companies="@DbContextPrinters.Companies.ToArray()" Status="get"></CompanyName>
+            <CompanyName Printer="@Printer" companies="@DbContextPrinters.Companies.ToArray()" Status="get"></CompanyName>
         </div>
     </div> 
     <div class="product-characteristics-spec">
@@ -62,7 +63,7 @@
             <label for="Resolution">Resolution:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <ResolutionView Resol="@Printer.MaxPrintResolution" name="MaxPrintResolution" Status="update"></ResolutionView>
+            <ResolutionView PropertyName="MaxPrintResolution" Printer="@Printer" Status="get"></ResolutionView>
         </div>
     </div> 
     <div class="product-characteristics-spec">
@@ -70,7 +71,7 @@
             <label>BWPrintingSpeed:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <Speed name="BWPrintingSpeed" speed="@Printer.BWPrintingSpeed.speed" Status="get" units="@Printer.BWPrintingSpeed.units.ToString()"></Speed>
+            <Speed PropertyName="BWPrintingSpeed" Printer="@Printer" Status="get"></Speed>
             
         </div>
     </div>
@@ -83,53 +84,32 @@
                     <label for="Resolution">ColorPrintingSpeed:</label>
                 </div>
                 <div class="product-characteristics__spec-value">
-                    
-                    <Speed name="ColorPrintingSpeed" speed="@Printer.ColorPrintingSpeed.speed" Status="get" units="@Printer.ColorPrintingSpeed.units.ToString()"></Speed>
+
+                    <Speed PropertyName="ColorPrintingSpeed" Printer="@Printer" Status="get"></Speed>
                    
                 </div>
             </div>
         }
     }
-    <div class="product-characteristics-spec">
+    @* <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
             <label for="Resolution">ColorPrintingSpeed:</label>
         </div>
         <div class="product-characteristics__spec-value">
             
         </div>
+    </div> *@
+   
     </div>
    
 
-   
-  
-
-   
+   <div class="control-block">
+        <input class="btn btn-primary" value="Очистить" type="reset">
+        <button class="btn btn-primary" type="button">Button</button>
+        <button class="btn btn-primary" type="button">Button</button>
+        @* <input type="reset" value="Очистить"> *@
+   </div>
     
-
-
- 
-@*     <br> 
-    @if (Printer is not null)
-    {
-        @if (Printer.СolorPrinting)
-        {
-           
-           
-            <br>
-        }
-
-    }
-    else
-    {
-        <label for="Resolution">ColorPrintingSpeed:</label>
-        <input type="text" id="ColorPrintingSpeed" name="ColorPrintingSpeed" size="6" required onmousemove="this.style.width = ((this.value.length + 1) * 8) + 'px';" >
-        <span> стр/мин</span>
-        <br>
-    } *@
-   
-   
-   
-    <input type="reset" value="Очистить">
 </form>
 
 
@@ -139,29 +119,14 @@
     string value { get; set; }
 
 
-    RadzenDropDown<string> radzenDropDown;
-    string searchTextStatus;
-    string searchText="";
-    public string SearchText
-    {
-        get
-        {
-            return searchText;
-        }
-        set
-        {
-            searchText = value;
-            searchTextStatus = $"Search text: {searchText}";
-        }
-    }
+  
     public virtual ICollection<Companies> companies { get; set; }
     public virtual ICollection<Resolution> Resolutions { get; set; }
     protected override void OnInitialized()
     {
         companies = DbContextPrinters.Companies.ToArray();
         Resolutions = DbContextPrinters.Resolution.ToArray();
-        SearchText = Printer.Company_name.name;
-        searchTextStatus = $"Search text: {SearchText}";
+  
     } 
 
 
