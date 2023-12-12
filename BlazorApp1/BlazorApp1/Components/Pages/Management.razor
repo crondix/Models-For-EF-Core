@@ -2,16 +2,23 @@
 @using BlazorApp1.Data
 @using MyModels.Models
 @using BlazorApp1.Components.Layout
+@using AutoMapper;
 @inject ApplicationContext DbContextPrinters
 @rendermode InteractiveServer
 
 <h3>Management</h3>
-<PrinterDetails Printer="@printer"> </PrinterDetails>
+<PrinterDetails Printer="@printer" TempPrinter="TempPrinter"> </PrinterDetails>
 @code {
-     Printers printer;
+    Printers printer;
+    Printers TempPrinter;
+    
     protected override void OnInitialized()
     {
         printer = DbContextPrinters.Printers.FirstOrDefault(p => p.Id == 1);
-       
+        if (TempPrinter == null)
+        {
+            TempPrinter = printer.Clone();
+        }
+        
     }
 }

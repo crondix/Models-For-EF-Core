@@ -15,22 +15,12 @@ namespace MyModels.Models
     [Index(nameof(technology), IsUnique = true)]
     public class Printing_technologies
     {
-        public Printing_technologies()
-        {
-
-        }
-        public Printing_technologies(int value)
-        {
-            id = value;
-        }
-        public static implicit operator Printing_technologies(int value)
-        {
-            return new Printing_technologies(value);
-        }
+     
          
         public int id { get; set; }
         [Required]
         [MaxLength(40)]
         public string technology { get; set; }
+        public override string ToString() => technology;
     }
 }

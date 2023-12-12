@@ -16,19 +16,7 @@ namespace MyModels.Models
     [Index(nameof(Model), IsUnique = true)]
     public class Cartridge_models
     {
-        public Cartridge_models()
-        {
-
-        }
-        public Cartridge_models(int value)
-        {
-            id = value;
-        }
-        public static implicit operator Cartridge_models(int value)
-        {
-            return new Cartridge_models(value);
-        }
-         
+     
         public int id { get; set; }
         [MaxLength(100)]
         public string Model { get; set; }

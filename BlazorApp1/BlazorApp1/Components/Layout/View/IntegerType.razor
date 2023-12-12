@@ -1,0 +1,96 @@
+﻿@using MyModels.Models
+
+@if (status == "update" || status == "set")
+{
+    <div class="@(PropertyName)_Container">
+        <input type="number" id="@PropertyName" name="@PropertyName" required @bind="@PropertyValue">
+        @UnitsValue
+    </div>
+}
+
+else if (status == "get" )
+{
+    <span>@PropertyValue @UnitsValue</span>
+
+   
+}
+else
+{
+    <span>speed not found</span>
+}
+<EditButton OnButtonClick="HandleButtonClick"></EditButton>
+
+@code {
+
+
+    [Parameter]
+    public Printers Printer { get; set; }
+
+
+    [Parameter]
+    public string PropertyName { get; set; }
+
+    private int PropertyValue
+    {
+
+        // get =>Convert.ToInt32( Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
+        // set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ToInt32(value));
+        get  {
+        
+            return  Convert.ToInt32((Printer.GetType().GetProperty(PropertyName).GetValue(Printer)));
+        }
+        set { 
+            var propertyType = Printer.GetType().GetProperty(PropertyName).PropertyType;
+             Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ChangeType(value, propertyType));
+        }
+    }
+
+    [Parameter]
+    public string UnitsName { get; set; }
+
+  
+    private Measurement_units UnitsValue
+    {
+
+        get => ((Measurement_units)Printer.GetType().GetProperty(UnitsName).GetValue(Printer));
+
+    }
+
+    string status = "";
+
+    [Parameter]
+    public string Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if (value == "get" || value == "set" || value == "update")
+            {
+                status = value;
+
+            }
+            else
+            {
+                status = "get";
+
+            }
+        }
+
+    }
+    protected override void OnInitialized()
+    {
+        
+
+
+    }
+    private void HandleButtonClick(string buttonType)
+    {
+        Status = buttonType;
+        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
+    }
+
+}

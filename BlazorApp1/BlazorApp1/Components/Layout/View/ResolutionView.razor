@@ -1,5 +1,6 @@
 ﻿@using MyModels.Models
-
+@if (PropertyValue is not null)
+{
 @if (status == "update" || status == "set")
 {
     <div class="@(PropertyName)_Container">
@@ -20,6 +21,7 @@ else if (status == "get")
 else 
 {
     <span>resolution not found</span>
+}
 }
 <EditButton OnButtonClick="HandleButtonClick"></EditButton>
 @code {
@@ -61,6 +63,6 @@ else
     private void HandleButtonClick(string buttonType)
     {
         Status = buttonType;
-        StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
     }
 }

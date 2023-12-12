@@ -71,7 +71,7 @@
             <label>BWPrintingSpeed:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <Speed PropertyName="BWPrintingSpeed" Printer="@Printer" Status="get"></Speed>
+                <IntegerType PropertyName="BWPrintingSpeed" UnitsName="SpeedUnits" Printer="@Printer" Status="get"></IntegerType>
             
         </div>
     </div>
@@ -85,28 +85,27 @@
                 </div>
                 <div class="product-characteristics__spec-value">
 
-                    <Speed PropertyName="ColorPrintingSpeed" Printer="@Printer" Status="get"></Speed>
+                        <IntegerType PropertyName="ColorPrintingSpeed" UnitsName="SpeedUnits" Printer="@Printer" Status="get"></IntegerType>
                    
                 </div>
             </div>
         }
     }
-    @* <div class="product-characteristics-spec">
+    <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
-            <label for="Resolution">ColorPrintingSpeed:</label>
+                <label for="Resolution">MaxMonthlyPrintVolumes:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            
+                <IntegerType PropertyName="MaxMonthlyPrintVolumes" UnitsName="MaxMonthlyPrintVolumesUnits" Printer="@Printer" Status="get"></IntegerType>
         </div>
-    </div> *@
+    </div>
    
     </div>
    
 
    <div class="control-block">
-        <input class="btn btn-primary" value="Очистить" type="reset">
-        <button class="btn btn-primary" type="button">Button</button>
-        <button class="btn btn-primary" type="button">Button</button>
+        <button class="btn btn-primary" type="button" @onclick="(()=>UpdatePrinter(Printer))">Save</button>
+        <button class="btn btn-primary" type="button" @onclick="(()=>Cancel())">Cancel</button>
         @* <input type="reset" value="Очистить"> *@
    </div>
     
@@ -116,22 +115,52 @@
 @code {
     [Parameter]
     public Printers Printer { get; set; }
+
+
     string value { get; set; }
+    
+    [Parameter]
+    public Printers TempPrinter { get; set; }
 
 
-  
     public virtual ICollection<Companies> companies { get; set; }
-    public virtual ICollection<Resolution> Resolutions { get; set; }
+    // public virtual ICollection<Resolution> Resolutions { get; set; }
     protected override void OnInitialized()
     {
         companies = DbContextPrinters.Companies.ToArray();
-        Resolutions = DbContextPrinters.Resolution.ToArray();
-  
+        // Resolutions = DbContextPrinters.Resolution.ToArray();
+       
+            
+        
     } 
 
 
+   
 
-  
+
+
+
+    private void UpdatePrinter(Printers printer)
+    {
+
+        if (printer != null)
+        {
+            // Update the existing record
+            DbContextPrinters.Update(printer);
+            // ...
+            DbContextPrinters.SaveChanges();
+        }
+    }
+
+    private void Cancel()
+    {
+        if (TempPrinter != null)
+        {
+            Printer = TempPrinter.Clone();
+            // StateHasChanged();
+           
+        }
+    }
 
  
 }

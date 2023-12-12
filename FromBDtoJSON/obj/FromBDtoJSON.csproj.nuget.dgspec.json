@@ -1,25 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\FromBDtoJSON\\FromBDtoJSON.csproj": {}
+    "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\FromBDtoJSON\\FromBDtoJSON.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\FromBDtoJSON\\FromBDtoJSON.csproj": {
+    "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\FromBDtoJSON\\FromBDtoJSON.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\FromBDtoJSON\\FromBDtoJSON.csproj",
+        "projectUniqueName": "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\FromBDtoJSON\\FromBDtoJSON.csproj",
         "projectName": "FromBDtoJSON",
-        "projectPath": "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\FromBDtoJSON\\FromBDtoJSON.csproj",
-        "packagesPath": "C:\\Users\\Dudarev.Aleksey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\FromBDtoJSON\\obj\\",
+        "projectPath": "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\FromBDtoJSON\\FromBDtoJSON.csproj",
+        "packagesPath": "C:\\Users\\Aleksey\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\FromBDtoJSON\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "I:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dudarev.Aleksey\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress .NET Core Desktop 19.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+          "C:\\Users\\Aleksey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,18 +25,16 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.2\\.NET Core Desktop Libraries\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/RvWy8bTOWFo1EY6gknfdX86O2Y29cNnZvsT5vOjS6lSpGq6h3W/api": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\MyModels\\MyModels.csproj": {
-                "projectPath": "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\MyModels\\MyModels.csproj"
+              "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\MyModels\\MyModels.csproj": {
+                "projectPath": "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\MyModels\\MyModels.csproj"
               }
             }
           }
@@ -118,22 +114,20 @@
         }
       }
     },
-    "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\MyModels\\MyModels.csproj": {
+    "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\MyModels\\MyModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\MyModels\\MyModels.csproj",
+        "projectUniqueName": "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\MyModels\\MyModels.csproj",
         "projectName": "MyModels",
-        "projectPath": "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\MyModels\\MyModels.csproj",
-        "packagesPath": "C:\\Users\\Dudarev.Aleksey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dudarev.Aleksey\\source\\repos\\Printer DB EF Core\\MyModels\\obj\\",
+        "projectPath": "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\MyModels\\MyModels.csproj",
+        "packagesPath": "C:\\Users\\Aleksey\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aleksey\\Source\\Repos\\crondix\\Models-For-EF-Core\\MyModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "I:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dudarev.Aleksey\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress .NET Core Desktop 19.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+          "C:\\Users\\Aleksey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -141,11 +135,9 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.2\\.NET Core Desktop Libraries\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/RvWy8bTOWFo1EY6gknfdX86O2Y29cNnZvsT5vOjS6lSpGq6h3W/api": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -163,6 +155,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.ExpressionMapping": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0, )"

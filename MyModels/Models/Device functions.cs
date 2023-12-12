@@ -20,7 +20,7 @@ namespace MyModels.Models
         [Required]
         [MaxLength(40)]
         public string function { get; set; }
-         
+        public override string ToString() => function;
         public virtual ICollection<Device_functionsPrinters> Printers { get; set; }
     }
 }

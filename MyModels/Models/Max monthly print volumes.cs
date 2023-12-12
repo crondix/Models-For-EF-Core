@@ -16,18 +16,7 @@ namespace MyModels.Models
     [Index(nameof(volume), IsUnique = true)]
     public class Max_monthly_print_volumes
     {
-        public Max_monthly_print_volumes()
-        {
-
-        }
-        public Max_monthly_print_volumes(int value)
-        {
-            id = value;
-        }
-        public static implicit operator Max_monthly_print_volumes(int value)
-        {
-            return new Max_monthly_print_volumes(value);
-        }
+     
          
         public int id { get; set; }
         public ushort volume { get; set; }

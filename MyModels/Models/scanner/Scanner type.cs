@@ -16,5 +16,6 @@ namespace MyModels.Models
         public int id { get; set; }
         [MaxLength(40)]
         public string type { get; set; }
+        public override string ToString() => type;
     }
 }

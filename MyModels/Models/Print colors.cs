@@ -20,7 +20,7 @@ namespace MyModels.Models
         [Required]
         [MaxLength(20)]
         public string color { get; set; }
-         
+        public override string ToString() => color;
         //public virtual ICollection<Cartridge_models> Cartridge_models { get; set; }
 
     }
