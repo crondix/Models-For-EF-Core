@@ -11,7 +11,7 @@
 @code {
     Printers printer;
     Printers TempPrinter;
-    
+
     protected override void OnInitialized()
     {
         printer = DbContextPrinters.Printers.FirstOrDefault(p => p.Id == 1);
@@ -19,6 +19,6 @@
         {
             TempPrinter = printer.Clone();
         }
-        
+       
     }
 }

@@ -60,9 +60,29 @@ else
             }
         }
     }
+    Resolution TempValue { get; set; }
+    protected override void OnInitialized()
+    {
+        TempValue = PropertyValue;
+
+
+    }
+
     private void HandleButtonClick(string buttonType)
     {
-        Status = buttonType;
+
+        if (buttonType == "reset")
+        {
+
+            PropertyValue = TempValue;
+        }
+        else
+        {
+            Status = buttonType;
+        }
+
+
         // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
     }
 }

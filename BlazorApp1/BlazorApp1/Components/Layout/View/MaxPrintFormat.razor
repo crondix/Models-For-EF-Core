@@ -1,0 +1,105 @@
+﻿@using MyModels.Models
+
+@if (status == "update" || status == "set")
+{
+    <div>
+        <input list="browsers" id="myBrowser" name="myBrowser" @oninput="HandleSelectionChange" @bind=Printer.MaxPrintFormat.paper_size />
+    <datalist id="browsers">
+
+   @*      @for (int i=0;i< Paper_sizes.Count;i++)
+        {
+            <option value="@Paper_sizes.ElementAt(i)"></option>
+        } *@
+            @foreach (var paperSize in Paper_sizes)
+            {
+                <option value="@paperSize"> @(paperSize.width)X@(paperSize.height) @paperSize.units</option>
+            }
+
+    </datalist>
+</div>
+
+}
+else if (status == "get")
+{
+    <span>@Printer.MaxPrintFormat</span>
+    <span>@Printer.MaxPrintFormat.units</span>
+}
+else
+{
+    <span>name not found</span>
+}
+<EditButton OnButtonClick="HandleButtonClick"></EditButton>
+@code {
+    [Parameter]
+    public Printers Printer { get; set; }
+     
+   
+    [Parameter]
+    public virtual ICollection<Paper_sizes> Paper_sizes { get; set; }
+
+
+    string status = "";
+
+    [Parameter]
+    public string Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if (value == "get" || value == "set" || value == "update")
+            {
+                status = value;
+            }
+            else
+            {
+                status = "get";
+            }
+        }
+    }
+    
+    int TempValue { get; set; }
+    protected override void OnInitialized()
+    {
+
+        TempValue = Printer.MaxPrintFormat.id;
+
+    }
+
+    private void HandleSelectionChange(ChangeEventArgs e)
+    {
+        string selectedValue = e.Value.ToString();
+
+        // Проверяем, есть ли выбранное значение в базе данных
+        if (Paper_sizes.Any(p => p.paper_size == selectedValue))
+        {
+            // Если есть, обновляем Printer.MaxPrintFormat
+            Printer.MaxPrintFormat = Paper_sizes.FirstOrDefault(p => p.paper_size == selectedValue); 
+        }
+        else
+        {
+            // Если нет, оставляем старое значение
+            // или выполняем другую логику по необходимости
+        }
+    }
+    private void HandleButtonClick(string buttonType)
+    {
+       
+        if (buttonType == "reset")
+        {
+ 
+            Printer.MaxPrintFormat.id = TempValue;
+        }
+        else
+        {
+            Status = buttonType;
+        }
+
+
+        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
+    }
+
+}

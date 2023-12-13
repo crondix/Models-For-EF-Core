@@ -27,6 +27,6 @@ namespace MyModels.Models
      
         public int unitsid { get; set; }
         public virtual Measurement_units? units { get; set; }
-
+        public override string ToString() => paper_size;
     }
 }

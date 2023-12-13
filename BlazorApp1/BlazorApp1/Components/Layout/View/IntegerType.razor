@@ -36,19 +36,19 @@ else
         // get =>Convert.ToInt32( Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
         // set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ToInt32(value));
         get  {
-        
+
             return  Convert.ToInt32((Printer.GetType().GetProperty(PropertyName).GetValue(Printer)));
         }
         set { 
             var propertyType = Printer.GetType().GetProperty(PropertyName).PropertyType;
-             Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ChangeType(value, propertyType));
+            Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ChangeType(value, propertyType));
         }
     }
 
     [Parameter]
     public string UnitsName { get; set; }
 
-  
+
     private Measurement_units UnitsValue
     {
 
@@ -79,16 +79,29 @@ else
             }
         }
 
-    }
+    } 
+    int TempValue { get; set; }
     protected override void OnInitialized()
     {
-        
+        TempValue = PropertyValue;
 
 
     }
+
     private void HandleButtonClick(string buttonType)
     {
-        Status = buttonType;
+
+        if (buttonType == "reset")
+        {
+
+            PropertyValue = TempValue;
+        }
+        else 
+        {
+            Status = buttonType;
+        }
+      
+
         // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
 
     }

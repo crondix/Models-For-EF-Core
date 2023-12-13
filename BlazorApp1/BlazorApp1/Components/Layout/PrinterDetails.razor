@@ -1,7 +1,9 @@
 ﻿@using BlazorApp1.Data
 @using BlazorApp1.Components.Layout.View
 @using MyModels.Models
+
 @inject ApplicationContext DbContextPrinters
+
 
 <form class="create-container" name="test">
    
@@ -99,8 +101,16 @@
                 <IntegerType PropertyName="MaxMonthlyPrintVolumes" UnitsName="MaxMonthlyPrintVolumesUnits" Printer="@Printer" Status="get"></IntegerType>
         </div>
     </div>
-   
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Resolution">MaxPrintFormat:</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <MaxPrintFormat Paper_sizes="MaxPrintFormat" Printer="@Printer" Status="get"></MaxPrintFormat>
+            </div>
+        </div> 
     </div>
+
    
 
    <div class="control-block">
@@ -118,49 +128,31 @@
 
 
     string value { get; set; }
-    
+
     [Parameter]
     public Printers TempPrinter { get; set; }
 
 
     public virtual ICollection<Companies> companies { get; set; }
+    public virtual ICollection<Paper_sizes> MaxPrintFormat { get; set; }
     // public virtual ICollection<Resolution> Resolutions { get; set; }
     protected override void OnInitialized()
     {
         companies = DbContextPrinters.Companies.ToArray();
+        MaxPrintFormat = DbContextPrinters.Paper_sizes.ToArray();
         // Resolutions = DbContextPrinters.Resolution.ToArray();
        
-            
-        
+
+
     } 
 
 
-   
 
 
 
 
-    private void UpdatePrinter(Printers printer)
-    {
 
-        if (printer != null)
-        {
-            // Update the existing record
-            DbContextPrinters.Update(printer);
-            // ...
-            DbContextPrinters.SaveChanges();
-        }
-    }
-
-    private void Cancel()
-    {
-        if (TempPrinter != null)
-        {
-            Printer = TempPrinter.Clone();
-            // StateHasChanged();
-           
-        }
-    }
+  
 
  
 }

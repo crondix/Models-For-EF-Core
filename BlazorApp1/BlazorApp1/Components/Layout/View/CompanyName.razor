@@ -22,7 +22,7 @@ else
 
     [Parameter]
     public virtual ICollection<Companies> companies { get; set; }
-   
+
 
     string status="";
 
@@ -59,15 +59,33 @@ else
             searchTextStatus = $"Search text: {searchText}";
         }
     }
+    string TempValue { get; set; }
     protected override void OnInitialized()
     {
-        
-         SearchText = Printer.Company_name.name; 
+
+        SearchText = Printer.Company_name.name; 
+        TempValue = Printer.Company_name.name;
 
     }
+
+
     private void HandleButtonClick(string buttonType)
     {
-        Status = buttonType;
-        StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
+        if (buttonType == "reset")
+        {
+
+            searchText = TempValue;
+            Printer.Company_name.name = TempValue;
+        }
+        else
+        {
+            Status = buttonType;
+        }
+
+
+        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
     }
+ 
 }

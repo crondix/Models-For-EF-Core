@@ -42,15 +42,29 @@ else
         }
     }
 
+    string TempValue { get; set; }
     protected override void OnInitialized()
     {
-
+        TempValue = Printer.ModelName;
 
 
     }
+
     private void HandleButtonClick(string buttonType)
     {
-        Status = buttonType;
-        StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
+        if (buttonType == "reset")
+        {
+
+            Printer.ModelName = TempValue;
+        }
+        else
+        {
+            Status = buttonType;
+        }
+
+
+        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
     }
 }
