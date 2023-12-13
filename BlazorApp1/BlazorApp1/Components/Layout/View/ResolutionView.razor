@@ -28,7 +28,7 @@ else
     [Parameter]
     public Printers Printer { get; set; }
 
-    
+
     [Parameter]
     public string PropertyName { get; set; }
 
@@ -75,6 +75,7 @@ else
         {
 
             PropertyValue = TempValue;
+            Status = "get";
         }
         else
         {

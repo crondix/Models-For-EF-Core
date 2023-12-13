@@ -21,8 +21,12 @@
 }
 else if (status == "get")
 {
-    <span>@Printer.MaxPrintFormat</span>
-    <span>@Printer.MaxPrintFormat.units</span>
+    <div>
+        <span>@Printer.MaxPrintFormat</span>
+       
+    </div>
+   
+   
 }
 else
 {
@@ -60,11 +64,11 @@ else
         }
     }
     
-    int TempValue { get; set; }
+    Paper_sizes TempValue { get; set; }
     protected override void OnInitialized()
     {
 
-        TempValue = Printer.MaxPrintFormat.id;
+        TempValue = Printer.MaxPrintFormat;
 
     }
 
@@ -90,7 +94,8 @@ else
         if (buttonType == "reset")
         {
  
-            Printer.MaxPrintFormat.id = TempValue;
+            Printer.MaxPrintFormat = TempValue;
+            Status = "get";
         }
         else
         {

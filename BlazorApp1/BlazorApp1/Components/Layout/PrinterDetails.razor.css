@@ -7,8 +7,50 @@
 .control-block {
     margin: 2%;
 }
+.button {
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    /*transition: color .1s ease-in-out,background-color .1s ease-in-out,border-color .1s ease-in-out,box-shadow .15s ease-in-out;*/
+}
+.Cancel {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    &:hover{
+               background-color: #cb3241;
+           }
+&:active {
+    background-color: #cb3241;
+    box-shadow: inset 0px 0px 3px 1px black;
+}
+}
+.Save {
+    color: #fff;
+    background-color: #00c100;
+    border-color: #00c100;
+}
+.Save:hover {
+    background-color: #00b500;
+}
+.Save:active {
+    background-color: #009b00;
+    box-shadow: inset 0px 0px 3px 1px black;
+}
 
-
+::deep input {
+    color: black !important;
+}
 .create-container {
     color: #fff;
     background-color: #2f2f32;

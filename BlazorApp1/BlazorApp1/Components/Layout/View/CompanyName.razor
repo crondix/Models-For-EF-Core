@@ -2,9 +2,23 @@
 
 @if (status == "update" || status == "set")
 {
-    <RadzenDropDown @ref=@radzenDropDown @bind-SearchText=SearchText FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true"
-                    Data=@companies TextProperty="name" ValueProperty="name" AllowClear="true" @bind-Value=Printer.Company_name.name Style="width: 100%; max-width: 400px;" />
-    @* <RadzenLabel Text="@searchTextStatus" /> *@
+
+    <div>
+        <input list="browsers" id="myBrowser" name="myBrowser" @oninput="HandleSelectionChange" @bind=Printer.Company_name.name />
+        <datalist id="browsers">
+
+            @for (int i = 0; i < companies.Count; i++)
+        {
+                <option value="@companies.ElementAt(i)"></option>
+        }
+           @*  @foreach (var compani in companies)
+            {
+                <option value="@compani" />
+            } *@
+
+        </datalist>
+    </div>
+
 }
 else if (status == "get" )
 {
@@ -45,42 +59,46 @@ else
         }
     }
     RadzenDropDown<string> radzenDropDown;
-    string searchTextStatus;
-    string searchText = "";
-    public string SearchText
-    {
-        get
-        {
-            return searchText;
-        }
-        set
-        {
-            searchText = value;
-            searchTextStatus = $"Search text: {searchText}";
-        }
-    }
-    string TempValue { get; set; }
+    
+    Companies TempValue { get; set; }
     protected override void OnInitialized()
     {
 
-        SearchText = Printer.Company_name.name; 
-        TempValue = Printer.Company_name.name;
+    
+        TempValue = Printer.Company_name;
 
     }
 
+    private void HandleSelectionChange(ChangeEventArgs e)
+    {
+        string selectedValue = e.Value.ToString();
 
+        // Проверяем, есть ли выбранное значение в базе данных
+        if (companies.Any(p => p.name == selectedValue))
+        {
+            // Если есть, обновляем Printer.MaxPrintFormat
+            Printer.Company_name = companies.FirstOrDefault(p => p.name == selectedValue);
+        }
+        else
+        {
+        
+            // Если нет, оставляем старое значение
+            // или выполняем другую логику по необходимости
+        }
+    }
     private void HandleButtonClick(string buttonType)
     {
 
         if (buttonType == "reset")
         {
-
-            searchText = TempValue;
-            Printer.Company_name.name = TempValue;
+            Printer.Company_name = TempValue;
+            Status = "get";
+            
         }
         else
         {
             Status = buttonType;
+          
         }
 
 
