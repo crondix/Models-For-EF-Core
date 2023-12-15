@@ -10,7 +10,7 @@
     <RadzenStack AlignItems="AlignItems.Center" Class="rz-mx-auto rz-my-12">
 
         <RadzenImage Path="@(Printer.image is null? "/image/not image.jpg" : Printer.image)" Style="width: 15rem;" AlternateText="community" />
-
+        <ImageView></ImageView>
     </RadzenStack>
     <div class="product-characteristics-container">
     <div class="product-characteristics__group"></div>
@@ -109,9 +109,17 @@
                 <MaxPrintFormat Paper_sizes="MaxPrintFormat" Printer="@Printer" Status="get"></MaxPrintFormat>
             </div>
         </div> 
+@* 
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Resolution">Image:</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                
+            </div>
+        </div>  *@
+ 
     </div>
-
-   
 
    <div class="control-block">
         <button class="button Save" type="button" @onclick="(()=>UpdatePrinter(Printer))">Save</button>

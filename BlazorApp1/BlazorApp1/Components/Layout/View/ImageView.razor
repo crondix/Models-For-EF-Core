@@ -1,0 +1,154 @@
+﻿
+@inject IImageService ImageService
+@rendermode InteractiveServer
+@inject IHostEnvironment Environment
+@inject ILogger<ImageView> Logger
+
+@if (status == "update" || status == "set")
+{
+
+    <div>
+        <p>
+            <label>
+                Max file size:@maxFileSize bytes
+
+            </label>
+        </p>
+
+        <p>
+            <label>
+                Max allowed files:@maxAllowedFiles
+
+            </label>
+        </p>
+
+        <p>
+            <label>
+
+                <InputFile OnChange="@LoadFiles" multiple />
+            </label>
+        </p>
+
+
+        @*     <div class="image-container">
+    @foreach (var imageSource in imageSources)
+    {
+    <img src="@imageSource" />
+    }
+    </div> *@
+        @if (isLoading)
+        {
+            <p>Uploading...</p>
+        }
+        else
+        {
+            if (loadedFiles.Count != 0)
+            {
+
+                <ul>
+                    @foreach (var file in loadedFiles)
+                    {
+                        <li>
+                            <ul>
+                                <li>Name: @file.Name</li>
+                                <li>Last modified: @file.LastModified.ToString()</li>
+                                <li>Size (bytes): @file.Size</li>
+                                <li>Content type: @file.ContentType</li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            }
+        }
+
+        <p>
+            @message
+        </p>
+
+
+
+    </div>
+
+}
+else if (status == "get")
+{
+    <RadzenImage Path="@(Printer.image is null? "/image/not image.jpg" : Printer.image)" Style="width: 15rem;" AlternateText="community" />
+}
+else
+{
+    <span>name not found</span>
+}
+<EditButton OnButtonClick="HandleButtonClick"></EditButton>
+
+
+
+
+@code {
+   
+
+    private List<IBrowserFile> loadedFiles = new();
+    private long maxFileSize = 104857600;
+    private int maxAllowedFiles = 1;
+    private bool isLoading;
+    private string? message;
+
+
+
+
+
+    [Parameter]
+    public Printers Printer { get; set; }
+
+
+
+
+    string status = "";
+
+    [Parameter]
+    public string Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if (value == "get" || value == "set" || value == "update")
+            {
+                status = value;
+            }
+            else
+            {
+                status = "get";
+            }
+        }
+    }
+
+    string TempValue { get; set; }
+    protected override void OnInitialized()
+    {
+        TempValue = Printer.image;
+
+
+    }
+
+    private void HandleButtonClick(string buttonType)
+    {
+
+        if (buttonType == "reset")
+        {
+
+            Printer.image = TempValue;
+            Status = "get";
+        }
+        else
+        {
+            Status = buttonType;
+        }
+
+
+        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
+    }
+
+}
