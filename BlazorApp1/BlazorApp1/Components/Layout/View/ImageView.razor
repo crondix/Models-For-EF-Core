@@ -3,13 +3,41 @@
 @rendermode InteractiveServer
 @inject IHostEnvironment Environment
 @inject ILogger<ImageView> Logger
+@inject IWebHostEnvironment env
 
 @if (status == "update" || status == "set")
 {
-
+        <div class="image-container">
+   
+    <img src="@Printer.image" />
+    
+    </div>
     <div>
         <p>
             <label>
+                src:
+                <InputSelect @bind-Value="@Printer.image" class="form-control">
+
+                    @foreach (var image in getImageList())
+                        {
+                        <option value="image/@image" > @image</option>
+                        }
+                    }
+                </InputSelect>
+                @* <input list="browsers" id="myBrowser" name="myBrowser"  @bind=Printer.image />
+                    <datalist id="browsers">
+                  
+                    @foreach (var image in getImageList())
+                    {
+                        <option value="image/@image"><img src="@image/image" /></option>
+                    }
+
+                    </datalist> *@
+             
+            </label>
+        </p>
+        <p>
+            <label> 
                 Max file size:@maxFileSize bytes
 
             </label>
@@ -30,12 +58,7 @@
         </p>
 
 
-        @*     <div class="image-container">
-    @foreach (var imageSource in imageSources)
-    {
-    <img src="@imageSource" />
-    }
-    </div> *@
+       
         @if (isLoading)
         {
             <p>Uploading...</p>
@@ -84,7 +107,7 @@ else
 
 
 @code {
-   
+
 
     private List<IBrowserFile> loadedFiles = new();
     private long maxFileSize = 104857600;
@@ -92,7 +115,12 @@ else
     private bool isLoading;
     private string? message;
 
+    string[] getImageList()
+    {
 
+        return Directory.GetFiles($"{env.WebRootPath}/image").Select(Path.GetFileName).ToArray(); ;
+    }
+  
 
 
 

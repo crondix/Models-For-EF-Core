@@ -25,9 +25,9 @@ namespace BlazorApp1.Components.Layout.View
                     foreach (var file in e.GetMultipleFiles())
                 {
                     var extension = Path.GetExtension(file.Name);
-                    var trustedFileNameForFileStorage = $"{Path.GetRandomFileName()}{extension}";
+                    var trustedFileNameForFileStorage = $"{file.Name}";
                     var path = Path.Combine(Environment.ContentRootPath,
-                            Environment.EnvironmentName, "unsafe_uploads",
+                            "wwwroot\\image",
                             trustedFileNameForFileStorage);
                     await using FileStream fs = new(path, FileMode.Create);
 
@@ -35,9 +35,11 @@ namespace BlazorApp1.Components.Layout.View
                     {
                         await file.OpenReadStream(maxFileSize).CopyToAsync(fs);
                         loadedFiles.Add(file);
+                        Printer.image = $"/image/{trustedFileNameForFileStorage}";
                     }
                     catch (Exception ex)
                     {
+                        Printer.image = TempValue;
                         fs.Close();
                         File.Delete(path);
                         Logger.LogError("File: {Filename} Error: {Error}",
@@ -51,6 +53,7 @@ namespace BlazorApp1.Components.Layout.View
 
             isLoading = false;
         }
+      
         //private async Task UploadImage(List<byte[]> ImageBytes)
         //{ 
         //    foreach (var imageByte in ImageBytes)
