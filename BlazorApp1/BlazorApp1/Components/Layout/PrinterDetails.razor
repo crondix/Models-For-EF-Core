@@ -108,15 +108,15 @@
                 <MaxPrintFormat Paper_sizes="MaxPrintFormat" Printer="@Printer" Status="get"></MaxPrintFormat>
             </div>
         </div> 
-@* 
+
         <div class="product-characteristics-spec">
             <div class="product-characteristics__spec-title">
-                <label for="Resolution">Image:</label>
+                <label for="Resolution">Type:</label>
             </div>
             <div class="product-characteristics__spec-value">
-                
+                <PrinterType Printer="@Printer" Status="get" Types="@types"></PrinterType>
             </div>
-        </div>  *@
+        </div> 
  
     </div>
 
@@ -141,11 +141,13 @@
 
 
     public virtual ICollection<Companies> companies { get; set; }
+    public virtual ICollection<Printer_types> types { get; set; }
     public virtual ICollection<Paper_sizes> MaxPrintFormat { get; set; }
     // public virtual ICollection<Resolution> Resolutions { get; set; }
     protected override void OnInitialized()
     {
         companies = DbContextPrinters.Companies.ToArray();
+        types = DbContextPrinters.Printer_types.ToArray();
         MaxPrintFormat = DbContextPrinters.Paper_sizes.ToArray();
         // Resolutions = DbContextPrinters.Resolution.ToArray();
        

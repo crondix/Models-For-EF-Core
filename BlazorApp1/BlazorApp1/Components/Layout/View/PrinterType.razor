@@ -1,0 +1,110 @@
+﻿@using MyModels.Models
+
+@if (status == "update" || status == "set")
+{
+
+    <div>
+        <input list="browsers" id="myBrowser" name="myBrowser" @oninput="HandleSelectionChange" @bind=Printer.Types.type />
+        <datalist id="browsers">
+
+            @for (int i = 0; i < Types.Count; i++)
+            {
+                <option value="@Types.ElementAt(i)"></option>
+            }
+            @*  @foreach (var compani in companies)
+        {
+        <option value="@compani" />
+        } *@
+
+        </datalist>
+    </div>
+
+}
+else if (status == "get")
+{
+    <span>@Printer.Types.type</span>
+}
+else
+{
+    <span>name not found</span>
+}
+<EditButton OnButtonClick="HandleButtonClick"></EditButton>
+@code {
+    [Parameter]
+    public Printers Printer { get; set; }
+
+
+    [Parameter]
+    public virtual ICollection<Printer_types> Types { get; set; }
+
+
+    string status = "";
+
+    [Parameter]
+    public string Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if (value == "get" || value == "set" || value == "update")
+            {
+                status = value;
+            }
+            else
+            {
+                status = "get";
+            }
+        }
+    }
+    
+
+    Printer_types TempValue { get; set; }
+    protected override void OnInitialized()
+    {
+
+
+        TempValue = Printer.Types;
+
+    }
+
+    private void HandleSelectionChange(ChangeEventArgs e)
+    {
+        string selectedValue = e.Value.ToString();
+
+        // Проверяем, есть ли выбранное значение в базе данных
+        if (Types.Any(p => p.type == selectedValue))
+        {
+            // Если есть, обновляем Printer.MaxPrintFormat
+            Printer.Types = Types.FirstOrDefault(p => p.type == selectedValue);
+        }
+        else
+        {
+
+            // Если нет, оставляем старое значение
+            // или выполняем другую логику по необходимости
+        }
+    }
+    private void HandleButtonClick(string buttonType)
+    {
+
+        if (buttonType == "reset")
+        {
+            Printer.Types = TempValue;
+            Status = "get";
+
+        }
+        else
+        {
+            Status = buttonType;
+
+        }
+
+
+        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
+    }
+
+}
