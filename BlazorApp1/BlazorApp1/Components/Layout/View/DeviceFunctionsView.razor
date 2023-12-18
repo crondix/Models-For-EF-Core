@@ -1,0 +1,112 @@
+﻿@using MyModels.Models
+
+@if (status == "update" || status == "set")
+{
+
+    <div>
+        <MultiSelect CheckedItems="CheckedDeviceFunctions" Items="Function.Select(function => function.function).ToArray()" SelectedItemsChanged="HandleSelectedItemsChanged"></MultiSelect>
+    </div>
+
+}
+else if (status == "get")
+{
+    foreach (var item in CheckedDeviceFunctions)
+    {
+        <span>@item</span>
+    }
+    
+}
+else
+{
+    <span>name not found</span>
+}
+<EditButton OnButtonClick="HandleButtonClick"></EditButton>
+@code {
+    [Parameter]
+    public Printers Printer { get; set; }
+
+
+    [Parameter]
+    public virtual ICollection<Device_functions> Function { get; set; }
+
+
+    string status = "";
+
+    [Parameter]
+    public string Status
+    {
+        get
+        {
+            return status;
+        }
+        set
+        {
+            if (value == "get" || value == "set" || value == "update")
+            {
+                status = value;
+            }
+            else
+            {
+                status = "get";
+            }
+        }
+    }
+
+
+    Printing_technologies TempValue { get; set; }
+
+
+    private void HandleSelectionChange(ChangeEventArgs e)
+    {
+        string selectedValue = e.Value.ToString();
+        foreach (var item in CheckedDeviceFunctions)
+        {
+            // Проверяем, есть ли выбранное значение в базе данных
+            if (Function.Any(p => p.function == selectedValue))
+            {
+                // Если есть, обновляем Printer.MaxPrintFormat
+                Printer.DeviceFunctions.ElementAt(1).Device_functions = Function.FirstOrDefault(p => p.function == selectedValue);
+
+            }
+            else
+            {
+
+                // Если нет, оставляем старое значение
+                // или выполняем другую логику по необходимости
+            }
+        }
+       
+    }
+    private void HandleButtonClick(string buttonType)
+    {
+
+        if (buttonType == "reset")
+        {
+            Printer.Technologis = TempValue;
+            Status = "get";
+
+        }
+        else
+        {
+            Status = buttonType;
+
+        }
+
+
+        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
+    }
+    List<string> CheckedDeviceFunctions { get; set; }
+    protected override void OnInitialized()
+    {
+
+        CheckedDeviceFunctions = Printer.DeviceFunctions.Select(function => function.Device_functions.function).ToList();
+        TempValue = Printer.Technologis;
+
+    }
+    private void HandleSelectedItemsChanged(List<string> updatedSelectedItems)
+    {
+        // Обработайте обновленные SelectedItems, которые пришли из дочернего компонента
+        CheckedDeviceFunctions = updatedSelectedItems;
+    }
+}

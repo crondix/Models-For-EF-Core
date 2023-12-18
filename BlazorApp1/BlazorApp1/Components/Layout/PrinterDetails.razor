@@ -21,7 +21,6 @@
         </div>
         <div class="product-characteristics__spec-value">
             <ModelName  Status="get" Printer="@Printer"></ModelName>
-            @* <input type="text" id="modelName" name="modelName" required style="width:100%"  value="@(Printer is not null  ? Printer.ModelName :"")"> *@
         </div>
     </div> 
     <div class="product-characteristics-spec">
@@ -82,7 +81,7 @@
         {
             <div class="product-characteristics-spec">
                 <div class="product-characteristics__spec-title">
-                    <label for="Resolution">ColorPrintingSpeed:</label>
+                        <label for="ColorPrintingSpeed">ColorPrintingSpeed:</label>
                 </div>
                 <div class="product-characteristics__spec-value">
 
@@ -94,7 +93,7 @@
     }
     <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
-                <label for="Resolution">MaxMonthlyPrintVolumes:</label>
+                <label for="MaxMonthlyPrintVolumes">MaxMonthlyPrintVolumes:</label>
         </div>
         <div class="product-characteristics__spec-value">
                 <IntegerType PropertyName="MaxMonthlyPrintVolumes" UnitsName="MaxMonthlyPrintVolumesUnits" Printer="@Printer" Status="get"></IntegerType>
@@ -102,7 +101,7 @@
     </div>
         <div class="product-characteristics-spec">
             <div class="product-characteristics__spec-title">
-                <label for="Resolution">MaxPrintFormat:</label>
+                <label for="MaxPrintFormat">MaxPrintFormat:</label>
             </div>
             <div class="product-characteristics__spec-value">
                 <MaxPrintFormat Paper_sizes="MaxPrintFormat" Printer="@Printer" Status="get"></MaxPrintFormat>
@@ -111,13 +110,30 @@
 
         <div class="product-characteristics-spec">
             <div class="product-characteristics__spec-title">
-                <label for="Resolution">Type:</label>
+                <label for="Type">Type:</label>
             </div>
             <div class="product-characteristics__spec-value">
                 <PrinterType Printer="@Printer" Status="get" Types="@types"></PrinterType>
             </div>
+        </div>  
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Technologis">Technologis:</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <TechnologisView Printer="@Printer" Status="get" Technologies="@Technologies"></TechnologisView>
+            </div>
         </div> 
- 
+
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Test">test:</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <MultiSelect CheckedItems="Printer.DeviceFunctions.Select(function => function.Device_functions.function).ToList()" Items="Functions.Select(function => function.function).ToArray()"></MultiSelect>
+            </div>
+        </div>
+
     </div>
 
    <div class="control-block">
@@ -143,12 +159,16 @@
     public virtual ICollection<Companies> companies { get; set; }
     public virtual ICollection<Printer_types> types { get; set; }
     public virtual ICollection<Paper_sizes> MaxPrintFormat { get; set; }
+    public virtual ICollection<Printing_technologies> Technologies { get; set; }
+    public virtual ICollection<Device_functions> Functions { get; set; }
     // public virtual ICollection<Resolution> Resolutions { get; set; }
     protected override void OnInitialized()
     {
         companies = DbContextPrinters.Companies.ToArray();
         types = DbContextPrinters.Printer_types.ToArray();
         MaxPrintFormat = DbContextPrinters.Paper_sizes.ToArray();
+        Technologies = DbContextPrinters.Printing_technologies.ToArray();
+        Functions = DbContextPrinters.Device_functions.ToArray();
         // Resolutions = DbContextPrinters.Resolution.ToArray();
        
 

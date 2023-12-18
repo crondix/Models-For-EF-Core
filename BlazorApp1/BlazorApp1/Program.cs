@@ -8,7 +8,7 @@ using BlazorApp1.Interface;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Radzen;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,7 +44,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<IImageService, ImageService>();
-builder.Services.AddRadzenComponents();
+
 builder.Services.AddRazorComponents(options => options.DetailedErrors = true);
 var app = builder.Build();
 

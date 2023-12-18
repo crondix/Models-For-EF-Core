@@ -5,6 +5,7 @@
 @inject ILogger<ImageView> Logger
 @inject IWebHostEnvironment env
 
+<div class="ImageView-container">
 @if (status == "update" || status == "set")
 {
         <div class="image-container">
@@ -95,14 +96,17 @@
 }
 else if (status == "get")
 {
-    <RadzenImage Path="@(Printer.image is null? "/image/not image.jpg" : Printer.image)" Style="width: 15rem;" AlternateText="community" />
+    <div class="image-container">
+        <img src="@(Printer.image is null? "/image/not image.jpg" : Printer.image)" Style="width: 15rem;" />
+        
+    </div>
 }
 else
 {
     <span>name not found</span>
 }
 <EditButton OnButtonClick="HandleButtonClick"></EditButton>
-
+</div>
 
 
 

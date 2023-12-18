@@ -30,3 +30,13 @@
     color: red;
     text-align: center;
 }
+
+.image-container{
+   
+}
+.ImageView-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

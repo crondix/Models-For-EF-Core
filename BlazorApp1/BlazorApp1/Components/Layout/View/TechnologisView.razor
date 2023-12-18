@@ -4,25 +4,25 @@
 {
 
     <div>
-        <input list="browsers" id="myBrowser" name="myBrowser" @oninput="HandleSelectionChange" @bind=Printer.Company_name.name />
+        <input list="browsers" id="myBrowser" name="myBrowser" @oninput="HandleSelectionChange" @bind=Printer.Technologis.technology />
         <datalist id="browsers">
 
-            @for (int i = 0; i < companies.Count; i++)
-        {
-                <option value="@companies.ElementAt(i)"></option>
-        }
-           @*  @foreach (var compani in companies)
+            @for (int i = 0; i < Technologies.Count; i++)
             {
-                <option value="@compani" />
-            } *@
+                <option value="@Technologies.ElementAt(i)"></option>
+            }
+            @*  @foreach (var compani in companies)
+        {
+        <option value="@compani" />
+        } *@
 
         </datalist>
     </div>
 
 }
-else if (status == "get" )
+else if (status == "get")
 {
-    <span>@Printer.Company_name.name</span>
+    <span>@Printer.Technologis.technology</span>
 }
 else
 {
@@ -35,10 +35,10 @@ else
 
 
     [Parameter]
-    public virtual ICollection<Companies> companies { get; set; }
+    public virtual ICollection<Printing_technologies> Technologies { get; set; }
 
 
-    string status="";
+    string status = "";
 
     [Parameter]
     public string Status
@@ -49,7 +49,8 @@ else
         }
         set
         {
-            if(value=="get" || value=="set" || value=="update"){ 
+            if (value == "get" || value == "set" || value == "update")
+            {
                 status = value;
             }
             else
@@ -58,30 +59,24 @@ else
             }
         }
     }
-    
-    
-    Companies TempValue { get; set; }
-    protected override void OnInitialized()
-    {
 
-    
-        TempValue = Printer.Company_name;
 
-    }
+    Printing_technologies TempValue { get; set; }
+
 
     private void HandleSelectionChange(ChangeEventArgs e)
     {
         string selectedValue = e.Value.ToString();
 
         // Проверяем, есть ли выбранное значение в базе данных
-        if (companies.Any(p => p.name == selectedValue))
+        if (Technologies.Any(p => p.technology == selectedValue))
         {
             // Если есть, обновляем Printer.MaxPrintFormat
-            Printer.Company_name = companies.FirstOrDefault(p => p.name == selectedValue);
+            Printer.Technologis = Technologies.FirstOrDefault(p => p.technology == selectedValue);
         }
         else
         {
-        
+
             // Если нет, оставляем старое значение
             // или выполняем другую логику по необходимости
         }
@@ -91,19 +86,25 @@ else
 
         if (buttonType == "reset")
         {
-            Printer.Company_name = TempValue;
+            Printer.Technologis = TempValue;
             Status = "get";
-            
+
         }
         else
         {
             Status = buttonType;
-          
+
         }
 
 
         // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
 
     }
- 
+    protected override void OnInitialized()
+    {
+
+
+        TempValue = Printer.Technologis;
+
+    }
 }
