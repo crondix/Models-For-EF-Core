@@ -127,10 +127,10 @@
 
         <div class="product-characteristics-spec">
             <div class="product-characteristics__spec-title">
-                <label for="Test">test:</label>
+                <label for="Test">DeviceFunctions:</label>
             </div>
             <div class="product-characteristics__spec-value">
-                <MultiSelect CheckedItems="Printer.DeviceFunctions.Select(function => function.Device_functions.function).ToList()" Items="Functions.Select(function => function.function).ToArray()"></MultiSelect>
+                <DeviceFunctionsView Printer="@Printer" Status="get" Function="Functions"></DeviceFunctionsView>
             </div>
         </div>
 
@@ -152,8 +152,7 @@
 
     string value { get; set; }
 
-    [Parameter]
-    public Printers TempPrinter { get; set; }
+   
 
 
     public virtual ICollection<Companies> companies { get; set; }

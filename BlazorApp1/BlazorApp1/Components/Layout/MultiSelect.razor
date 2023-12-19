@@ -14,7 +14,11 @@
 			@foreach (var item in Items)
 			{
 
-				<label><input type="checkbox" value="@item" checked="@(SelectedItems.Contains(item))" @onchange="(e) => CheckboxChanged(item)" />@item @if (SelectedItems.Contains(item)) { CheckedCount++; }</label>
+				<label>
+					<input type="checkbox" value="@item" checked="@(SelectedItems?.Contains(item)?? false)" @onchange="(e) => CheckboxChanged(item)" />
+				@item
+					@if (SelectedItems?.Contains(item) ?? false) { CheckedCount++; }
+				</label>
 
 		}
 		}
@@ -32,15 +36,15 @@
 	public ICollection<string> Items { get; set; }
 
 	[Parameter]
-	public EventCallback<ICollection<string>> SelectedItemsChanged { get; set; }
+	public EventCallback<List<string>> SelectedItemsChanged { get; set; }
 
 	private List<string> SelectedItems { get; set; }
 
 	protected override void OnInitialized()
 	{
 		SelectedItems = new List<string>();
-		SelectedItems.AddRange(CheckedItems);
-		CheckedCount=CheckedItems.Intersect(Items).Count();
+		SelectedItems.AddRange(CheckedItems ?? Enumerable.Empty<string>());
+		CheckedCount = CheckedItems?.Intersect(Items ?? Enumerable.Empty<string>()).Count() ?? 0;
 
 	}
 
@@ -56,6 +60,7 @@
 			SelectedItems.Add(item);
 			CheckedCount++;
 		}
+		SelectedItemsChanged.InvokeAsync(SelectedItems.ToList());
 	}
 	
 

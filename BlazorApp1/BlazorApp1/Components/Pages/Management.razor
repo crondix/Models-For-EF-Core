@@ -7,7 +7,7 @@
 @rendermode InteractiveServer
 
 <h3>Management</h3>
-<PrinterDetails Printer="@printer" TempPrinter="TempPrinter"> </PrinterDetails>
+<PrinterDetails Printer="@printer" > </PrinterDetails>
 @code {
     Printers printer;
     Printers TempPrinter;
@@ -15,10 +15,7 @@
     protected override void OnInitialized()
     {
         printer = DbContextPrinters.Printers.FirstOrDefault(p => p.Id == 1);
-        if (TempPrinter == null)
-        {
-            TempPrinter = printer.Clone();
-        }
+       
        
     }
 }

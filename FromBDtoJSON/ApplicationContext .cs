@@ -19,8 +19,9 @@ namespace FromBDtoJSON
           
             Database.EnsureCreated();   // создаем бд с новой схемой
         }
-   
+
         public DbSet<Measurement_units> Measurement_units { get; set; }
+
         public DbSet<Paper_sizes> Paper_sizes { get; set; }
         public DbSet<Print_colors> Print_colors { get; set; }
         public DbSet<Printer_types> Printer_types { get; set; }
@@ -32,9 +33,9 @@ namespace FromBDtoJSON
         public DbSet<Cartridge_models> Cartridge_models { get; set; }
         public DbSet<Printers> Printers { get; set; }
         public DbSet<Scanner_type> Scanner_type { get; set; }
-        public DbSet<Resolution> Scanner_resolution { get; set; }
+        public DbSet<Resolution> Resolution { get; set; }
         public DbSet<Scanner> Scanner { get; set; }
-
+        public DbSet<Device_functionsPrinters> Device_functionsPrinters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -33,6 +33,7 @@ namespace Models_For_EF_Core
         public DbSet<Scanner_type> Scanner_type { get; set; }
         public DbSet<Resolution> Resolution { get; set; }
         public DbSet<Scanner> Scanner { get; set; }
+        public DbSet<Device_functionsPrinters> Device_functionsPrinters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

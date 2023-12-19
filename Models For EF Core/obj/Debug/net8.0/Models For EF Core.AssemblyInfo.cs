@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Models For EF Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4142ba83b54dbabb877f98e698e3f21ba0f403e7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0fd12fa7ab7116252d7b1d4ac4e35a02799b788")]
 [assembly: System.Reflection.AssemblyProductAttribute("Models For EF Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Models For EF Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

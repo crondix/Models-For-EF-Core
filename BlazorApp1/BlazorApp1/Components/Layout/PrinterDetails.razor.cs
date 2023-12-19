@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using MyModels.Models;
 using System.Reflection;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BlazorApp1.Components.Layout
 {
@@ -28,12 +29,16 @@ namespace BlazorApp1.Components.Layout
 
         private void Cancel()
         {
-            
-                DbContextPrinters.Entry(Printer).Reload();
-                
-                // StateHasChanged();
-               
-            
+            DbContextPrinters.Entry(Printer).Reload();
+            Printer.DeviceFunctions = DbContextPrinters.Entry(Printer)
+     .Collection(b => b.DeviceFunctions)
+     .Query()
+     .ToList(); ;
+           
+
+            //StateHasChanged();
+
+
         }
     }
 }
