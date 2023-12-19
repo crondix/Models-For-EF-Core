@@ -33,7 +33,7 @@ namespace Models_For_EF_Core
         public DbSet<Scanner_type> Scanner_type { get; set; }
         public DbSet<Resolution> Resolution { get; set; }
         public DbSet<Scanner> Scanner { get; set; }
-        public DbSet<Device_functionsPrinters> Device_functionsPrinters { get; set; }
+      
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -51,7 +51,16 @@ namespace Models_For_EF_Core
             modelBuilder.Entity<Printer_InterfacesPrinters>().HasKey(u => new { u.Printersid, u.Printer_Interfacesid });
             modelBuilder.Entity<Device_functionsPrinters>().HasKey(u => new { u.Printersid, u.Device_functionsid });
             modelBuilder.Entity<Cartridge_modelsPrinters>().HasKey(u => new { u.Printersid, u.Cartridge_modelsid });
-         
+            modelBuilder.Entity<Printers>()
+          .HasOne(p => p.MaxPrintResolutionBW)
+          .WithMany()
+          .HasForeignKey(p => p.MaxPrintResolutionBWid)
+          .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Printers>()
+       .HasOne(p => p.MaxPrintResolutionColor)
+       .WithMany()
+       .HasForeignKey(p => p.MaxPrintResolutionColorid)
+       .OnDelete(DeleteBehavior.Restrict);
             //var entityTypes = Assembly.GetExecutingAssembly().GetTypes()
             //    .Where(t => t.Namespace == "Models_For_EF_Core.Models" && t.IsClass);
 

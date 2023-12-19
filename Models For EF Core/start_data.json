@@ -388,7 +388,8 @@
       "ColorPrintingSpeed": 27,
       "SpeedUnitsid": 1,
       "image": "/image/Color LaserJet Enterprise MFP M480f.jpg",
-      "MaxPrintResolutionid": 2,
+      "MaxPrintResolutionBWid": 2,
+      "MaxPrintResolutionColorid": 2,
 
       "MaxPrintFormatid": 5,
 

@@ -45,11 +45,21 @@ namespace MyModels.Models
         /// <summary>
         /// Максимальное разрешение черно-белой печати 
         /// </summary>
-        public int  MaxPrintResolutionid { get; set; } 
+        public int MaxPrintResolutionBWid { get; set; } 
         /// <summary>
         /// Максимальное разрешение черно-белой печати 
         /// </summary>
-        public virtual Resolution? MaxPrintResolution { get; set; }
+        public virtual Resolution? MaxPrintResolutionBW { get; set; }
+        /// <summary>
+        /// Максимальное разрешение цветной печати 
+        /// </summary>
+        public int MaxPrintResolutionColorid { get; set; }
+        /// <summary>
+        /// Максимальное разрешение цветной печати 
+        /// </summary>
+        public virtual Resolution? MaxPrintResolutionColor { get; set; }
+
+
         /// <summary>
         /// Скорость черно-белой печати  
         /// </summary>
@@ -57,7 +67,7 @@ namespace MyModels.Models
         /// <summary>
         /// Скорость цветной печати  
         /// </summary>
-        public ushort ColorPrintingSpeed { get; set; }
+        public ushort? ColorPrintingSpeed { get; set; }
 
         public int? SpeedUnitsid { get; set; }
         public virtual Measurement_units? SpeedUnits { get; set; }
@@ -79,11 +89,13 @@ namespace MyModels.Models
         public virtual Printing_technologies? Technologis { get; set; }
     
   
-        public int MaxMonthlyPrintVolumes { get; set; }
+        public int? MaxMonthlyPrintVolumes { get; set; }
         //public virtual Max_monthly_print_volumes? MaxMonthlyPrintVolumes { get; set; }
+        public int? RecommendedMonthlyPrintVolumes { get; set; }
 
-        public int? MaxMonthlyPrintVolumesUnitsid { get; set; }
-        public virtual Measurement_units? MaxMonthlyPrintVolumesUnits { get; set; }
+        public int? MonthlyPrintVolumesUnitsid { get; set; }
+        
+        public virtual Measurement_units? MonthlyPrintVolumesUnits { get; set; }
 
         public int? Scanerid { get; set; }
         public virtual Scanner? Scanner { get; set; }

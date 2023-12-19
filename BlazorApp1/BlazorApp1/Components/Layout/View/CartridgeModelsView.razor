@@ -2,20 +2,67 @@
 
 @if (status == "update" || status == "set")
 {
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="Test">Модель картриджей:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <div>
+                <div>
+                    <MultiSelect CheckedItems="Printer.CartridgeModels.Select(function => function.Cartridge_Models.Model).ToArray()" Items="CartridgeModels.Select(function => function.Model).ToArray()" SelectedItemsChanged="HandleSelectedItemsChanged"></MultiSelect>
+                </div>
 
-    <div>
-        <MultiSelect CheckedItems="Printer.DeviceFunctions.Select(function => function.Device_functions.function).ToArray()" Items="Function.Select(function => function.function).ToArray()" SelectedItemsChanged="HandleSelectedItemsChanged"></MultiSelect>
+            </div>  <EditButton OnButtonClick="HandleButtonClick"></EditButton>
+        </div>
     </div>
+    
 
 }
 else if (status == "get")
 {
-    <div>
-        @foreach (var item in Printer.DeviceFunctions)
-        {
-            <span class="CheckedDeviceFunctions">@item.Device_functions.function</span>
-        }
+    
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="Test">Количество картриджей :</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            @Printer.CartridgeModels.Count
+        </div>
     </div>
+    @foreach (var item in Printer.CartridgeModels)
+    {
+    <div class="product-characteristics-spec">
+        <div class="product-characteristics__spec-title">
+            <label for="Test">Модель картриджей:</label>
+        </div>
+        <div class="product-characteristics__spec-value">
+            <div>
+               
+                    <span class="CheckedDeviceFunctions">@item.Cartridge_Models.Model</span>
+              
+
+            </div>  <EditButton OnButtonClick="HandleButtonClick"></EditButton>
+        </div>
+    </div>
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Test">Ресурс картриджа :</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                @item.Cartridge_Models.PrintResource стр
+            </div>
+        </div> 
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Test">Перезаправляемый :</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                @(item.Cartridge_Models.Refueling ?? false ? "да": "нет" ) 
+            </div>
+        </div>
+        
+    }
+   
 
 
 }
@@ -23,14 +70,14 @@ else
 {
     <span>name not found</span>
 }
-<EditButton OnButtonClick="HandleButtonClick"></EditButton>
+
 @code {
     [Parameter]
     public Printers Printer { get; set; }
 
 
     [Parameter]
-    public virtual ICollection<Device_functions> Function { get; set; }
+    public virtual ICollection<Cartridge_models> CartridgeModels { get; set; }
 
 
     string status = "";
@@ -56,23 +103,23 @@ else
     }
 
 
-    ICollection<Device_functionsPrinters> TempValue { get; set; }
+    ICollection<Cartridge_modelsPrinters> TempValue { get; set; }
 
 
     private void HandleSelectionChange()
     {
         foreach (var item in CheckedDeviceFunctions)
         {
-            if (!Printer.DeviceFunctions.Any(df => df.Device_functions.function == item))
+            if (!Printer.CartridgeModels.Any(df => df.Cartridge_Models.Model == item))
             {
-                Printer.DeviceFunctions.Add(new Device_functionsPrinters() { Device_functions = Function.FirstOrDefault(p => p.function == item), Printers = this.Printer });
+                Printer.CartridgeModels.Add(new Cartridge_modelsPrinters() { Cartridge_Models = CartridgeModels.FirstOrDefault(p => p.Model == item), Printers = this.Printer });
             }
         }
-        foreach (var item in Printer.DeviceFunctions)
+        foreach (var item in Printer.CartridgeModels)
         {
-            if (!CheckedDeviceFunctions.Contains(item.Device_functions.function))
+            if (!CheckedDeviceFunctions.Contains(item.Cartridge_Models.Model))
             {
-                Printer.DeviceFunctions.Remove(item);
+                Printer.CartridgeModels.Remove(item);
             }
         }
 
@@ -82,10 +129,10 @@ else
 
         if (buttonType == "reset")
         {
-            Printer.DeviceFunctions = new List<Device_functionsPrinters>();
+            Printer.CartridgeModels = new List<Cartridge_modelsPrinters>();
             foreach (var item in TempValue)
             {
-                Printer.DeviceFunctions.Add(item);
+                Printer.CartridgeModels.Add(item);
             }
             // Printer.DeviceFunctions = TempValue;
             Status = "get";
@@ -105,9 +152,9 @@ else
     protected override void OnInitialized()
     {
 
-        CheckedDeviceFunctions = Printer.DeviceFunctions.Select(function => function.Device_functions.function).ToList();
-        TempValue = new List<Device_functionsPrinters>();
-        foreach (var item in Printer.DeviceFunctions)
+        CheckedDeviceFunctions = Printer.CartridgeModels.Select(function => function.Cartridge_Models.Model).ToList();
+        TempValue = new List<Cartridge_modelsPrinters>();
+        foreach (var item in Printer.CartridgeModels)
         {
             TempValue.Add(item);
         }

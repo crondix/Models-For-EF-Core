@@ -6,24 +6,109 @@
 
 
 <form class="create-container" name="test">
-   
-    <RadzenStack AlignItems="AlignItems.Center" Class="rz-mx-auto rz-my-12">
 
         <ImageView Printer="@Printer" Status="get"></ImageView>
-    </RadzenStack>
+
     <div class="product-characteristics-container">
     <div class="product-characteristics__group"></div>
     <div class="product-characteristics__group-title">Общие характеристики</div>
-
-    <div class="product-characteristics-spec">
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Type">Тип (Type):</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <PrinterType Printer="@Printer" Status="get" Types="@types"></PrinterType>
+            </div>
+        </div>
+        <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
-            <label for="modelName">Model Name:</label>
+                <label for="modelName">Модель(Model Name):</label>
         </div>
         <div class="product-characteristics__spec-value">
             <ModelName  Status="get" Printer="@Printer"></ModelName>
         </div>
-    </div> 
-    <div class="product-characteristics-spec">
+    </div>
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Test">Функции устройства(DeviceFunctions):</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <DeviceFunctionsView Printer="@Printer" Status="get" Function="Functions"></DeviceFunctionsView>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="product-characteristics__group-title">Принтер</div>
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Technologis">Технология печати (Technologis):</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <TechnologisView Printer="@Printer" Status="get" Technologies="@Technologies"></TechnologisView>
+            </div>
+        </div>
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="colorPrinting">Возможность цветной печати (Color Printing):</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <BooleanType Status="get" PropertyName="СolorPrinting" Printer="@Printer"></BooleanType>
+
+            </div>
+        </div>
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="MaxPrintFormat">Максимальный формат(MaxPrintFormat):</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <MaxPrintFormat Paper_sizes="MaxPrintFormat" Printer="@Printer" Status="get"></MaxPrintFormat>
+            </div>
+        </div>
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="Resolution">Максимальное разрешение черно-белой печати (Resolution):</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <ResolutionView PropertyName="MaxPrintResolutionBW" Printer="@Printer" Status="get"></ResolutionView>
+            </div>
+        </div>
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label>Скорость черно-белой печати (стр / мин) (BWPrintingSpeed):</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <IntegerType PropertyName="BWPrintingSpeed" UnitsName="SpeedUnits" Printer="@Printer" Status="get"></IntegerType>
+
+            </div>
+        </div>
+        @if (Printer is not null)
+        {
+            @if (Printer.СolorPrinting)
+            {
+                <div class="product-characteristics-spec">
+                    <div class="product-characteristics__spec-title">
+                        <label for="Resolution">Максимальное разрешение цветной печати (Resolution):</label>
+                    </div>
+                    <div class="product-characteristics__spec-value">
+                        <ResolutionView PropertyName="MaxPrintResolutionColor" Printer="@Printer" Status="get"></ResolutionView>
+                    </div>
+                </div>
+                <div class="product-characteristics-spec">
+                    <div class="product-characteristics__spec-title">
+                        <label for="ColorPrintingSpeed">Скорость цветной печати (стр / мин)(ColorPrintingSpeed):</label>
+                    </div>
+                    <div class="product-characteristics__spec-value">
+
+                        <IntegerType PropertyName="ColorPrintingSpeed" UnitsName="SpeedUnits" Printer="@Printer" Status="get"></IntegerType>
+
+                    </div>
+                </div>
+            }
+        }
+        <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
             <label for="ciss">CISS:</label>
         </div>
@@ -40,15 +125,7 @@
             <BooleanType Status="get" PropertyName="AutomaticDoubleSidedPrinting" Printer="@Printer"></BooleanType>
         </div>
     </div>
-    <div class="product-characteristics-spec">
-        <div class="product-characteristics__spec-title">
-            <label for="colorPrinting">Color Printing:</label>
-        </div>
-        <div class="product-characteristics__spec-value">
-            <BooleanType Status="get" PropertyName="СolorPrinting" Printer="@Printer"></BooleanType>
-           
-        </div>
-    </div>
+    
 
     <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
@@ -58,39 +135,8 @@
             <CompanyName Printer="@Printer" companies="@DbContextPrinters.Companies.ToArray()" Status="get"></CompanyName>
         </div>
     </div> 
-    <div class="product-characteristics-spec">
-        <div class="product-characteristics__spec-title">
-            <label for="Resolution">Resolution:</label>
-        </div>
-        <div class="product-characteristics__spec-value">
-            <ResolutionView PropertyName="MaxPrintResolution" Printer="@Printer" Status="get"></ResolutionView>
-        </div>
-    </div> 
-    <div class="product-characteristics-spec">
-        <div class="product-characteristics__spec-title">
-            <label>BWPrintingSpeed:</label>
-        </div>
-        <div class="product-characteristics__spec-value">
-                <IntegerType PropertyName="BWPrintingSpeed" UnitsName="SpeedUnits" Printer="@Printer" Status="get"></IntegerType>
-            
-        </div>
-    </div>
-    @if (Printer is not null)
-    {
-        @if (Printer.СolorPrinting)
-        {
-            <div class="product-characteristics-spec">
-                <div class="product-characteristics__spec-title">
-                        <label for="ColorPrintingSpeed">ColorPrintingSpeed:</label>
-                </div>
-                <div class="product-characteristics__spec-value">
-
-                        <IntegerType PropertyName="ColorPrintingSpeed" UnitsName="SpeedUnits" Printer="@Printer" Status="get"></IntegerType>
-                   
-                </div>
-            </div>
-        }
-    }
+  
+   
     <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
                 <label for="MaxMonthlyPrintVolumes">MaxMonthlyPrintVolumes:</label>
@@ -99,41 +145,15 @@
                 <IntegerType PropertyName="MaxMonthlyPrintVolumes" UnitsName="MaxMonthlyPrintVolumesUnits" Printer="@Printer" Status="get"></IntegerType>
         </div>
     </div>
-        <div class="product-characteristics-spec">
-            <div class="product-characteristics__spec-title">
-                <label for="MaxPrintFormat">MaxPrintFormat:</label>
-            </div>
-            <div class="product-characteristics__spec-value">
-                <MaxPrintFormat Paper_sizes="MaxPrintFormat" Printer="@Printer" Status="get"></MaxPrintFormat>
-            </div>
-        </div> 
+     
 
-        <div class="product-characteristics-spec">
-            <div class="product-characteristics__spec-title">
-                <label for="Type">Type:</label>
-            </div>
-            <div class="product-characteristics__spec-value">
-                <PrinterType Printer="@Printer" Status="get" Types="@types"></PrinterType>
-            </div>
-        </div>  
-        <div class="product-characteristics-spec">
-            <div class="product-characteristics__spec-title">
-                <label for="Technologis">Technologis:</label>
-            </div>
-            <div class="product-characteristics__spec-value">
-                <TechnologisView Printer="@Printer" Status="get" Technologies="@Technologies"></TechnologisView>
-            </div>
-        </div> 
+      
+      
 
-        <div class="product-characteristics-spec">
-            <div class="product-characteristics__spec-title">
-                <label for="Test">DeviceFunctions:</label>
-            </div>
-            <div class="product-characteristics__spec-value">
-                <DeviceFunctionsView Printer="@Printer" Status="get" Function="Functions"></DeviceFunctionsView>
-            </div>
-        </div>
-
+     
+        <div class="product-characteristics__group-title">Расходные материалы</div>
+       
+        <CartridgeModelsView Printer="@Printer" Status="get" CartridgeModels="Cartridge_s"></CartridgeModelsView>
     </div>
 
    <div class="control-block">
@@ -160,6 +180,7 @@
     public virtual ICollection<Paper_sizes> MaxPrintFormat { get; set; }
     public virtual ICollection<Printing_technologies> Technologies { get; set; }
     public virtual ICollection<Device_functions> Functions { get; set; }
+    public virtual ICollection<Cartridge_models> Cartridge_s { get; set; }
     // public virtual ICollection<Resolution> Resolutions { get; set; }
     protected override void OnInitialized()
     {
@@ -168,6 +189,7 @@
         MaxPrintFormat = DbContextPrinters.Paper_sizes.ToArray();
         Technologies = DbContextPrinters.Printing_technologies.ToArray();
         Functions = DbContextPrinters.Device_functions.ToArray();
+        Cartridge_s = DbContextPrinters.Cartridge_models.ToArray();
         // Resolutions = DbContextPrinters.Resolution.ToArray();
        
 

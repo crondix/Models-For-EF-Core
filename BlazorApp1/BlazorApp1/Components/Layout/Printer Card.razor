@@ -10,7 +10,7 @@
             @Printer.ModelName
             [@(Printer.СolorPrinting is true ? "цветная печать" : "чернобелая печать"),
             @Printer.MaxPrintFormat.paper_size,
-            @(Printer.MaxPrintResolution.width)x@(Printer.MaxPrintResolution.height)@(Printer.MaxPrintResolution.units.units),
+            @(Printer.MaxPrintResolutionBW.width)x@(Printer.MaxPrintResolutionBW.height)@(Printer.MaxPrintResolutionBW.units.units),
             ч/б - @(Printer.BWPrintingSpeed) @(Printer.SpeedUnits) (@Printer.MaxPrintFormat.paper_size),
             @for (short i = 0; i < Printer.PrinterInterfaces.Count; i++)
             {
