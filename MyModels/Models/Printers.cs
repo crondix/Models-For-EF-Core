@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.Extensions.ExpressionMapping;
+using static System.Net.Mime.MediaTypeNames;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyModels.Models
 {
@@ -19,33 +21,83 @@ namespace MyModels.Models
     /// </summary>
     public class Printers
     {
+        public Printers() { }
+        public Printers(
+         string Printimage ,
+        string modelName,
+        int companyId,
+        string companyName,
+        int maxPrintResolutionBWid,
+        int maxPrintResolutionColorid,
+        ushort bwPrintingSpeed,
+        ushort colorPrintingSpeed,
+        int speedUnitsid,
+        int maxPrintFormatid,
+        int typesid,
+        int technologisid,
+        int maxMonthlyPrintVolumes,
+        int recommendedMonthlyPrintVolumes,
+        int monthlyPrintVolumesUnitsid,
+        int? scanerid
+        /* Добавьте другие параметры по мере необходимости */)
+        {
+            // Инициализация свойств стандартными значениями
+            Scanner = new Scanner();
+            image = Printimage;
+            CISS = false;
+            AutomaticDoubleSidedPrinting = false;
+            ModelName = modelName;
+            СolorPrinting = false;
+            Company_nameid = companyId;
+            Company_name = new Companies { name = companyName };
+            MaxPrintResolutionBWid = maxPrintResolutionBWid;
+            MaxPrintResolutionBW = new Resolution();
+            MaxPrintResolutionColorid = maxPrintResolutionColorid;
+            MaxPrintResolutionColor = new Resolution();
+            BWPrintingSpeed = bwPrintingSpeed;
+            ColorPrintingSpeed = colorPrintingSpeed;
+            SpeedUnitsid = speedUnitsid;
+            MaxPrintFormatid = maxPrintFormatid;
+            Typesid = typesid;
+            Technologisid = technologisid;
+            MaxMonthlyPrintVolumes = maxMonthlyPrintVolumes;
+            RecommendedMonthlyPrintVolumes = recommendedMonthlyPrintVolumes;
+            MonthlyPrintVolumesUnitsid = monthlyPrintVolumesUnitsid;
+            Scanerid = scanerid;
+            Scanner = new Scanner();
+            DeviceFunctions = new List<Device_functionsPrinters>();
+            CartridgeModels = new List<Cartridge_modelsPrinters>();
+            PrinterInterfaces = new List<Printer_InterfacesPrinters>();
+        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string? image { get; set; }
         /// <summary>
         /// Имеет ли принтер: систему непрерывной подачи чернил 
         /// </summary>
-        public bool CISS { get; set; }
+        public bool? CISS { get; set; }
         /// <summary>
         /// Имеет ли принтер: Автоматическую двухстороннюю печать 
         /// </summary>
-        public bool AutomaticDoubleSidedPrinting { get; set; }
+        public bool? AutomaticDoubleSidedPrinting { get; set; }
         /// <summary>
         /// Название модели принтера
         /// </summary>
         [Required]
         [MaxLength(40)]
-        public string ModelName { get; set; }
+        public string? ModelName { get; set; }
         /// <summary>
         /// Возможность цветной печати
         /// </summary>       
-        public bool СolorPrinting { get; set; }
+        public bool? СolorPrinting { get; set; }
         [Required]
-        public int Company_nameid { get; set; }
+        public int? Company_nameid { get; set; }
         public virtual Companies? Company_name { get; set; }
         /// <summary>
         /// Максимальное разрешение черно-белой печати 
         /// </summary>
-        public int MaxPrintResolutionBWid { get; set; } 
+        public int? MaxPrintResolutionBWid { get; set; } 
         /// <summary>
         /// Максимальное разрешение черно-белой печати 
         /// </summary>
@@ -53,7 +105,7 @@ namespace MyModels.Models
         /// <summary>
         /// Максимальное разрешение цветной печати 
         /// </summary>
-        public int MaxPrintResolutionColorid { get; set; }
+        public int? MaxPrintResolutionColorid { get; set; }
         /// <summary>
         /// Максимальное разрешение цветной печати 
         /// </summary>
@@ -63,7 +115,7 @@ namespace MyModels.Models
         /// <summary>
         /// Скорость черно-белой печати  
         /// </summary>
-        public ushort BWPrintingSpeed { get; set; }
+        public ushort? BWPrintingSpeed { get; set; }
         /// <summary>
         /// Скорость цветной печати  
         /// </summary>
@@ -101,11 +153,11 @@ namespace MyModels.Models
         public virtual Scanner? Scanner { get; set; }
 
 
-        public virtual ICollection<Device_functionsPrinters> DeviceFunctions { get; set; }
+        public virtual ICollection<Device_functionsPrinters>? DeviceFunctions { get; set; }
 
-        public virtual ICollection<Cartridge_modelsPrinters> CartridgeModels { get; set; }
+        public virtual ICollection<Cartridge_modelsPrinters>? CartridgeModels { get; set; }
 
-        public virtual ICollection<Printer_InterfacesPrinters> PrinterInterfaces { get; set; }
+        public virtual ICollection<Printer_InterfacesPrinters>? PrinterInterfaces { get; set; }
 
 
 

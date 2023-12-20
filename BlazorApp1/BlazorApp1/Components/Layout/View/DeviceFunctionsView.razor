@@ -1,37 +1,42 @@
 ﻿@using MyModels.Models
 
-@if (status == "update" || status == "set")
+@if (Printer != null)
 {
-
-    <div>
-        <MultiSelect CheckedItems="Printer.DeviceFunctions.Select(function => function.Device_functions.function).ToArray()" Items="Function.Select(function => function.function).ToArray()" SelectedItemsChanged="HandleSelectedItemsChanged"></MultiSelect>
-    </div>
-
-}
-else if (status == "get")
-{
-    <div>
-        @foreach (var item in Printer.DeviceFunctions)
-        {
-            <span class="CheckedDeviceFunctions">@item.Device_functions.function</span>
-        }
-    </div>
-    
-    
+    if (status == "update" || status == "set")
+    {
+        <div>
+            <MultiSelect CheckedItems="Printer.DeviceFunctions?.Select(function => function.Device_functions.function).ToArray()" Items="Function?.Select(function => function.function).ToArray()" SelectedItemsChanged="HandleSelectedItemsChanged"></MultiSelect>
+        </div>
+    }
+    else if (status == "get")
+    {
+        <div>
+            @if (Printer.DeviceFunctions != null)
+            {
+                @foreach (var item in Printer.DeviceFunctions)
+                {
+                    <span class="CheckedDeviceFunctions">@item.Device_functions.function</span>
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <span>name not found</span>
+    }
+    <EditButton OnButtonClick="HandleButtonClick"></EditButton>
 }
 else
 {
-    <span>name not found</span>
+    <span>Printer is null</span>
 }
-<EditButton OnButtonClick="HandleButtonClick"></EditButton>
+
 @code {
     [Parameter]
     public Printers Printer { get; set; }
 
-
     [Parameter]
     public virtual ICollection<Device_functions> Function { get; set; }
-
 
     string status = "";
 
@@ -55,31 +60,34 @@ else
         }
     }
 
-
     ICollection<Device_functionsPrinters> TempValue { get; set; }
-
 
     private void HandleSelectionChange()
     {
+        if (Printer.DeviceFunctions == null)
+        {
+            Printer.DeviceFunctions = new List<Device_functionsPrinters>();
+        }
+
         foreach (var item in CheckedDeviceFunctions)
         {
             if (!Printer.DeviceFunctions.Any(df => df.Device_functions.function == item))
             {
-                Printer.DeviceFunctions.Add(new Device_functionsPrinters() { Device_functions = Function.FirstOrDefault(p => p.function == item), Printers = this.Printer });
+                Printer.DeviceFunctions.Add(new Device_functionsPrinters() { Device_functions = Function?.FirstOrDefault(p => p.function == item), Printers = this.Printer });
             }
         }
-        foreach (var item in Printer.DeviceFunctions)
+
+        foreach (var item in Printer.DeviceFunctions.ToList())
         {
-            if (!CheckedDeviceFunctions.Contains(item.Device_functions.function))
+            if (!CheckedDeviceFunctions.Contains(item.Device_functions?.function))
             {
                 Printer.DeviceFunctions.Remove(item);
             }
         }
-
     }
+
     private void HandleButtonClick(string buttonType)
     {
-
         if (buttonType == "reset")
         {
             Printer.DeviceFunctions = new List<Device_functionsPrinters>();
@@ -87,36 +95,25 @@ else
             {
                 Printer.DeviceFunctions.Add(item);
             }
-            // Printer.DeviceFunctions = TempValue;
-            Status = "get";
 
+            Status = "get";
         }
         else
         {
             Status = buttonType;
-
         }
-
-
-        // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
-
     }
+
     List<string> CheckedDeviceFunctions { get; set; }
+
     protected override void OnInitialized()
     {
-
-        CheckedDeviceFunctions = Printer.DeviceFunctions.Select(function => function.Device_functions.function).ToList();
-        TempValue = new List<Device_functionsPrinters>();
-        foreach (var item in Printer.DeviceFunctions)
-        {
-            TempValue.Add(item);
-        }
-    
-
+        CheckedDeviceFunctions = Printer?.DeviceFunctions?.Select(function => function.Device_functions.function).ToList() ?? new List<string>();
+        TempValue = Printer?.DeviceFunctions?.ToList() ?? new List<Device_functionsPrinters>();
     }
+
     private void HandleSelectedItemsChanged(List<string> updatedSelectedItems)
     {
-        // Обработайте обновленные SelectedItems, которые пришли из дочернего компонента
         CheckedDeviceFunctions = updatedSelectedItems;
         HandleSelectionChange();
     }

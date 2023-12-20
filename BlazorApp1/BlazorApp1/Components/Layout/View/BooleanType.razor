@@ -24,7 +24,7 @@ else
 @code {
     
     [Parameter]
-    public Printers Printer { get; set; }
+    public object Object { get; set; }
 
 
     [Parameter]
@@ -33,8 +33,8 @@ else
     private bool PropertyValue
     {
 
-        get => Convert.ToBoolean(Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
-        set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ToBoolean(value));
+        get => Convert.ToBoolean(Object.GetType().GetProperty(PropertyName).GetValue(Object)??false);
+        set => Object.GetType().GetProperty(PropertyName).SetValue(Object, Convert.ToBoolean(value));
     }
     
     string status = "";

@@ -397,8 +397,9 @@
 
       "Technologisid": 1,
 
-      "MaxMonthlyPrintVolumes": 5500,
-      "MaxMonthlyPrintVolumesUnitsid": 2,
+      "MaxMonthlyPrintVolumes": 4800,
+      "RecommendedMonthlyPrintVolumes": 55000,
+      "MonthlyPrintVolumesUnitsid": 2,
       "Scanerid": 1
     }
   ],

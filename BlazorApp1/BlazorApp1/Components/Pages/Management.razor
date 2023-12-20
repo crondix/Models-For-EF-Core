@@ -9,13 +9,35 @@
 <h3>Management</h3>
 <PrinterDetails Printer="@printer" > </PrinterDetails>
 @code {
-    Printers printer;
-    Printers TempPrinter;
+    Printers? printer;
+    Printers? TempPrinter;
 
     protected override void OnInitialized()
     {
+
         printer = DbContextPrinters.Printers.FirstOrDefault(p => p.Id == 1);
-       
-       
+    //     TempPrinter = new Printers(
+    // Printimage:"image/not image.jpg",
+    // modelName: " модель принтера",
+    // companyId: 1,
+    // companyName: "Название компании",
+    // maxPrintResolutionBWid: 1200,
+    // maxPrintResolutionColorid: 2400,
+    // bwPrintingSpeed: 20,
+    // colorPrintingSpeed: 10,
+    // speedUnitsid: 2,
+    // maxPrintFormatid: 3,
+    // typesid: 1,
+    // technologisid: 2,
+    // maxMonthlyPrintVolumes: 5000,
+    // recommendedMonthlyPrintVolumes: 3000,
+    // monthlyPrintVolumesUnitsid: 1,
+    // scanerid: 4
+    // // Добавьте другие параметры по мере необходимости
+    // );
+    //     DbContextPrinters.Printers.Add(TempPrinter);
+    //     DbContextPrinters.SaveChanges();
+        // printer = TempPrinter;
+
     }
 }

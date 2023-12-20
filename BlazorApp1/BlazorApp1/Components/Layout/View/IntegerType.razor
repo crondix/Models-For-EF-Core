@@ -30,18 +30,37 @@ else
     [Parameter]
     public string PropertyName { get; set; }
 
-    private int PropertyValue
+    private int? PropertyValue
     {
+        get
+        {
+            var propertyValue = Printer.GetType().GetProperty(PropertyName)?.GetValue(Printer);
 
-        // get =>Convert.ToInt32( Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
-        // set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ToInt32(value));
-        get  {
-            
-            return  Convert.ToInt32((Printer.GetType().GetProperty(PropertyName).GetValue(Printer)));
+            if (propertyValue != null)
+            {
+                if (propertyValue is int || propertyValue is int?)
+                {
+                    return (int?)propertyValue;
+                }
+            }
+
+            return null;
         }
-        set { 
-            var propertyType = Printer.GetType().GetProperty(PropertyName).PropertyType;
-            Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ChangeType(value, propertyType));
+        set
+        {
+            var propertyType = Printer.GetType().GetProperty(PropertyName)?.PropertyType;
+
+            if (propertyType != null && value != null)
+            {
+                if (propertyType == typeof(int))
+                {
+                    Printer.GetType().GetProperty(PropertyName)?.SetValue(Printer, value.Value);
+                }
+                else if (propertyType == typeof(int?))
+                {
+                    Printer.GetType().GetProperty(PropertyName)?.SetValue(Printer, value);
+                }
+            }
         }
     }
 
@@ -80,31 +99,26 @@ else
         }
 
     } 
-    int TempValue { get; set; }
+
+    private int? TempValue { get; set; }
+
     protected override void OnInitialized()
     {
         TempValue = PropertyValue;
-
-
     }
 
     private void HandleButtonClick(string buttonType)
     {
-
         if (buttonType == "reset")
         {
-
             PropertyValue = TempValue;
             Status = "get";
         }
-        else 
+        else
         {
             Status = buttonType;
         }
-      
-
         // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
-
     }
 
 }

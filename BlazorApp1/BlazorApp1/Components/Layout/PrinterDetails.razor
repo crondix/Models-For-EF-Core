@@ -30,6 +30,14 @@
     </div>
         <div class="product-characteristics-spec">
             <div class="product-characteristics__spec-title">
+                <label for="companyName">Company Name:</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <CompanyName Printer="@Printer" companies="@DbContextPrinters.Companies.ToArray()" Status="get"></CompanyName>
+            </div>
+        </div>
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
                 <label for="Test">Функции устройства(DeviceFunctions):</label>
             </div>
             <div class="product-characteristics__spec-value">
@@ -55,7 +63,7 @@
                 <label for="colorPrinting">Возможность цветной печати (Color Printing):</label>
             </div>
             <div class="product-characteristics__spec-value">
-                <BooleanType Status="get" PropertyName="СolorPrinting" Printer="@Printer"></BooleanType>
+                <BooleanType Status="get" PropertyName="СolorPrinting" Object="@Printer"></BooleanType>
 
             </div>
         </div>
@@ -72,7 +80,7 @@
                 <label for="Resolution">Максимальное разрешение черно-белой печати (Resolution):</label>
             </div>
             <div class="product-characteristics__spec-value">
-                <ResolutionView PropertyName="MaxPrintResolutionBW" Printer="@Printer" Status="get"></ResolutionView>
+                <ResolutionView PropertyName="MaxPrintResolutionBW" Object="@Printer" Status="get"></ResolutionView>
             </div>
         </div>
         <div class="product-characteristics-spec">
@@ -86,14 +94,14 @@
         </div>
         @if (Printer is not null)
         {
-            @if (Printer.СolorPrinting)
+            @if (Printer.СolorPrinting??false)
             {
                 <div class="product-characteristics-spec">
                     <div class="product-characteristics__spec-title">
                         <label for="Resolution">Максимальное разрешение цветной печати (Resolution):</label>
                     </div>
                     <div class="product-characteristics__spec-value">
-                        <ResolutionView PropertyName="MaxPrintResolutionColor" Printer="@Printer" Status="get"></ResolutionView>
+                        <ResolutionView PropertyName="MaxPrintResolutionColor" Object="@Printer" Status="get"></ResolutionView>
                     </div>
                 </div>
                 <div class="product-characteristics-spec">
@@ -113,39 +121,40 @@
             <label for="ciss">CISS:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <BooleanType Status="get" PropertyName="CISS" Printer="@Printer"></BooleanType>
+                <BooleanType Status="get" PropertyName="CISS" Object="@Printer"></BooleanType>
         </div>
     </div>
     <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
          
-            <label for="autoDoubleSided" value="@(Printer is not null  ? Printer.AutomaticDoubleSidedPrinting:"")" checked="@(Printer is not null ? Printer.AutomaticDoubleSidedPrinting ? "checked":"" :"")">Automatic Double-Sided Printing:</label>
+            <label for="autoDoubleSided" value="@(Printer is not null  ? Printer.AutomaticDoubleSidedPrinting:"")" checked="@(Printer is not null ? Printer.AutomaticDoubleSidedPrinting??false ? "checked":"" :"")">Automatic Double-Sided Printing:</label>
         </div>
         <div class="product-characteristics__spec-value">
-            <BooleanType Status="get" PropertyName="AutomaticDoubleSidedPrinting" Printer="@Printer"></BooleanType>
+                <BooleanType Status="get" PropertyName="Bool" Object="@testobject"></BooleanType>
         </div>
     </div>
     
 
-    <div class="product-characteristics-spec">
-        <div class="product-characteristics__spec-title">
-            <label for="companyName">Company Name:</label>
-        </div>
-        <div class="product-characteristics__spec-value">
-            <CompanyName Printer="@Printer" companies="@DbContextPrinters.Companies.ToArray()" Status="get"></CompanyName>
-        </div>
-    </div> 
-  
    
+
+
+        <div class="product-characteristics-spec">
+            <div class="product-characteristics__spec-title">
+                <label for="MaxMonthlyPrintVolumes">Рекомендуемый месячный объем печати (RecommendedMonthlyPrintVolumes):</label>
+            </div>
+            <div class="product-characteristics__spec-value">
+                <IntegerType PropertyName="RecommendedMonthlyPrintVolumes" UnitsName="MonthlyPrintVolumesUnits" Printer="@Printer" Status="get"></IntegerType>
+            </div>
+        </div>
     <div class="product-characteristics-spec">
         <div class="product-characteristics__spec-title">
-                <label for="MaxMonthlyPrintVolumes">MaxMonthlyPrintVolumes:</label>
+                <label for="MaxMonthlyPrintVolumes">Максимальный месячный объем печати (MaxMonthlyPrintVolumes):</label>
         </div>
         <div class="product-characteristics__spec-value">
-                <IntegerType PropertyName="MaxMonthlyPrintVolumes" UnitsName="MaxMonthlyPrintVolumesUnits" Printer="@Printer" Status="get"></IntegerType>
+                <IntegerType PropertyName="MaxMonthlyPrintVolumes" UnitsName="MonthlyPrintVolumesUnits" Printer="@Printer" Status="get"></IntegerType>
         </div>
     </div>
-     
+       
 
       
       
@@ -172,8 +181,8 @@
 
     string value { get; set; }
 
-   
 
+    TestBool? testobject { get; set; }
 
     public virtual ICollection<Companies> companies { get; set; }
     public virtual ICollection<Printer_types> types { get; set; }
@@ -191,7 +200,8 @@
         Functions = DbContextPrinters.Device_functions.ToArray();
         Cartridge_s = DbContextPrinters.Cartridge_models.ToArray();
         // Resolutions = DbContextPrinters.Resolution.ToArray();
-       
+        testobject = new TestBool();
+        testobject.Bool = true;
 
 
     } 

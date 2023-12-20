@@ -26,7 +26,7 @@ else
 <EditButton OnButtonClick="HandleButtonClick"></EditButton>
 @code {
     [Parameter]
-    public Printers Printer { get; set; }
+    public object Object { get; set; }
 
 
     [Parameter]
@@ -35,8 +35,8 @@ else
     private Resolution PropertyValue
     {
 
-        get => ((Resolution)Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
-        set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, value);
+        get => ((Resolution)Object.GetType().GetProperty(PropertyName).GetValue(Object));
+        set => Object.GetType().GetProperty(PropertyName).SetValue(Object, value);
     }
 
     string status = "";
@@ -80,6 +80,7 @@ else
         else
         {
             Status = buttonType;
+
         }
 
 

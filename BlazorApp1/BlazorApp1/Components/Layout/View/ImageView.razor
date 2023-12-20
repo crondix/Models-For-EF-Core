@@ -124,7 +124,7 @@ else
 
         return Directory.GetFiles($"{env.WebRootPath}/image").Select(Path.GetFileName).ToArray(); ;
     }
-  
+
 
 
 
@@ -159,7 +159,15 @@ else
     string TempValue { get; set; }
     protected override void OnInitialized()
     {
-        TempValue = Printer.image;
+        if (Printer.image is not null)
+        {
+            TempValue = Printer.image;
+        }
+        else
+        {
+            TempValue = "image/not image.jpg";
+        }
+
 
 
     }

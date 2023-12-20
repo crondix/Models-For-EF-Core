@@ -50,7 +50,23 @@ using (var db = new ApplicationContext())
                         db.AddRange(item);// в этой строке просто в дбшку добавляется, (синтакси EF Core)
                     }
                 }
-                db.SaveChanges();
+                try
+                {
+                    // Ваш код сохранения изменений в базе данных
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    // Обработка ошибки
+                    Console.WriteLine($"Ошибка сохранения изменений: {ex.Message}");
+
+                    // Вывод внутреннего исключения, чтобы увидеть дополнительные детали
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine($"Внутреннее исключение: {ex.InnerException.Message}");
+                    }
+                }
+             
             }
 
         }
