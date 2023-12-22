@@ -10,9 +10,11 @@
 
 else if (status == "get" )
 {
+     <div>
     <span>@PropertyValue @UnitsValue</span>
-
-   
+        <span>propertyValue= @propertyValue</span>
+    </div>
+    
 }
 else
 {
@@ -24,41 +26,34 @@ else
 
 
     [Parameter]
-    public Printers Printer { get; set; }
+    public object Object { get; set; }
 
 
     [Parameter]
     public string PropertyName { get; set; }
 
+    int? propertyValue;
     private int? PropertyValue
     {
         get
         {
-            var propertyValue = Printer.GetType().GetProperty(PropertyName)?.GetValue(Printer);
-
-            if (propertyValue != null)
-            {
-                if (propertyValue is int || propertyValue is int?)
-                {
-                    return (int?)propertyValue;
-                }
-            }
-
-            return null;
+          return  propertyValue;
         }
         set
         {
-            var propertyType = Printer.GetType().GetProperty(PropertyName)?.PropertyType;
+            var propertyType = Object.GetType().GetProperty(PropertyName)?.PropertyType;
 
             if (propertyType != null && value != null)
             {
                 if (propertyType == typeof(int))
                 {
-                    Printer.GetType().GetProperty(PropertyName)?.SetValue(Printer, value.Value);
+                    Object.GetType().GetProperty(PropertyName)?.SetValue(propertyValue, value.Value);
+                    Object.GetType().GetProperty(PropertyName)?.SetValue(Object, value.Value);
                 }
                 else if (propertyType == typeof(int?))
                 {
-                    Printer.GetType().GetProperty(PropertyName)?.SetValue(Printer, value);
+                    Object.GetType().GetProperty(PropertyName)?.SetValue(propertyValue, value);
+                    Object.GetType().GetProperty(PropertyName)?.SetValue(Object, value);
                 }
             }
         }
@@ -71,7 +66,7 @@ else
     private Measurement_units UnitsValue
     {
 
-        get => ((Measurement_units)Printer.GetType().GetProperty(UnitsName).GetValue(Printer));
+        get => ((Measurement_units)Object.GetType().GetProperty(UnitsName).GetValue(Object));
 
     }
 
