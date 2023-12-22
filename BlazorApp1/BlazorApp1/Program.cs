@@ -65,7 +65,8 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
-
+app.UseAuthentication();   // добавление middleware аутентификации 
+app.UseAuthorization();   // добавление middleware авторизации 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()

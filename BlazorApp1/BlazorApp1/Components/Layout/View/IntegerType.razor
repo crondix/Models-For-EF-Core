@@ -1,4 +1,4 @@
-﻿@using MyModels.Models
+﻿﻿@using MyModels.Models
 
 @if (status == "update" || status == "set")
 {
@@ -8,13 +8,11 @@
     </div>
 }
 
-else if (status == "get" )
+else if (status == "get")
 {
-     <div>
     <span>@PropertyValue @UnitsValue</span>
-        <span>propertyValue= @propertyValue</span>
-    </div>
-    
+
+
 }
 else
 {
@@ -32,30 +30,20 @@ else
     [Parameter]
     public string PropertyName { get; set; }
 
-    int? propertyValue;
-    private int? PropertyValue
+    private int PropertyValue
     {
+
+        // get =>Convert.ToInt32( Printer.GetType().GetProperty(PropertyName).GetValue(Printer));
+        // set => Printer.GetType().GetProperty(PropertyName).SetValue(Printer, Convert.ToInt32(value));
         get
         {
-          return  propertyValue;
+
+            return Convert.ToInt32((Object.GetType().GetProperty(PropertyName).GetValue(Object)));
         }
         set
         {
-            var propertyType = Object.GetType().GetProperty(PropertyName)?.PropertyType;
-
-            if (propertyType != null && value != null)
-            {
-                if (propertyType == typeof(int))
-                {
-                    Object.GetType().GetProperty(PropertyName)?.SetValue(propertyValue, value.Value);
-                    Object.GetType().GetProperty(PropertyName)?.SetValue(Object, value.Value);
-                }
-                else if (propertyType == typeof(int?))
-                {
-                    Object.GetType().GetProperty(PropertyName)?.SetValue(propertyValue, value);
-                    Object.GetType().GetProperty(PropertyName)?.SetValue(Object, value);
-                }
-            }
+            var propertyType = Object.GetType().GetProperty(PropertyName).PropertyType;
+            Object.GetType().GetProperty(PropertyName).SetValue(Object, Convert.ChangeType(value, propertyType));
         }
     }
 
@@ -93,19 +81,21 @@ else
             }
         }
 
-    } 
-
-    private int? TempValue { get; set; }
-
+    }
+    int TempValue { get; set; }
     protected override void OnInitialized()
     {
         TempValue = PropertyValue;
+
+
     }
 
     private void HandleButtonClick(string buttonType)
     {
+
         if (buttonType == "reset")
         {
+
             PropertyValue = TempValue;
             Status = "get";
         }
@@ -113,7 +103,10 @@ else
         {
             Status = buttonType;
         }
+
+
         // StateHasChanged(); // Важно вызвать StateHasChanged() после изменения статуса
+
     }
 
 }
